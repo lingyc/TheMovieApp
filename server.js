@@ -18,7 +18,7 @@ con.connect(function(err){
   console.log('Connection established');
 });
 
-app.post('/signin', handler.loginUser)
+app.post('/', handler.loginUser)
 
 // app.get('/', function (req, res) {
 //   res.send('Hello World!');
