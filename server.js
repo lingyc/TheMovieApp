@@ -1,11 +1,13 @@
 var express = require('express');
 var mysql = require('mysql');
+var handler = require('./lib/request-handler')
 var app = express();
+
 
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "12345"
+  password: "123"
 });
 
 con.connect(function(err){
@@ -16,11 +18,12 @@ con.connect(function(err){
   console.log('Connection established');
 });
 
+app.post('/signin', handler.loginUser)
 
+// app.get('/', function (req, res) {
+//   res.send('Hello World!');
+// });
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');

@@ -1,4 +1,3 @@
-console.log('testtttt')
 var knex = require('knex')({
   client: 'mysql',
   connection: {
