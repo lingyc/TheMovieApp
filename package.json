@@ -1,0 +1,19 @@
+{
+  "name": "goodbuddy",
+  "license": "NOLICENSE",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "~1.4.2",
+    "express": "~4.5.1",
+    "method-override": "~2.0.2",
+    "nodemon": "^1.9.2",
+    "q": "^1.4.1",
+    "bluebird": "latest",
+    "mysql": "latest",
+    "bcrypt-nodejs": "latest",
+    "knex": "latest",
+    "bookshelf": "latest",
+    "express-session": "latest",
+    "gulp": "latest"
+  }
+}
