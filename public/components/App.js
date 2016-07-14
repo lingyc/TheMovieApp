@@ -3,24 +3,38 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      list: [],
-      currentList: null
+    view:'Login'
+
     };
   }
 
+
+  changeView(){
+
+    this.setState({
+      view:"SignUp"
+    })
+  }
+
+
+  enterNewUser(name,password){
+    console.log(name,password);
+    $.post('127.0.0.1:3000',{name:name,password:password},function(data,err){
+      console.log(data)
+    })
+
+  }
+
   render() {
-    return (
-      <div>
-        <Nav />
-        <div className="col-md-7">
-          <GroceryList 
-          />
-        </div>
-        <div className="col-md-5">
-          HI
-        </div>
-      </div>
-    );
+    if (this.state.view==='Login') {
+      return ( < div >
+        < LogIn ourFunction={this.changeView.bind(this)} / >  </div> );
+    } else {
+      return ( < div >
+        < SignUp enterUser={this.enterNewUser.bind(this)}/ >
+        < /div>
+      );
+    }
   }
 }
 
