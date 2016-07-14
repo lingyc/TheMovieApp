@@ -12,4 +12,4 @@ var Relation = db.Model.extend({
   }
 });
 
-module.exports = Relations;
+module.exports = Relation;
