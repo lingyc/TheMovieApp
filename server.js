@@ -1,15 +1,12 @@
 var express = require('express');
-var mysql = require("mysql");
+var mysql = require('mysql');
 var app = express();
-
-app.use(express.static('public'));
 
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "12345"
 });
-
 
 con.connect(function(err){
   if(err){
@@ -24,9 +21,6 @@ con.connect(function(err){
 app.get('/', function (req, res) {
   res.send('Hello World!');
 });
-
-
-
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
