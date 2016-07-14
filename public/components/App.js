@@ -19,7 +19,7 @@ class App extends React.Component {
 
   enterNewUser(name,password){
     console.log(name,password);
-    $.post('127.0.0.1:3000',{name:name,password:password},function(data,err){
+    $.post('http://127.0.0.1:3000',{name:name,password:password},function(data,err){
       console.log(data)
     })
 
