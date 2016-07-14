@@ -1,4 +1,6 @@
-var db = require('./dbConnection');
+var db = require('../dbConnection');
+var User = require('./user');
+var Movie = require('./movie');
 
 //create rating model
 var Rating = db.Model.extend({
@@ -11,9 +13,4 @@ var Rating = db.Model.extend({
   }
 });
 
-//create rating collection
-var Ratings = new db.Collection();
-Ratings.model = Rating;
-
 module.exports = Rating;
-module.exports = Ratings;

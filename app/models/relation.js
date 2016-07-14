@@ -1,4 +1,5 @@
-var db = require('./dbConnection');
+var db = require('../dbConnection');
+var User = require('./user');
 
 //create user relationship model
 var Relation = db.Model.extend({
@@ -11,9 +12,4 @@ var Relation = db.Model.extend({
   }
 });
 
-//create user relationships collection
-var Relations = new db.Collection();
-Relations.model = Relation;
-
-module.exports = Relation;
 module.exports = Relations;

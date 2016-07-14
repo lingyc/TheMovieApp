@@ -28,6 +28,7 @@ db.knex.schema.hasTable('ratings').then(function(exists) {
   if (!exists) {
     db.knex.schema.createTable('ratings', function (rating) {
       rating.increments('id').primary();
+      rating.integer('score');
       rating.integer('movieid');
       rating.integer('userid');
     }).then(function (table) {
