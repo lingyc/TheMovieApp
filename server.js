@@ -5,7 +5,7 @@ var app = express();
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "12345"
+  password: "123"
 });
 
 con.connect(function(err){
@@ -15,8 +15,6 @@ con.connect(function(err){
   }
   console.log('Connection established');
 });
-
-
 
 app.get('/', function (req, res) {
   res.send('Hello World!');

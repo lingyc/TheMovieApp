@@ -11,36 +11,49 @@ var knex = require('knex')({
 
 var db = require('bookshelf')(knex);
 
-db.knex.schema.hasTable('Stores').then(function(exists) {
+db.knex.schema.hasTable('movies').then(function(exists) {
   if (!exists) {
-    db.knex.schema.createTable('Stores', function (store) {
-      store.increments('id').primary();
-      store.string('name', 255);
-      store.string('location', 255);
+    db.knex.schema.createTable('movies', function (movie) {
+      movie.increments('id').primary();
+      movie.string('title', 255);
+      movie.string('genre', 255);
+      movie.string('release_date', 255);
     }).then(function (table) {
       console.log('Created Table', table);
     });
   }
 });
 
-db.knex.schema.hasTable('Items').then(function(exists) {
+db.knex.schema.hasTable('ratings').then(function(exists) {
   if (!exists) {
-    db.knex.schema.createTable('Items', function (item) {
-      item.increments('id').primary();
-      item.string('name', 255);
+    db.knex.schema.createTable('ratings', function (rating) {
+      rating.increments('id').primary();
+      rating.integer('movieid');
+      rating.integer('userid');
     }).then(function (table) {
       console.log('Created Table', table);
     });
   }
 });
 
-db.knex.schema.hasTable('StoresItems').then(function(exists) {
+db.knex.schema.hasTable('users').then(function(exists) {
   if (!exists) {
-    db.knex.schema.createTable('StoresItems', function (storeitem) {
-      storeitem.increments('id').primary();
-      storeitem.integer('storeid', 255);
-      storeitem.integer('itemid', 255);
-      storeitem.integer('price', 255);
+    db.knex.schema.createTable('users', function(user) {
+      user.increments('id').primary();
+      user.string('username', 255);
+      user.string('password', 255);
+    }).then(function (table) {
+      console.log('Created Table', table);
+    });
+  }
+});
+
+db.knex.schema.hasTable('relations').then(function(exists) {
+  if (!exists) {
+    db.knex.schema.createTable('relations', function(relation) {
+      relationship.increments('id').primary();
+      relationship.integer('user1id');
+      relationship.integer('user2id');
     }).then(function (table) {
       console.log('Created Table', table);
     });
