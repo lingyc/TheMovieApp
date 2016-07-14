@@ -1,2 +1,3 @@
 npm_modules
 *.DS_Store
+compiled/
