@@ -1,6 +1,8 @@
 {
   "name": "goodbuddy",
-  "license": "NOLICENSE",
+  "version": "1.0.0",
+  "author": "Piquant-Toothbrush",
+  "license": "UNLICENSE",
   "main": "server.js",
   "dependencies": {
     "body-parser": "~1.4.2",
@@ -14,6 +16,22 @@
     "knex": "latest",
     "bookshelf": "latest",
     "express-session": "latest",
-    "gulp": "latest"
+    "gulp": "latest",
+    "bootstrap": "latest",
+    "jquery": "latest",
+    "underscore": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "babel-cli": "latest",
+    "babel-preset-es2015": "latest",
+    "babel-register": "latest",
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5"
+  },
+  "scripts": {
+    "compile": "babel . --out-dir compiled --presets=es2015,react --ignore=node_modules,compiled --source-maps inline --watch",
+    "watch": "live-server"
   }
 }
