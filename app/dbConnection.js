@@ -52,9 +52,9 @@ db.knex.schema.hasTable('users').then(function(exists) {
 db.knex.schema.hasTable('relations').then(function(exists) {
   if (!exists) {
     db.knex.schema.createTable('relations', function(relation) {
-      relationship.increments('id').primary();
-      relationship.integer('user1id');
-      relationship.integer('user2id');
+      relation.increments('id').primary();
+      relation.integer('user1id');
+      relation.integer('user2id');
     }).then(function (table) {
       console.log('Created Table', table);
     });

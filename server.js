@@ -2,13 +2,15 @@ var express = require('express');
 var mysql = require('mysql');
 var handler = require('./lib/request-handler')
 var app = express();
-
+var bodyParser = require('body-parser');
 
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "123"
 });
+
+
 
 con.connect(function(err){
   if(err){
@@ -18,7 +20,13 @@ con.connect(function(err){
   console.log('Connection established');
 });
 
-app.post('/signin', handler.loginUser)
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use(express.static(__dirname + '/public'));
+app.use('/scripts', express.static(__dirname + '/node_modules'));
+app.use('/compiled', express.static(__dirname + '/compiled'));
+
+app.post('/', handler.loginUser)
 
 // app.get('/', function (req, res) {
 //   res.send('Hello World!');
