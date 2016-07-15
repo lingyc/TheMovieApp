@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var con = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "123"
+  password: "12345"
 });
 
 
@@ -26,11 +26,8 @@ app.use(express.static(__dirname + '/public'));
 app.use('/scripts', express.static(__dirname + '/node_modules'));
 app.use('/compiled', express.static(__dirname + '/compiled'));
 
-app.post('/', handler.loginUser)
-
-// app.get('/', function (req, res) {
-//   res.send('Hello World!');
-// });
+app.post('/signup', handler.signupUser)
+app.post('/login', handler.signinUser)
 
 
 app.listen(3000, function () {

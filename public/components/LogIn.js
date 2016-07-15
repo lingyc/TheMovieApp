@@ -5,9 +5,10 @@ var LogIn = (props) => (
   id = 'LogInName'
   name = 'LogInName' / > < br / >
   Password < input type = 'text'
-  id = 'LoginPassword'
+  id = 'LogInPassword'
   name = 'LogInPassword' / > < br / >
-  < button > Log In! < /button> < button onClick={props.ourFunction}> Sign Up! < /button >
+  < button onClick={function(){props.logInFunction(document.getElementById('LogInName').value, document.getElementById('LogInPassword').value)}}> 
+  Log In! < /button> < button onClick={props.ourFunction}> Sign Up! < /button >
   < /div>
 
 )
