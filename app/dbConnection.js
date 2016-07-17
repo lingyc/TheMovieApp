@@ -17,6 +17,7 @@ db.knex.schema.hasTable('movies').then(function(exists) {
       movie.increments('id').primary();
       movie.string('title', 255);
       movie.string('genre', 255);
+      movie.string('poster', 255);
       movie.string('release_date', 255);
     }).then(function (table) {
       console.log('Created Table', table);
