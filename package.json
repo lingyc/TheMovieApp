@@ -34,7 +34,8 @@
     "mocha": "^2.4.5"
   },
   "scripts": {
-    "compile": "babel . --out-dir compiled --presets=es2015,react --ignore=node_modules,compiled --source-maps inline --watch",
-    "watch": "live-server"
+    "comp": "babel . --out-dir compiled --presets=es2015,react --ignore=node_modules,compiled --source-maps inline --watch",
+    "watch": "nodemon server.js",
+    "server": "mysql.server start | mysqladmin -u root -p password"
   }
 }

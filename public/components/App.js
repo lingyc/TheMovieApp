@@ -27,7 +27,7 @@ class App extends React.Component {
         if (response==='it worked'){
        console.log('hi')
           that.setState({
-            view:'Home'
+            view:'MovieView'
           })
         }
        console.log('this.state.view after state is set again',that.state.view)
@@ -109,9 +109,31 @@ class App extends React.Component {
     })
     .catch(function(err){
       console.log('error')
+
+
+
+   /////////////////////
+  /////movie render
+  /////////////////////
+  getMovie(query) {
+    var options = {
+      query: query,
+    };
+    
+    this.props.searchMovie(options, (movie) => {
+      console.log(movie);
+      this.setState({
+        view:"MovieSearchView",
+        movie: movie
+      })
     })
   }
-
+  //render the movie searched in moviesearchview
+  showMovie(movie) {
+    this.setState({
+      movie: movie
+    })
+  }
   render() {
     if (this.state.view==='Login') {
       return ( < div >
@@ -125,10 +147,27 @@ class App extends React.Component {
         < /div>
       );
     } else if (this.state.view==="Home"){
-      return ( < div >
-        <div><Nav logout={this.logout.bind(this)} /></div>
-       <FriendRatingList getFriendMovieRatings={this.getFriendMovieRatings.bind(this)} friendRatings={this.state.friendsRatings}/>
-        < /div>
+      return ( 
+        <div>
+          <div> 
+            <Nav logout={this.logout.bind(this)} />
+          </div>
+          <FriendRatingList 
+            getFriendMovieRatings={this.getFriendMovieRatings.bind(this)} 
+            friendRatings={this.state.friendsRatings} />
+        </div>
+      );
+    } else if (this.state.view === "MovieView") {
+      return ( 
+        <div> 
+          <div>
+            <Nav logout={this.logout.bind(this)} 
+            />
+          </div>
+          <FriendMovieList 
+            getMovie={this.getMovie.bind(this)} 
+            />
+        </div>
       );
 
     } 
@@ -138,6 +177,23 @@ class App extends React.Component {
         <div>
           <div><Nav logout={this.logout.bind(this)}/></div>
           <AddMovie addMovie={this.addMovie.bind(this)} rateMovie={this.rateMovie.bind(this)}/>
+        </div>
+      );
+    }
+    //this view is added for moviesearch rendering
+    else if (this.state.view === "MovieSearchView") {
+      return ( 
+        <div> 
+          <div>
+            <Nav logout={this.logout.bind(this)} 
+            />
+          </div>
+          <div>
+          <MovieRating 
+            handleSearchMovie={this.getMovie.bind(this)} 
+            movie={this.state.movie}
+            />
+          </div>
         </div>
       );
     }
