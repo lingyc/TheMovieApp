@@ -69,6 +69,27 @@ class App extends React.Component {
     });
   }
 
+  /////////////////////
+  /////movie handlers
+  /////////////////////
+  
+  // server expects this: { moviename: 'name', genre: 'genre', poster: 'link', release_date: 'year' }
+  addMovie(moviename, genre, posterURL, release_date) {
+    $.post('http://127.0.0.1:3000/signup',
+      {
+        moviename: movieName, 
+        genre: genre, 
+        poster: posterURL, 
+        release_date: release_date
+      })
+    .then(function(response) {
+      console.log('success'); 
+    })
+    .catch(function(err){
+      console.log('error')
+    })
+  }
+
   render() {
     if (this.state.view==='Login') {
       return ( < div >
