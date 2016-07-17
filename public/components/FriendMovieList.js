@@ -10,7 +10,9 @@ let FriendMovieList = (props) => (
     placeholder='Insert Movie Title'
      />
     <button onClick={function()
-      {props.getMovies(document.getElementById('movieInput'))}}>Get Movie</button>
+      {props.getMovies(
+        document.getElementById('movieInput')
+        )}}>Get Movie</button>
     <div>
       <FriendMovieListEntry />
     </div>

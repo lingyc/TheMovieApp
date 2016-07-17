@@ -1,4 +1,9 @@
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(
+  <App 
+    searchMovie={searchMovie}
+  />, 
+  document.getElementById('app')
+);
 
 
 
