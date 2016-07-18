@@ -46,7 +46,15 @@ console.log('loeijwfloejfelifjdp')
 
 })
 
+
 app.post('/logout', handler.logout);
+
+//////////////////
+//Handling movies
+//////////////////
+app.post('/ratemovie', handler.rateMovie);
+app.post('/addmovie', handler.addMovie);
+app.get('/getUserRating', handler.getUserRating);
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');

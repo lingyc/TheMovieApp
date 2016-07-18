@@ -69,6 +69,49 @@ class App extends React.Component {
     });
   }
 
+  /////////////////////
+  /////movie handlers
+  /////////////////////
+
+  // test function, server expects this: { title: 'name', genre: 'genre', poster: 'link', release_date: 'year' }
+  addMovie() {
+    var movieObj = {
+      title: document.getElementById('addMovieInputTitle').value, 
+      genre: document.getElementById('addMovieInputGenre').value, 
+      poster: document.getElementById('addMovieInputPoster').value, 
+      release_date: document.getElementById('addMovieInputDate').value
+    };
+
+    $.post('http://127.0.0.1:3000/addmovie', movieObj)
+    .then(function(response) {
+      console.log('success'); 
+    })
+    .catch(function(err){
+      console.log('error')
+    })
+  }
+
+  // test function, server expects this: { username: 'name', title: 'name', genre: 'genre', poster: 'link', release_date: 'year' , rating: rating}
+  rateMovie() {
+    var ratingObj = {
+      //need to store username in states
+      username: 'ling',
+      title: document.getElementById('addMovieInputTitle').value, 
+      genre: document.getElementById('addMovieInputGenre').value, 
+      poster: document.getElementById('addMovieInputPoster').value, 
+      release_date: document.getElementById('addMovieInputDate').value,
+      rating: document.getElementById('ratingScore').value
+    };
+
+    $.post('http://127.0.0.1:3000/ratemovie', ratingObj)
+    .then(function(response) {
+      console.log('success'); 
+    })
+    .catch(function(err){
+      console.log('error')
+    })
+  }
+
   render() {
     if (this.state.view==='Login') {
       return ( < div >
@@ -88,6 +131,15 @@ class App extends React.Component {
         < /div>
       );
 
+    } 
+    //this view is added for testing the addMovie and rateMovie backend functionality
+    else if (this.state.view === "Home2"){
+      return (
+        <div>
+          <div><Nav logout={this.logout.bind(this)}/></div>
+          <AddMovie addMovie={this.addMovie.bind(this)} rateMovie={this.rateMovie.bind(this)}/>
+        </div>
+      );
     }
   }
 }
