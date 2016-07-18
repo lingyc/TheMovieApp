@@ -117,7 +117,7 @@ class App extends React.Component {
   }
 
 
-   /////////////////////
+  /////////////////////
   /////movie render
   /////////////////////
   //call searchmovie function
@@ -142,6 +142,14 @@ class App extends React.Component {
       movie: movie
     })
   }
+  /////////////////////
+  /////Nav change
+  /////////////////////
+  changeViews(targetState) {
+    this.setState({
+      view: targetState
+    })
+  }
 
   render() {
     if (this.state.view==='Login') {
@@ -159,7 +167,9 @@ class App extends React.Component {
       return ( 
         <div>
           <div> 
-            <Nav logout={this.logout.bind(this)} />
+            <Nav 
+            onClick={this.changeViews.bind(this)}
+            logout={this.logout.bind(this)} />
           </div>
           <FriendRatingList 
             getFriendMovieRatings={this.getFriendMovieRatings.bind(this)} 
@@ -171,7 +181,9 @@ class App extends React.Component {
     else if (this.state.view === "Home2"){
       return (
         <div>
-          <div><Nav logout={this.logout.bind(this)}/></div>
+          <div><Nav 
+          onClick={this.changeViews.bind(this)}
+          logout={this.logout.bind(this)}/></div>
           <AddMovie addMovie={this.addMovie.bind(this)} rateMovie={this.rateMovie.bind(this)}/>
         </div>
       );
@@ -181,7 +193,9 @@ class App extends React.Component {
       return ( 
         <div> 
           <div>
-            <Nav logout={this.logout.bind(this)} 
+            <Nav 
+            onClick={this.changeViews.bind(this)}
+            logout={this.logout.bind(this)} 
             />
           </div>
           <div>
