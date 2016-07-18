@@ -27,11 +27,7 @@ class App extends React.Component {
         if (response==='it worked'){
        console.log('hi')
           that.setState({
-//////////////////////////////////////////
-//Change this view for testing purposes
-//Until our nav can successfully change views!
-/////////////////////////////////////////
-            view:'MovieSearchView'
+            view:'Home'
           })
         }
        console.log('this.state.view after state is set again',that.state.view)
@@ -117,7 +113,7 @@ class App extends React.Component {
   }
 
 
-   /////////////////////
+  /////////////////////
   /////movie render
   /////////////////////
   //call searchmovie function
@@ -142,6 +138,14 @@ class App extends React.Component {
       movie: movie
     })
   }
+  /////////////////////
+  /////Nav change
+  /////////////////////
+  changeViews(targetState) {
+    this.setState({
+      view: targetState
+    })
+  }
 
   render() {
     if (this.state.view==='Login') {
@@ -159,7 +163,9 @@ class App extends React.Component {
       return ( 
         <div>
           <div> 
-            <Nav logout={this.logout.bind(this)} />
+            <Nav 
+            onClick={this.changeViews.bind(this)}
+            logout={this.logout.bind(this)} />
           </div>
           <FriendRatingList 
             getFriendMovieRatings={this.getFriendMovieRatings.bind(this)} 
@@ -171,7 +177,9 @@ class App extends React.Component {
     else if (this.state.view === "Home2"){
       return (
         <div>
-          <div><Nav logout={this.logout.bind(this)}/></div>
+          <div><Nav 
+          onClick={this.changeViews.bind(this)}
+          logout={this.logout.bind(this)}/></div>
           <AddMovie addMovie={this.addMovie.bind(this)} rateMovie={this.rateMovie.bind(this)}/>
         </div>
       );
@@ -181,7 +189,9 @@ class App extends React.Component {
       return ( 
         <div> 
           <div>
-            <Nav logout={this.logout.bind(this)} 
+            <Nav 
+            onClick={this.changeViews.bind(this)}
+            logout={this.logout.bind(this)} 
             />
           </div>
           <div>
