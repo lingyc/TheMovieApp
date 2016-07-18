@@ -6,7 +6,7 @@
   "main": "server.js",
   "dependencies": {
     "bcrypt-nodejs": "latest",
-    "bluebird": "latest",
+    "bluebird": "^3.4.1",
     "body-parser": "~1.4.2",
     "bookshelf": "latest",
     "bootstrap": "latest",
