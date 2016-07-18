@@ -27,11 +27,7 @@ class App extends React.Component {
         if (response==='it worked'){
        console.log('hi')
           that.setState({
-//////////////////////////////////////////
-//Change this view for testing purposes
-//Until our nav can successfully change views!
-/////////////////////////////////////////
-            view:'MovieSearchView'
+            view:'Home'
           })
         }
        console.log('this.state.view after state is set again',that.state.view)
