@@ -3,9 +3,9 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-    view:'Login',
-    friendsRatings:[],
-    movie: null
+      view:'Login',
+      friendsRatings:[],
+      movie: null
     };
   }
 

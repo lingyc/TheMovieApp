@@ -4,7 +4,7 @@ var searchMovie = (options, callback) => {
     t: options.query,
     tomatoes: true
   })
-  .done(({movie}) => {
+  .done((movie) => {
     if (callback) {
       callback(movie);
     }
