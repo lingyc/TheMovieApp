@@ -27,6 +27,10 @@ class App extends React.Component {
         if (response==='it worked'){
        console.log('hi')
           that.setState({
+//////////////////////////////////////////
+//Change this view for testing purposes
+//Until our nav can successfully change views!
+/////////////////////////////////////////
             view:'MovieSearchView'
           })
         }
@@ -108,8 +112,9 @@ class App extends React.Component {
       console.log('success'); 
     })
     .catch(function(err){
-      console.log('error')
-
+      console.log('error');
+    })
+  }
 
 
    /////////////////////
@@ -119,7 +124,7 @@ class App extends React.Component {
   //which gets passed down to the Movie Search 
   getMovie(query) {
     var options = {
-      query: query,
+      query: query
     };
     
     this.props.searchMovie(options, (movie) => {
@@ -137,6 +142,7 @@ class App extends React.Component {
       movie: movie
     })
   }
+
   render() {
     if (this.state.view==='Login') {
       return ( < div >

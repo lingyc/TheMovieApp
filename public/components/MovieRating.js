@@ -25,7 +25,7 @@ class MovieRating extends React.Component {
         value={this.state.value}
         onChange={this.handleSearch.bind(this)}
          />
-        <button className='searchSubmitButton' 
+        <button className='searchSubmitButton'>
         Get Movie</button>
         <div>
           <MovieDisplay
