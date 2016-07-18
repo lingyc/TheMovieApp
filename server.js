@@ -1,16 +1,11 @@
 var express = require('express');
-var mysql = require('mysql');
 var handler = require('./lib/request-handler')
 var app = express();
 var bodyParser = require('body-parser');
 var sessions = require("client-sessions");
 
 
-var con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "12345"
-});
+
 
 app.use(sessions({
   cookieName: 'mySession', // cookie name dictates the key name added to the request object
@@ -21,13 +16,7 @@ app.use(sessions({
   saveInitialized: true
 }));
 
-con.connect(function(err){
-  if(err){
-    console.log('Error connecting to Db');
-    return;
-  }
-  console.log('Connection established');
-});
+
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
