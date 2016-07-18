@@ -3,9 +3,9 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-    view:'Login',
-    friendsRatings:[]
-
+      view:'Login',
+      friendsRatings:[],
+      movie: null
     };
   }
 
@@ -27,7 +27,11 @@ class App extends React.Component {
         if (response==='it worked'){
        console.log('hi')
           that.setState({
-            view:'Home'
+//////////////////////////////////////////
+//Change this view for testing purposes
+//Until our nav can successfully change views!
+/////////////////////////////////////////
+            view:'MovieSearchView'
           })
         }
        console.log('this.state.view after state is set again',that.state.view)
@@ -108,7 +112,34 @@ class App extends React.Component {
       console.log('success'); 
     })
     .catch(function(err){
-      console.log('error')
+      console.log('error');
+    })
+  }
+
+
+   /////////////////////
+  /////movie render
+  /////////////////////
+  //call searchmovie function
+  //which gets passed down to the Movie Search 
+  getMovie(query) {
+    var options = {
+      query: query
+    };
+    
+    this.props.searchMovie(options, (movie) => {
+      console.log(movie);
+      this.setState({
+        view:"MovieSearchView",
+        movie: movie
+      })
+    })
+  }
+  //show the movie searched in friend movie list
+  //onto the stateview of moviesearchview
+  showMovie(movie) {
+    this.setState({
+      movie: movie
     })
   }
 
@@ -125,12 +156,16 @@ class App extends React.Component {
         < /div>
       );
     } else if (this.state.view==="Home"){
-      return ( < div >
-        <div><Nav logout={this.logout.bind(this)} /></div>
-       <FriendRatingList getFriendMovieRatings={this.getFriendMovieRatings.bind(this)} friendRatings={this.state.friendsRatings}/>
-        < /div>
+      return ( 
+        <div>
+          <div> 
+            <Nav logout={this.logout.bind(this)} />
+          </div>
+          <FriendRatingList 
+            getFriendMovieRatings={this.getFriendMovieRatings.bind(this)} 
+            friendRatings={this.state.friendsRatings} />
+        </div>
       );
-
     } 
     //this view is added for testing the addMovie and rateMovie backend functionality
     else if (this.state.view === "Home2"){
@@ -138,6 +173,23 @@ class App extends React.Component {
         <div>
           <div><Nav logout={this.logout.bind(this)}/></div>
           <AddMovie addMovie={this.addMovie.bind(this)} rateMovie={this.rateMovie.bind(this)}/>
+        </div>
+      );
+    }
+    //this view is added for moviesearch rendering
+    else if (this.state.view === "MovieSearchView") {
+      return ( 
+        <div> 
+          <div>
+            <Nav logout={this.logout.bind(this)} 
+            />
+          </div>
+          <div>
+          <MovieRating 
+            handleSearchMovie={this.getMovie.bind(this)} 
+            movie={this.state.movie}
+            />
+          </div>
         </div>
       );
     }
