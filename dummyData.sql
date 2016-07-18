@@ -1,9 +1,9 @@
 -- mysql -u root -p
 
+INSERT INTO movies (id,title, genre, release_date, poster)
+VALUES (1,'matrix', 'scify', '1999', 'http://www.imagozone.com/var/albums/filme/The%20Matrix/The%20Matrix009.jpg?m=1292987658');
 INSERT INTO movies (id,title, genre, release_date)
-VALUES (1,'matrix', 'scify', '1999');
-INSERT INTO movies (id,title, genre, release_date)
-VALUES (2,'starwars', 'scify', '1989');
+VALUES (2,'starwars', 'scify', '1989', 'http://i.kinja-img.com/gawker-media/image/upload/s---zKMfGT0--/c_scale,fl_progressive,q_80,w_800/19fk32sw3nt1wjpg.jpg');
 
 
 INSERT INTO users (id,username, password)
