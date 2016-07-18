@@ -1,3 +1,5 @@
+-- mysql -u root -p
+
 INSERT INTO movies (id,title, genre, release_date)
 VALUES (1,'matrix', 'scify', '1999');
 INSERT INTO movies (id,title, genre, release_date)
@@ -38,5 +40,3 @@ INSERT INTO relations (user1id,user2id)
 VALUES (2, 3);
 INSERT INTO relations (user1id,user2id)
 VALUES (3, 2);
-
-
