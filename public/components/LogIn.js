@@ -7,8 +7,8 @@ var LogIn = (props) => (
   <p id='loginFields'>Password</p> < input type = 'text'
   id = 'LogInPassword'
   name = 'LogInPassword' / > < br / >
-   < button onClick={function(){props.logInFunction(document.getElementById('LogInName').value, document.getElementById('LogInPassword').value)}}> 
-  Log In! < /button> < button onClick={props.ourFunction}> Sign Up Instead < /button >
+  <div id='buttons'> < button onClick={function(){props.logInFunction(document.getElementById('LogInName').value, document.getElementById('LogInPassword').value)}}> 
+  Log In! < /button> < button onClick={props.ourFunction}> Sign Up Instead < /button ></div>
   < /div>
 
 )

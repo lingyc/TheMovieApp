@@ -178,7 +178,7 @@ listPotentials() {
           logInFunction={this.logInFunction.bind(this)}
          / >  </div> );
     } else if (this.state.view==="SignUp"){
-      return ( < div ><h2>Signup</h2> <br/>
+      return ( < div ><h2 id='loginHeader'>SignUp</h2> <br/>
         < SignUp enterUser={this.enterNewUser.bind(this)} onClick={this.changeViews.bind(this)}/ >
         < /div>
       );
