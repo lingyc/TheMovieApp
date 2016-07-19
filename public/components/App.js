@@ -147,27 +147,25 @@ class App extends React.Component {
     })
   }
 
-
 sendRequest(){
-  var person=document.getElementById('findFriendByName').value
-
-  console.log(person);
+  var person=document.getElementById('findFriendByName').value;
+if (person.length===0){
+$("#enterRealFriend").fadeIn(1000);
+$("#enterRealFriend").fadeOut(1000);
+} else {
 
 $.post('http://127.0.0.1:3000/sendRequest',{name:person},function(a,b){
   console.log('a','b');
 });
-
-
-
 var person = document.getElementById('findFriendByName').value = '';
 
-
-
-
+ }
 
 
 }
-listPotentials(){
+
+
+listPotentials() {
   console.log('this should list potential friends')
 }
 

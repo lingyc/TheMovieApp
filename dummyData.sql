@@ -1,4 +1,3 @@
--- mysql -u root -p
 
 INSERT INTO movies (id, title, genre, release_date, poster)
 VALUES (1,'matrix', 'scify', '1999', 'http://www.imagozone.com/var/albums/filme/The%20Matrix/The%20Matrix009.jpg?m=1292987658');
@@ -41,3 +40,8 @@ VALUES (2, 3);
 INSERT INTO relations (user1id,user2id)
 VALUES (3, 2);
 
+CREATE TABLE friendRequests (
+id INT(6) AUTO_INCREMENT PRIMARY KEY,
+requestor VARCHAR(30) NOT NULL,
+requestee VARCHAR(30) NOT NULL
+)
