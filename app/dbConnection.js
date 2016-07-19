@@ -19,7 +19,8 @@ db.knex.schema.hasTable('movies').then(function(exists) {
       movie.string('genre', 255);
       movie.string('poster', 255);
       movie.string('release_date', 255);
-      movie.interger('imdbRating');
+      movie.string('description', 255);
+      movie.integer('imdbRating');
     }).then(function (table) {
       console.log('Created Table', table);
     });

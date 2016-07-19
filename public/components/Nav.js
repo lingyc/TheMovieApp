@@ -9,12 +9,8 @@ let Nav = (props) => (
         <button>Find New Movie Buddies(nyf)</button>
         <button onClick={() => (props.onClick("MovieSearchView"))}>
         IMDB Movie Ratings</button>
-        <button onClick={() => (props.onClick("Home2"))}>
-        Add Movie Ratings</button>
         <button onClick={() => (props.onClick("Friends"))}>Friends </button>
         <button onClick={() => (props.onClick("Inbox"))}>Inbox </button>
-         
-      
     </div>
   </nav>
 );
