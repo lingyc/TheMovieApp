@@ -3,14 +3,14 @@ let Nav = (props) => (
     <div>
     
         <button onClick={() => (props.onClick("Home"))}>
-        Friend Movie Ratings</button>
+        Get Friends' Movie Ratings</button>
         <button onClick={() => (props.onClick("MovieSearchView"))}>
-        Movie Ratings</button>
+        IMDB Movie Ratings</button>
         <button onClick={() => (props.onClick("Home2"))}>
-        Add Movie Rating</button>
-        <button onClick={props.logout}>Log Out</button>  
+        Add Movie Ratings</button>
         <button onClick={() => (props.onClick("Friends"))}>Friends </button>
         <button onClick={() => (props.onClick("Inbox"))}>Inbox </button>
+        <button onClick={props.logout}>Log Out</button>  
       
     </div>
   </nav>
