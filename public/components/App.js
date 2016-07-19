@@ -171,7 +171,7 @@ listPotentials() {
 }
 
   render() {
-    if (this.state.view==='testttt') {
+    if (this.state.view==='Login') {
       return ( < div > <h2 id='loginHeader'>Login</h2> <br/>
         < LogIn 
           ourFunction={this.changeView.bind(this)}
@@ -182,7 +182,7 @@ listPotentials() {
         < SignUp enterUser={this.enterNewUser.bind(this)} onClick={this.changeViews.bind(this)}/ >
         < /div>
       );
-    } else if (this.state.view==="Login"){
+    } else if (this.state.view==="Home"){
       return ( 
         <div>
           <div> <h2>Welcome home, [insert name here based off of state]!</h2><br/>
