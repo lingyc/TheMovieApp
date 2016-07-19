@@ -5,7 +5,8 @@ class App extends React.Component {
     this.state = {
       view:'Login',
       friendsRatings:[],
-      movie: null
+      movie: null,
+      friendRequests:[]
     };
   }
 
@@ -144,25 +145,47 @@ class App extends React.Component {
   changeViews(targetState) {
     this.setState({
       view: targetState
-    })
+    });
   }
+
+sendRequest(){
+  var person=document.getElementById('findFriendByName').value;
+if (person.length===0){
+$("#enterRealFriend").fadeIn(1000);
+$("#enterRealFriend").fadeOut(1000);
+} else {
+
+$.post('http://127.0.0.1:3000/sendRequest',{name:person},function(a,b){
+  console.log('a','b');
+});
+var person = document.getElementById('findFriendByName').value = '';
+
+ }
+
+
+}
+
+
+listPotentials() {
+  console.log('this should list potential friends')
+}
 
   render() {
     if (this.state.view==='Login') {
-      return ( < div >
+      return ( < div > <h2>Login</h2> <br/>
         < LogIn 
           ourFunction={this.changeView.bind(this)}
           logInFunction={this.logInFunction.bind(this)}
          / >  </div> );
     } else if (this.state.view==="SignUp"){
-      return ( < div >
-        < SignUp enterUser={this.enterNewUser.bind(this)}/ >
+      return ( < div ><h2>Signup</h2> <br/>
+        < SignUp enterUser={this.enterNewUser.bind(this)} onClick={this.changeViews.bind(this)}/ >
         < /div>
       );
     } else if (this.state.view==="Home"){
       return ( 
         <div>
-          <div> 
+          <div> <h2>Welcome home, [insert name here based off of state]!</h2><br/>
             <Nav 
             onClick={this.changeViews.bind(this)}
             logout={this.logout.bind(this)} />
@@ -202,6 +225,26 @@ class App extends React.Component {
           </div>
         </div>
       );
+    } else if (this.state.view === "Inbox" ){
+
+      return (
+        <div><div><Nav 
+          onClick={this.changeViews.bind(this)}
+          logout={this.logout.bind(this)}/></div>
+        <Inbox logout={this.logout.bind(this)} />
+        </div>
+
+        )
+    } else if (this.state.view === "Friends" ){
+
+      return (
+        <div><div><Nav 
+          onClick={this.changeViews.bind(this)}
+          logout={this.logout.bind(this)}/></div>
+        <Friends listPotentials={this.listPotentials.bind(this)} logout={this.logout.bind(this)} sendRequest={this.sendRequest.bind(this)}/>
+        </div>
+
+        )
     }
   }
 }

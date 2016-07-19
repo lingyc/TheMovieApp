@@ -1,5 +1,6 @@
+
+var handler = require('./lib/request-handler');
 var express = require('express');
-var handler = require('./lib/request-handler')
 var app = express();
 var bodyParser = require('body-parser');
 var sessions = require("client-sessions");
@@ -37,6 +38,7 @@ console.log('loeijwfloejfelifjdp')
 
 
 app.post('/logout', handler.logout);
+app.post('/sendRequest', handler.sendRequest);
 
 //////////////////
 //Handling movies
