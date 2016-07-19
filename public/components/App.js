@@ -5,7 +5,8 @@ class App extends React.Component {
     this.state = {
       view:'Login',
       friendsRatings:[],
-      movie: null
+      movie: null,
+      friendRequests:[]
     };
   }
 
@@ -144,7 +145,7 @@ class App extends React.Component {
   changeViews(targetState) {
     this.setState({
       view: targetState
-    })
+    });
   }
 
 sendRequest(){
