@@ -172,7 +172,7 @@ listPotentials() {
 
   render() {
     if (this.state.view==='Login') {
-      return ( < div > <h2>Login</h2> <br/>
+      return ( < div > <h2 id='loginHeader'>Login</h2> <br/>
         < LogIn 
           ourFunction={this.changeView.bind(this)}
           logInFunction={this.logInFunction.bind(this)}
