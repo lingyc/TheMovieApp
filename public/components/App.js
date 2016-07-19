@@ -202,6 +202,22 @@ class App extends React.Component {
           </div>
         </div>
       );
+    } else if (this.state.view === "Index" ){
+
+      return (
+        <div>
+        <Inbox />
+        </div>
+
+        )
+    } else if (this.state.view === "Friends" ){
+
+      return (
+        <div>
+        <Friends />
+        </div>
+
+        )
     }
   }
 }

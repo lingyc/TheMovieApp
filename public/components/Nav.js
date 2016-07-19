@@ -9,6 +9,8 @@ let Nav = (props) => (
         <li onClick={() => (props.onClick("Home2"))}>
         Add Movie Rating</li>
         <li onClick={props.logout}>Log Out</li>  
+        <li onClick={() => (props.onClick("Friends"))}>Friends </li>
+        <li onClick={() => (props.onClick("Inbox"))}>Inbox </li>
       </ul>
     </div>
   </nav>
