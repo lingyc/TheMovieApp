@@ -3,7 +3,7 @@ var knex = require('knex')({
   connection: {
     host     : '127.0.0.1',
     user     : 'root',
-    password : '123',
+    password : '12345',
     database : 'MainDatabase',
     charset  : 'utf8'
   }
@@ -20,7 +20,7 @@ db.knex.schema.hasTable('movies').then(function(exists) {
       movie.string('poster', 255);
       movie.string('release_date', 255);
       movie.string('description', 255);
-      movie.interger('imdbRating');
+      movie.integer('imdbRating');
     }).then(function (table) {
       console.log('Created Table', table);
     });
