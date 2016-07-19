@@ -6,11 +6,11 @@ VALUES (2,'starwars', 'scify', '1989', 'http://i.kinja-img.com/gawker-media/imag
 
 
 INSERT INTO users (id,username, password, firstName, lastName, email)
-VALUES (1,'krishan', '12345', 'Krishan', 'Ayra', 'krishan@gmail.com')
+VALUES (1,'krishan', '12345', 'Krishan', 'Ayra', 'krishan@gmail.com');
 INSERT INTO users (id,username, password, firstName, lastName, email)
-VALUES (2,'ling', '12345', 'Ling', 'Chen', 'ling@gmail.com')
+VALUES (2,'ling', '12345', 'Ling', 'Chen', 'ling@gmail.com');
 INSERT INTO users (id,username, password, firstName, lastName, email)
-VALUES (3,'justin', '12345', 'Justin', 'Ou', 'justin@gmail.com')
+VALUES (3,'justin', '12345', 'Justin', 'Ou', 'justin@gmail.com');
 
 
 INSERT INTO ratings (userid,movieid,score)

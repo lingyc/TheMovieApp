@@ -244,7 +244,15 @@ listPotentials() {
         <Friends listPotentials={this.listPotentials.bind(this)} logout={this.logout.bind(this)} sendRequest={this.sendRequest.bind(this)}/>
         </div>
 
-        )
+      )
+    }
+    else if (this.state.view === "recentRelease"){
+      return (
+        <div>
+          <div><Nav onClick={this.changeViews.bind(this)}logout={this.logout.bind(this)}/></div>
+          <Home/>
+        </div>
+      );
     }
   }
 }

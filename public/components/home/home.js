@@ -18,7 +18,7 @@ class Home extends React.Component {
   }
 
   //show render a list of recent releases on initialize
-  componentWillMount() {
+  componentDidMount() {
     this.getRecentReleases();
   }
 
@@ -27,7 +27,7 @@ class Home extends React.Component {
     var options = {
     };
 
-    recentMovies = [{
+    var recentMovies = [{
       title: 'matrix', 
       genre: 'scify', 
       release_date: '1999', 
@@ -50,10 +50,12 @@ class Home extends React.Component {
   //function that takes movies from external API and query the database for ratings
   //will set the movies state after ratings are successfully retrived
   getUserRatingsForMovies(moviesFromOMDB) {
+    console.log('posting to:', 'http://127.0.0.1:3000/getMultipleMovieRatings');
     $.post('http://127.0.0.1:3000/getMultipleMovieRatings', { movies: moviesFromOMDB })
     .then(moviesWithRatings => {
+      console.log('response from server', moviesWithRatings);
       this.setState({
-        movies: moviesWithRatings;
+        movies: moviesWithRatings
       });
     })
   }
@@ -85,9 +87,9 @@ class Home extends React.Component {
 
   render() {
 
-    if (this.state.view === 'recentRelease') {
+    // if (this.state.view === 'recentRelease') {
 
-    }
+    // }
     var lable = '';
     if (this.state.value === '') {
       this.getRecentReleases();
@@ -96,7 +98,6 @@ class Home extends React.Component {
 
     return (
       <div className='Home'> {lable}
-        //search box
         <div className='searchMovie'>
           <input type ='text' id='movieInput' 
             className='movieInput'
@@ -104,9 +105,11 @@ class Home extends React.Component {
             value={this.state.value}
             onChange={this.handleSearch.bind(this)}
           />
-        <MovieListEntry movies={this.state.movies}/>
+        </div>
+        <MovieList movies={this.state.movies}/>
       </div>
     )
   }
+}
 
 window.Home = Home;
