@@ -6,7 +6,16 @@ var SignUp = (props) => (
   name = 'SignUpName' / > < br / >
   <p id='loginFields'>Password</p> < input type = 'text'
   id = 'SignUpPassword'
-  name = 'SignUpPassword' / > < br / > <div id='buttons2'>< button onClick = {
+  name = 'SignUpPassword' / > < br / > 
+
+<p id='loginFields'>Email Address</p>< input type = 'text'
+  id = 'SignUpEmail'
+  name = 'SignUpEmail' / > < br / >
+<p id='loginFields'>Upload Picture</p>< input type = 'text'
+  id = 'SignUpPicture'
+  name = 'SignUpPicture' / > < br / >
+
+  <div id='buttons2'>< button onClick = {
     function() {
       props.enterUser(document.getElementById('SignUpName').value, document.getElementById('SignUpPassword').value)
     }

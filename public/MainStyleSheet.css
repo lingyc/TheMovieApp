@@ -8,6 +8,14 @@
   margin: 0 auto;
 }
 
+#logOutButton{
+ position:relative;
+ background-color:red;
+ left:900px;
+ bottom:150px;
+}
+
+
 img{
   text-align: center;
   margin: 0 auto;
