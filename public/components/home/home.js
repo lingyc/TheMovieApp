@@ -18,7 +18,7 @@ class Home extends React.Component {
   }
 
   //show render a list of recent releases on initialize
-  componentDidMount() {
+  componentWillMount() {
     this.getRecentReleases();
   }
 
@@ -92,7 +92,6 @@ class Home extends React.Component {
     // }
     var lable = '';
     if (this.state.value === '') {
-      this.getRecentReleases();
       lable = 'recent releases';
     }
 
