@@ -5,12 +5,12 @@ INSERT INTO movies (id, title, genre, release_date, poster)
 VALUES (2,'starwars', 'scify', '1989', 'http://i.kinja-img.com/gawker-media/image/upload/s---zKMfGT0--/c_scale,fl_progressive,q_80,w_800/19fk32sw3nt1wjpg.jpg');
 
 
-INSERT INTO users (id,username, password)
-VALUES (1,'krishan', '12345');
-INSERT INTO users (id,username, password)
-VALUES (2,'ling', '12345');
-INSERT INTO users (id,username, password)
-VALUES (3,'justin', '12345');
+INSERT INTO users (id,username, password, firstName, lastName, email)
+VALUES (1,'krishan', '12345', 'Krishan', 'Ayra', 'krishan@gmail.com')
+INSERT INTO users (id,username, password, firstName, lastName, email)
+VALUES (2,'ling', '12345', 'Ling', 'Chen', 'ling@gmail.com')
+INSERT INTO users (id,username, password, firstName, lastName, email)
+VALUES (3,'justin', '12345', 'Justin', 'Ou', 'justin@gmail.com')
 
 
 INSERT INTO ratings (userid,movieid,score)
@@ -40,8 +40,10 @@ VALUES (2, 3);
 INSERT INTO relations (user1id,user2id)
 VALUES (3, 2);
 
-CREATE TABLE friendRequests (
-id INT(6) AUTO_INCREMENT PRIMARY KEY,
-requestor VARCHAR(30) NOT NULL,
-requestee VARCHAR(30) NOT NULL
-)
+-- INSERT INTO friendRequests (requestor,requestee)
+-- VALUES (1, 2);
+-- INSERT INTO friendRequests (requestor,requestee)
+-- VALUES (1, 3);
+-- INSERT INTO friendRequests (requestor,requestee)
+-- VALUES (2, 3);
+

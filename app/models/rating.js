@@ -8,9 +8,10 @@ var Rating = db.Model.extend({
   user: function() {
     return this.belongsTo(User, 'userid');
   },
-  movies: function() {
+  movie: function() {
     return this.belongsTo(Movie, 'movieid');
-  }
+  },
+  hasTimestamps: true
 });
 
 module.exports = Rating;
