@@ -10,6 +10,6 @@ var SignUp = (props) => (
     function() {
       props.enterUser(document.getElementById('SignUpName').value, document.getElementById('SignUpPassword').value)
     }
-  } > Sign Up! < /button>  < /div >
+  } > Sign Up! < /button><button onClick={() => (props.onClick("Login"))}> Log In Instead< /button>  < /div >
 
 )
