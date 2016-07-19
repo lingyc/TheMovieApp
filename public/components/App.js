@@ -149,7 +149,23 @@ class App extends React.Component {
 
 
 sendRequest(){
-  console.log('this should send a friend request')
+  var person=document.getElementById('findFriendByName').value
+
+  console.log(person);
+
+$.post('http://127.0.0.1:3000/sendRequest',{name:person},function(a,b){
+  console.log('a','b');
+});
+
+
+
+var person = document.getElementById('findFriendByName').value = '';
+
+
+
+
+
+
 }
 listPotentials(){
   console.log('this should list potential friends')

@@ -37,6 +37,7 @@ console.log('loeijwfloejfelifjdp')
 
 
 app.post('/logout', handler.logout);
+app.post('/sendRequest', handler.sendRequest);
 
 //////////////////
 //Handling movies
