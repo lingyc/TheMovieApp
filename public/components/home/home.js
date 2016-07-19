@@ -5,7 +5,8 @@ class Home extends React.Component {
     this.state = {
       value: '',
       movies: [],
-      view: 'recentRelease'
+      view: 'recentRelease',
+      focalMovie: null
     };
   }
 
@@ -24,12 +25,26 @@ class Home extends React.Component {
   //function to retrive recent releases from external API
   getRecentReleases() {
     var options = {
-
     };
 
-    this.props.getRecentReleases(options, (recentMovies) =>
-      this.getUserRatingsForMovies();
-    );
+    recentMovies = [{
+      title: 'matrix', 
+      genre: 'scify', 
+      release_date: '1999', 
+      poster: 'http://www.imagozone.com/var/albums/filme/The%20Matrix/The%20Matrix009.jpg?m=1292987658'
+    },
+    {
+      title: 'starwars', 
+      genre: 'scify', 
+      release_date: '1989', 
+      poster: 'http://i.kinja-img.com/gawker-media/image/upload/s---zKMfGT0--/c_scale,fl_progressive,q_80,w_800/19fk32sw3nt1wjpg.jpg'
+    }];
+
+    this.getUserRatingsForMovies(recentMovies);
+    
+    // this.props.getRecentReleases(options, (recentMovies) =>
+    //   this.getUserRatingsForMovies(recentMovies);
+    // );
   }
 
   //function that takes movies from external API and query the database for ratings
@@ -38,10 +53,14 @@ class Home extends React.Component {
     $.post('http://127.0.0.1:3000/getMultipleMovieRatings', { movies: moviesFromOMDB })
     .then(moviesWithRatings => {
       this.setState({
-        movies: recentMovies
+        movies: moviesWithRatings;
       });
     })
   }
+
+  //////////////////////
+  /////Event Handlers
+  //////////////////////
 
   //this will call search for a movie from external API, do a database query for rating
   //and set the reponse to the movies state
@@ -57,10 +76,18 @@ class Home extends React.Component {
     this.props.searchMovie(options, (movie) => {
       this.getUserRatingsForMovies([movie]);
     });
+  }
 
+
+  handleClick(event) {
+    //handle click between movielist view and friendRating view
   }
 
   render() {
+
+    if (this.state.view === 'recentRelease') {
+
+    }
     var lable = '';
     if (this.state.value === '') {
       this.getRecentReleases();
@@ -69,6 +96,7 @@ class Home extends React.Component {
 
     return (
       <div className='Home'> {lable}
+        //search box
         <div className='searchMovie'>
           <input type ='text' id='movieInput' 
             className='movieInput'
@@ -76,6 +104,9 @@ class Home extends React.Component {
             value={this.state.value}
             onChange={this.handleSearch.bind(this)}
           />
+        <MovieListEntry movies={this.state.movies}/>
       </div>
     )
   }
+
+window.Home = Home;
