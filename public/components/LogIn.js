@@ -1,14 +1,14 @@
 var LogIn = (props) => (
 
-  < div >
-  Name: < input type = 'text'
+  < div id='logInStyling' >
+  <p id='loginFields'>Name</p> < input type = 'text'
   id = 'LogInName'
   name = 'LogInName' / > < br / >
-  Password < input type = 'text'
+  <p id='loginFields'>Password</p> < input type = 'text'
   id = 'LogInPassword'
   name = 'LogInPassword' / > < br / >
-   < button onClick={function(){props.logInFunction(document.getElementById('LogInName').value, document.getElementById('LogInPassword').value)}}> 
-  Log In(new)! < /button> < button onClick={props.ourFunction}> Sign Up! < /button >
+  <div id='buttons'> < button onClick={function(){props.logInFunction(document.getElementById('LogInName').value, document.getElementById('LogInPassword').value)}}> 
+  Log In! < /button> < button onClick={props.ourFunction}> Sign Up Instead < /button ></div>
   < /div>
 
 )
