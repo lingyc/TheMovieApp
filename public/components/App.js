@@ -202,11 +202,11 @@ class App extends React.Component {
           </div>
         </div>
       );
-    } else if (this.state.view === "Index" ){
+    } else if (this.state.view === "Inbox" ){
 
       return (
         <div>
-        <Inbox />
+        <Inbox logout={this.logout.bind(this)} />
         </div>
 
         )
@@ -214,7 +214,7 @@ class App extends React.Component {
 
       return (
         <div>
-        <Friends />
+        <Friends logout={this.logout.bind(this)} />
         </div>
 
         )
