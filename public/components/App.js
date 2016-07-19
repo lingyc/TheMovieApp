@@ -147,6 +147,14 @@ class App extends React.Component {
     })
   }
 
+
+sendRequest(){
+  console.log('this should send a friend request')
+}
+listPotentials(){
+  console.log('this should list potential friends')
+}
+
   render() {
     if (this.state.view==='Login') {
       return ( < div >
@@ -214,7 +222,7 @@ class App extends React.Component {
 
       return (
         <div>
-        <Friends logout={this.logout.bind(this)} />
+        <Friends listPotentials={this.listPotentials.bind(this)} logout={this.logout.bind(this)} sendRequest={this.sendRequest.bind(this)}/>
         </div>
 
         )
