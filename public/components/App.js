@@ -3,7 +3,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      view:'Login',
+      view:'Home',
       friendsRatings:[],
       movie: null,
       friendRequests:[]

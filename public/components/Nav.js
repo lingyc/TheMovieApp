@@ -1,7 +1,7 @@
 let Nav = (props) => (
   <nav className="navbar">
     <div>
-        <button id='logOutButton' onClick={props.logout}>Log Out</button> 
+        
         <button onClick={() => (props.onClick("Home"))}>
         Home</button>
         <button>My Ratings (not yet functional(nyf))</button>
@@ -10,8 +10,10 @@ let Nav = (props) => (
         <button onClick={() => (props.onClick("MovieSearchView"))}>
         IMDB Movie Ratings</button>
         <button onClick={() => (props.onClick("Friends"))}>Friends </button>
-        <button id= "notificationButton" onClick={() => (props.onClick("Inbox"))}>Notifications </button>
-         
+        <div id='logOutButton'>
+        <button onClick={props.logout}>Log Out</button> 
+        <button onClick={() => (props.onClick("Inbox"))}>Notifications </button>
+         </div>
       
     </div>
   </nav>
