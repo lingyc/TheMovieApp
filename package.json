@@ -22,8 +22,9 @@
     "mysql": "latest",
     "nodemon": "^1.9.2",
     "q": "^1.4.1",
-    "react": "latest",
+    "react": "^15.2.1",
     "react-dom": "latest",
+    "react-star-rating-component": "^1.0.0",
     "request": "^2.73.0",
     "underscore": "latest"
   },
