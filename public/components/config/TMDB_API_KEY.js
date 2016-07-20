@@ -1,1 +1,0 @@
-window.TMDB_API_KEY = '9d3b035ef1cd669aed398400b17fcea2';

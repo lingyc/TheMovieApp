@@ -14,6 +14,7 @@
     "express": "~4.5.1",
     "express-session": "latest",
     "gulp": "latest",
+    "http": "0.0.0",
     "jquery": "latest",
     "knex": "latest",
     "live-server": "^1.0.0",
@@ -23,6 +24,7 @@
     "q": "^1.4.1",
     "react": "latest",
     "react-dom": "latest",
+    "request": "^2.73.0",
     "underscore": "latest"
   },
   "devDependencies": {
