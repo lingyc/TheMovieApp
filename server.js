@@ -44,9 +44,10 @@ app.post('/sendRequest', handler.sendRequest);
 //Handling movies
 //////////////////
 app.post('/ratemovie', handler.rateMovie);
-// app.post('/addmovie', handler.addMovie); //only for testing
+app.get('/recentRelease', handler.getRecentRelease); //only for testing
 app.get('/getUserRating', handler.getUserRatings);
 app.post('/getMultipleMovieRatings', handler.getMultipleMovieRatings);
+
 
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
