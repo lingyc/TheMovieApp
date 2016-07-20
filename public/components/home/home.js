@@ -19,32 +19,18 @@ class Home extends React.Component {
 
   //show render a list of recent releases on initialize
   componentWillMount() {
-    this.getRecentReleases();
+    this.getRecentReleasesInitialize();
   }
 
-  //function to retrive recent releases from external API
-  getRecentReleases() {
-    var options = {
-    };
-
-    var recentMovies = [{
-      title: 'matrix', 
-      genre: 'scify', 
-      release_date: '1999', 
-      poster: 'http://www.imagozone.com/var/albums/filme/The%20Matrix/The%20Matrix009.jpg?m=1292987658'
-    },
-    {
-      title: 'starwars', 
-      genre: 'scify', 
-      release_date: '1989', 
-      poster: 'http://i.kinja-img.com/gawker-media/image/upload/s---zKMfGT0--/c_scale,fl_progressive,q_80,w_800/19fk32sw3nt1wjpg.jpg'
-    }];
-
-    this.getUserRatingsForMovies(recentMovies);
+  getRecentReleasesInitialize() {
+    $.get('http://127.0.0.1:3000/recentRelease')
+    .then(moviesWithRatings => {
+      console.log('response from server', moviesWithRatings);
+      this.setState({
+        movies: moviesWithRatings
+      });
+    })
     
-    // this.props.getRecentReleases(options, (recentMovies) =>
-    //   this.getUserRatingsForMovies(recentMovies);
-    // );
   }
 
   //function that takes movies from external API and query the database for ratings

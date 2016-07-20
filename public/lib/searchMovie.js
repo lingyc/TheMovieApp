@@ -16,4 +16,4 @@ var searchMovie = (options, callback) => {
   });
 };
 
-window.searchMovie = searchMovie
+window.searchMovie = searchMovie;
