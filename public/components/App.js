@@ -6,7 +6,8 @@ class App extends React.Component {
       view:'Home',
       friendsRatings:[],
       movie: null,
-      friendRequests:[]
+      friendRequests:[],
+      pendingFriendRequests:[]
     };
   }
 
@@ -123,9 +124,16 @@ var person = document.getElementById('findFriendByName').value = '';
 }
 
 listPendingFriendRequests(){
+  var that=this;
 console.log('this should list friend reqs')
-$.post('http://127.0.0.1:3000/listRequests',function(a,b){
-  console.log('something came back');
+$.post('http://127.0.0.1:3000/listRequests',function(response,error){
+  that.setState(
+  {
+    pendingFriendRequests:response
+  })
+ var result= that.state.pendingFriendRequests.map(function(a){return a.requestor})
+ console.log(result)
+  document.getElementById('listOfPeople').innerHTML=result;
 });
 };
 
@@ -177,7 +185,7 @@ listPotentials() {
 
 
           </div>
-        <Inbox logout={this.logout.bind(this)} listRequests={this.listPendingFriendRequests.bind(this)} />
+        <Inbox logout={this.logout.bind(this)} listRequests={this.listPendingFriendRequests.bind(this)} pplWhoWantToBeFriends={this.state.pendingFriendRequests} />
         </div>
 
         )
