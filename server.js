@@ -28,8 +28,8 @@ app.use('/compiled', express.static(__dirname + '/compiled'));
 
 app.post('/signup', handler.signupUser);
 app.post('/login', handler.signinUser);
-
-
+app.post('/decline', handler.decline);
+app.post('/accept', handler.accept);
 
 app.get('/login',function(req,res){
 console.log('loeijwfloejfelifjdp')
