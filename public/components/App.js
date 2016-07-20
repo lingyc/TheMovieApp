@@ -11,12 +11,34 @@ class App extends React.Component {
     };
   }
 
-acceptFriend(){
-  console.log('friend should be accepted')
+acceptFriend(a){
+
+$('.accept').on('click',function(){
+var test=$(this).html()
+
+var first=test.slice(test.indexOf("--> "))
+var second=first.slice(first.indexOf("react-text -->"))
+var third=second.slice(second.indexOf("-text:"))
+var final=third.slice(third.indexOf("-->")+3,third.indexOf("<!"))
+console.log(final +'should be accepted')
+
+
+
+})
+
 }
-declineFriend(){
-  console.log('friend should be declined')
+
+declineFriend(a){
+$('.decline').on('click',function(){
+var test=$(this).html();
+var first=test.slice(0,test.lastIndexOf('<!--'))
+var second=test.slice(first.lastIndexOf('-->'),test.lastIndexOf('<!--'));
+var final=second.slice(second.indexOf('>')+1)
+console.log(final +'should be delined')
+
+})
 }
+
 
   changeView(){
 
