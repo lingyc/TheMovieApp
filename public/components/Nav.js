@@ -10,7 +10,6 @@ let Nav = (props) => (
         <button onClick={() => (props.onClick("MovieSearchView"))}>
         IMDB Movie Ratings</button>
         <button onClick={() => (props.onClick("Friends"))}>Friends </button>
-
         <button id= "notificationButton" onClick={() => (props.onClick("Inbox"))}>Notifications </button>
          
       
