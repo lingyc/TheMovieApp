@@ -11,7 +11,7 @@ class App extends React.Component {
     };
   }
 
-acceptFriend(a){
+acceptFriend(){
 
 $('.accept').on('click',function(){
 var test=$(this).html()
@@ -23,12 +23,15 @@ var final=third.slice(third.indexOf("-->")+3,third.indexOf("<!"))
 console.log(final +'should be accepted')
 
 
+$.post('http://127.0.0.1:3000/accept',{personToAccept:final},function(a,b){
+  console.log(a,b)
+})
 
 })
 
 }
 
-declineFriend(a){
+declineFriend(){
 $('.decline').on('click',function(){
 var test=$(this).html();
 var first=test.slice(0,test.lastIndexOf('<!--'))
@@ -36,6 +39,10 @@ var second=test.slice(first.lastIndexOf('-->'),test.lastIndexOf('<!--'));
 var final=second.slice(second.indexOf('>')+1)
 console.log(final +'should be delined')
 
+
+$.post('http://127.0.0.1:3000/decline',{personToDecline:final},function(a,b){
+  console.log(a,b)
+})
 })
 }
 
