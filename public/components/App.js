@@ -11,6 +11,34 @@ class App extends React.Component {
     };
   }
 
+acceptFriend(a){
+
+$('.accept').on('click',function(){
+var test=$(this).html()
+
+var first=test.slice(test.indexOf("--> "))
+var second=first.slice(first.indexOf("react-text -->"))
+var third=second.slice(second.indexOf("-text:"))
+var final=third.slice(third.indexOf("-->")+3,third.indexOf("<!"))
+console.log(final +'should be accepted')
+
+
+
+})
+
+}
+
+declineFriend(a){
+$('.decline').on('click',function(){
+var test=$(this).html();
+var first=test.slice(0,test.lastIndexOf('<!--'))
+var second=test.slice(first.lastIndexOf('-->'),test.lastIndexOf('<!--'));
+var final=second.slice(second.indexOf('>')+1)
+console.log(final +'should be delined')
+
+})
+}
+
 
   changeView(){
 
@@ -133,7 +161,7 @@ $.post('http://127.0.0.1:3000/listRequests',function(response,error){
   })
  var result= that.state.pendingFriendRequests.map(function(a){return a.requestor})
  console.log(result)
-  document.getElementById('listOfPeople').innerHTML=result;
+
 });
 };
 
@@ -185,7 +213,8 @@ listPotentials() {
 
 
           </div>
-        <Inbox logout={this.logout.bind(this)} listRequests={this.listPendingFriendRequests.bind(this)} pplWhoWantToBeFriends={this.state.pendingFriendRequests} />
+        <Inbox logout={this.logout.bind(this)}  accept= {this.acceptFriend.bind(this)} decline={this.declineFriend.bind(this)} listRequests={this.listPendingFriendRequests.bind(this)} 
+        pplWhoWantToBeFriends={this.state.pendingFriendRequests.map(function(a){return a.requestor})} />
         </div>
 
         )
