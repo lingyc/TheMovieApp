@@ -133,7 +133,7 @@ $.post('http://127.0.0.1:3000/listRequests',function(response,error){
   })
  var result= that.state.pendingFriendRequests.map(function(a){return a.requestor})
  console.log(result)
-  document.getElementById('listOfPeople').innerHTML=result;
+
 });
 };
 
@@ -185,7 +185,7 @@ listPotentials() {
 
 
           </div>
-        <Inbox logout={this.logout.bind(this)} listRequests={this.listPendingFriendRequests.bind(this)} pplWhoWantToBeFriends={this.state.pendingFriendRequests} />
+        <Inbox logout={this.logout.bind(this)} listRequests={this.listPendingFriendRequests.bind(this)} pplWhoWantToBeFriends={this.state.pendingFriendRequests.map(function(a){return a.requestor})} />
         </div>
 
         )

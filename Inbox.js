@@ -5,7 +5,10 @@ var Inbox = (props) => (
 
  list of people who've sent you friend requests:<br/>
 <button  onClick={props.listRequests}>Click me to see said people </button>
-<div id='listOfPeople'></div>
+
+{props.pplWhoWantToBeFriends.map(function(friend){ return (<InboxEntry inboxName={friend} /> )})}
+
+
   </div>
 
 
