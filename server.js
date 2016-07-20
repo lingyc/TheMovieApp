@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var sessions = require("client-sessions");
 
 
+console.log('handler', handler)
 
 
 app.use(sessions({
@@ -28,13 +29,12 @@ app.use('/compiled', express.static(__dirname + '/compiled'));
 app.post('/signup', handler.signupUser);
 app.post('/login', handler.signinUser);
 
-app.post('/getFriendRatings', handler.getFriendRatings);
+
 
 app.get('/login',function(req,res){
 console.log('loeijwfloejfelifjdp')
 })
 
-console.log('handler.fire:', handler.fire)
 
 
 
