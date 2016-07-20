@@ -38,7 +38,7 @@ class Home extends React.Component {
   getUserRatingsForMovies(moviesFromOMDB) {
     console.log('posting to:', 'http://127.0.0.1:3000/getMultipleMovieRatings');
     $.post('http://127.0.0.1:3000/getMultipleMovieRatings', { movies: moviesFromOMDB })
-    .then(moviesWithRatings => {
+    .done(moviesWithRatings => {
       console.log('response from server', moviesWithRatings);
       this.setState({
         movies: moviesWithRatings
@@ -56,13 +56,22 @@ class Home extends React.Component {
     this.setState({
       value: event.target.value
     });
+    var that = this;
 
-    var options = {
-      query: event.target.value
-    }
-
-    this.props.searchMovie(options, (movie) => {
-      this.getUserRatingsForMovies([movie]);
+    //this will search TMDB for movie and send it to server to retrive user ratings
+    $.ajax({
+      url: "http://api.themoviedb.org/3/search/movie",
+      jsonp: "callback",
+      dataType: "jsonp",
+      data: {
+          query: event.target.value,
+          api_key: "9d3b035ef1cd669aed398400b17fcea2",
+          format: "json"
+      },
+      success: function(response) {
+        console.log('TMDB response', response);
+        that.getUserRatingsForMovies(response.results);
+      }
     });
   }
 
