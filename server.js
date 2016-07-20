@@ -30,7 +30,7 @@ app.post('/signup', handler.signupUser);
 app.post('/login', handler.signinUser);
 app.post('/decline', handler.decline);
 app.post('/accept', handler.accept);
-
+app.post('/getFriends',handler.getFriends)
 app.get('/login',function(req,res){
 console.log('loeijwfloejfelifjdp')
 })

@@ -7,9 +7,19 @@ class App extends React.Component {
       friendsRatings:[],
       movie: null,
       friendRequests:[],
-      pendingFriendRequests:[]
+      pendingFriendRequests:[],
+      myFriends:['pigFriend','dogFriend']
     };
   }
+
+getCurrentFriends(){
+console.log('testinggg')
+  $.post('http://127.0.0.1:3000/getFriends',{test:'info'},function(a,b){
+console.log(a,b)
+  })
+}
+
+
 
 acceptFriend(){
 
@@ -231,7 +241,8 @@ listPotentials() {
         <div><div><Nav 
           onClick={this.changeViews.bind(this)}
           logout={this.logout.bind(this)}/></div>
-        <Friends listPotentials={this.listPotentials.bind(this)} logout={this.logout.bind(this)} sendRequest={this.sendRequest.bind(this)}/>
+        <Friends getFriends={this.getCurrentFriends.bind(this)} myFriends={this.state.myFriends} 
+        listPotentials={this.listPotentials.bind(this)} logout={this.logout.bind(this)} sendRequest={this.sendRequest.bind(this)}/>
         </div>
 
       )
