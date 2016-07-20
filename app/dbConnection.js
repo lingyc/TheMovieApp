@@ -73,8 +73,8 @@ db.knex.schema.hasTable('friendRequests').then(function(exists) {
   if (!exists) {
     db.knex.schema.createTable('friendRequests', function(friendRequest) {
       friendRequest.increments('id').primary();
-      friendRequest.integer('requestor');
-      friendRequest.integer('requestee');
+      friendRequest.string('requestor', 255);
+      friendRequest.string('requestee', 255);
     }).then(function (table) {
       console.log('Created Table', table);
     });
@@ -85,8 +85,8 @@ db.knex.schema.hasTable('watchRequests').then(function(exists) {
   if (!exists) {
     db.knex.schema.createTable('watchRequests', function(watchRequest) {
       watchRequest.increments('id').primary();
-      watchRequest.integer('requestor');
-      watchRequest.integer('requestee');
+      watchRequest.string('requestor', 255);
+      watchRequest.string('requestee', 255);
     }).then(function (table) {
       console.log('Created Table', table);
     });
