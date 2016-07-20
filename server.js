@@ -1,5 +1,5 @@
 
-var handler = require('./lib/request-handler');
+var handler = require('./lib/request-handler.js');
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
@@ -31,14 +31,20 @@ app.post('/login', handler.signinUser);
 app.post('/getFriendRatings', handler.getFriendRatings);
 
 app.get('/login',function(req,res){
-
 console.log('loeijwfloejfelifjdp')
-
 })
 
+console.log('handler.fire:', handler.fire)
+
+
+
+//friend requests
+app.post('/listRequests', handler.listRequests);
+app.post('/sendRequest', handler.sendRequest);
+//Friend requests
 
 app.post('/logout', handler.logout);
-app.post('/sendRequest', handler.sendRequest);
+
 
 //////////////////
 //Handling movies
