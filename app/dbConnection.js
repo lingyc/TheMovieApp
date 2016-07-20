@@ -14,8 +14,8 @@ var db = require('bookshelf')(knex);
 db.knex.schema.hasTable('movies').then(function(exists) {
   if (!exists) {
     db.knex.schema.createTable('movies', function (movie) {
-      movie.increments('id').primary();
-      movie.string('title', 255).unique();
+      movie.integer('id').primary();
+      movie.string('title', 255);
       movie.string('genre', 255);
       movie.string('poster', 255);
       movie.string('release_date', 255);
