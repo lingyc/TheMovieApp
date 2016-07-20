@@ -13,7 +13,7 @@ class App extends React.Component {
   }
 
 getCurrentFriends(){
-console.log('service w a smile!')
+console.log('testinggg')
   $.post('http://127.0.0.1:3000/getFriends',{test:'info'},function(a,b){
 console.log(a,b)
   })
