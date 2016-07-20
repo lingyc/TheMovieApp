@@ -11,6 +11,12 @@ class App extends React.Component {
     };
   }
 
+acceptFriend(){
+  console.log('friend should be accepted')
+}
+declineFriend(){
+  console.log('friend should be declined')
+}
 
   changeView(){
 
@@ -185,7 +191,8 @@ listPotentials() {
 
 
           </div>
-        <Inbox logout={this.logout.bind(this)} listRequests={this.listPendingFriendRequests.bind(this)} pplWhoWantToBeFriends={this.state.pendingFriendRequests.map(function(a){return a.requestor})} />
+        <Inbox logout={this.logout.bind(this)}  accept= {this.acceptFriend.bind(this)} decline={this.declineFriend.bind(this)} listRequests={this.listPendingFriendRequests.bind(this)} 
+        pplWhoWantToBeFriends={this.state.pendingFriendRequests.map(function(a){return a.requestor})} />
         </div>
 
         )
