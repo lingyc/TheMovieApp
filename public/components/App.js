@@ -122,6 +122,15 @@ var person = document.getElementById('findFriendByName').value = '';
 
 }
 
+listPendingFriendRequests(){
+console.log('this should list friend reqs')
+$.post('http://127.0.0.1:3000/listRequests',function(a,b){
+  console.log('something came back');
+});
+};
+
+
+
 
 listPotentials() {
   console.log('this should list potential friends')
@@ -163,8 +172,12 @@ listPotentials() {
       return (
         <div><div><Nav 
           onClick={this.changeViews.bind(this)}
-          logout={this.logout.bind(this)}/></div>
-        <Inbox logout={this.logout.bind(this)} />
+          logout={this.logout.bind(this)}
+                    />
+
+
+          </div>
+        <Inbox logout={this.logout.bind(this)} listRequests={this.listPendingFriendRequests.bind(this)} />
         </div>
 
         )
