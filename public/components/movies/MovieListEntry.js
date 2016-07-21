@@ -37,8 +37,8 @@ class MovieListEntry extends React.Component {
   	let movie = this.props.movie;
   	return (
   		<div className='movieEntry'>
-  			<img className='moviethumnail' src={movie.poster}/>
-  			<h1 className='movieTitle'>{movie.title}</h1>
+  			<img className='moviethumnail' src={movie.poster} onClick={() => (this.props.change("SingleMovie", movie))}/>
+  			<h1 className='movieTitle' onClick={() => (this.props.change("SingleMovie", movie))}>{movie.title}</h1>
   			<p className='movieYear'>{movie.release_date}</p>
   			<p className='movieDescription'>{movie.description}</p>
   			<p className='userReview'>{(movie.review === '') ? movie.review : 'you have not review the movie yet'}</p>
