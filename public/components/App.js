@@ -192,7 +192,7 @@ $("#enterRealFriend").fadeOut(1000);
 } else {
 
 $.post('http://127.0.0.1:3000/sendRequest',{name:person},function(a,b){
-  console.log('a','b');
+  console.log(a,b);
 });
 var person = document.getElementById('findFriendByName').value = '';
 
