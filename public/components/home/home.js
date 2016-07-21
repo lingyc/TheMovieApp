@@ -18,7 +18,7 @@ class Home extends React.Component {
   }
 
   //show render a list of recent releases on initialize
-  componentWillMount() {
+  componentDidMount() {
     this.getRecentReleasesInitialize();
   }
 
