@@ -15,14 +15,16 @@ class SingleMovieRatingEntry extends React.Component {
     //should be able to see all the movies reviewed by friend
     //on send watch request click, should send a watch request
     return (
-      <h1 className='singleMovieFriend'>{props.friendFocus}</h1>
-      <p>reviews</p>
-      <p>send watch request</p>
-      <p>taste compatability</p>
-      <p>Friend rating</p>
+      <div>
+        <h1 className='singleMovieFriend'>{props.friendFocus}</h1>
+        <p>reviews</p>
+        <p>send watch request</p>
+        <p>taste compatability</p>
+        <p>Friend rating</p>
+      </div>
     );
   }
 
 }
 
-window.singleMovieRatingEntry = singleMovieRatingEntry;
+window.SingleMovieRatingEntry = SingleMovieRatingEntry;
