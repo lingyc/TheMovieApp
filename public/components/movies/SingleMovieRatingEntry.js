@@ -29,4 +29,3 @@ class SingleMovieRatingEntry extends React.Component {
 
 window.SingleMovieRatingEntry = SingleMovieRatingEntry;
 
-
