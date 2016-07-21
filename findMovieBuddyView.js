@@ -6,7 +6,7 @@ var FindMovieBuddy = (props) => {
 
    <h2>Your Potential Movie Buddies</h2>  <br/>
   
-   {props.buddies.map(function(buddy){ return (<BuddyEntry Buddy={buddy} /> )})}
+   {props.buddies.map(function(buddy){ return (<BuddyEntry buddyfunc={props.buddyfunc} Buddy={buddy} /> )})}
 
      </div>
    
