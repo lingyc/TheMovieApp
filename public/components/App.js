@@ -8,7 +8,7 @@ class App extends React.Component {
       movie: null,
       friendRequests:[],
       pendingFriendRequests:[],
-      myFriends:['krishan','abc'],
+      myFriends:['krishan','justin'],
       friendToFocusOn:'',
       individualFriendsMovies:[]
     };
@@ -198,6 +198,9 @@ that.setState({
 
 $.post('http://127.0.0.1:3000/getThisFriendsMovies',{specificFriend:test},function(a,b){
 console.log(a,b);
+that.setState({
+  individualFriendsMovies:a
+})
 })
 
 
@@ -283,7 +286,7 @@ listPotentials() {
       return (
         <div>
 
-     <SingleFriend friendName={this.state.friendToFocusOn} onClick={this.changeViews.bind(this)}/>
+     <SingleFriend moviesOfFriend={this.state.individualFriendsMovies} friendName={this.state.friendToFocusOn} onClick={this.changeViews.bind(this)}/>
 
         </div>
 
