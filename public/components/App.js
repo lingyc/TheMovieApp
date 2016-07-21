@@ -24,15 +24,9 @@ console.log(a,b)
 
 
 
-acceptFriend(){
+acceptFriend(a){
+var final=a;
 
-$('.accept').on('click',function(){
-var test=$(this).html()
-
-var first=test.slice(test.indexOf("--> "))
-var second=first.slice(first.indexOf("react-text -->"))
-var third=second.slice(second.indexOf("-text:"))
-var final=third.slice(third.indexOf("-->")+3,third.indexOf("<!"))
 console.log(final +'should be accepted')
 
 
@@ -40,23 +34,17 @@ $.post('http://127.0.0.1:3000/accept',{personToAccept:final},function(a,b){
   console.log(a,b)
 })
 
-})
+
 
 }
 
-declineFriend(){
-$('.decline').on('click',function(){
-var test=$(this).html();
-var first=test.slice(0,test.lastIndexOf('<!--'))
-var second=test.slice(first.lastIndexOf('-->'),test.lastIndexOf('<!--'));
-var final=second.slice(second.indexOf('>')+1)
-console.log(final +'should be delined')
-
+declineFriend(a){
+var final=a;
 
 $.post('http://127.0.0.1:3000/decline',{personToDecline:final},function(a,b){
   console.log(a,b)
 })
-})
+
 }
 
 findMovieBuddies(){
@@ -180,6 +168,18 @@ console.log(a,b)
       view: targetState
     });
   }
+
+
+buddyRequest(a){
+  console.log('callingbuddy')
+  console.log(a);
+$.post('http://127.0.0.1:3000/sendRequest',{name:a},function(a,b){
+  console.log('a','b');
+});
+
+
+}
+
 
 sendRequest(){
   var person=document.getElementById('findFriendByName').value;
@@ -321,7 +321,7 @@ listPotentials() {
 return (
         <div>
        <div><Nav find={this.findMovieBuddies.bind(this)} onClick={this.changeViews.bind(this)}logout={this.logout.bind(this)}/></div>
-     <FindMovieBuddy buddies={this.state.potentialMovieBuddies} />
+     <FindMovieBuddy buddyfunc={this.buddyRequest.bind(this)} buddies={this.state.potentialMovieBuddies} />
 
         </div>
 
