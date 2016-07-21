@@ -6,14 +6,15 @@ class MovieListEntry extends React.Component {
       userRating: this.props.movie.score,
       friendAverageRating: this.props.movie.friendAverageRating
     };
-    console.log('whattatatat userRating', this.state.userRating);
   }
 
-  componentWillReceiveProps() {
+  componentWillReceiveProps(nextProps) {
+    console.log('componentWillReceiveProps');
     this.setState({
-      userRating: this.props.movie.score,
-      friendAverageRating: this.props.movie.friendAverageRating
+      userRating: nextProps.movie.score,
+      friendAverageRating: nextProps.movie.friendAverageRating
     });
+    console.log('user rating', nextProps.movie.title, nextProps.userRating);
   }
 
   onStarClick(event) {

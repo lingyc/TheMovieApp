@@ -3,10 +3,10 @@ class Home extends React.Component {
     super(props);
 
     this.state = {
-      value: '',
       movies: [],
       view: 'recentRelease',
       focalMovie: null,
+      recentRelease: true
     };
   }
 
@@ -27,7 +27,8 @@ class Home extends React.Component {
     .then(moviesWithRatings => {
       console.log('response from server', moviesWithRatings);
       this.setState({
-        movies: moviesWithRatings
+        movies: moviesWithRatings,
+        recentRelease: true
       });
     })
     
@@ -41,7 +42,8 @@ class Home extends React.Component {
     .done(moviesWithRatings => {
       console.log('response from server', moviesWithRatings);
       this.setState({
-        movies: moviesWithRatings
+        movies: moviesWithRatings,
+        recentRelease: false
       });
     })
   }
@@ -53,26 +55,26 @@ class Home extends React.Component {
   //this will call search for a movie from external API, do a database query for rating
   //and set the reponse to the movies state
   handleSearch(event) {
-    this.setState({
-      value: event.target.value
-    });
-    var that = this;
+    if (event.charCode == 13) {
+      console.log('enter event triggered');
+      var that = this;
 
-    //this will search TMDB for movie and send it to server to retrive user ratings
-    $.ajax({
-      url: "http://api.themoviedb.org/3/search/movie",
-      jsonp: "callback",
-      dataType: "jsonp",
-      data: {
-          query: event.target.value,
-          api_key: "9d3b035ef1cd669aed398400b17fcea2",
-          format: "json"
-      },
-      success: function(response) {
-        console.log('TMDB response', response);
-        that.getUserRatingsForMovies(response.results);
-      }
-    });
+      //this will search TMDB for movie and send it to server to retrive user ratings
+      $.ajax({
+        url: "http://api.themoviedb.org/3/search/movie",
+        jsonp: "callback",
+        dataType: "jsonp",
+        data: {
+            query: event.target.value,
+            api_key: "9d3b035ef1cd669aed398400b17fcea2",
+            format: "json"
+        },
+        success: function(response) {
+          console.log('TMDB response', response);
+          that.getUserRatingsForMovies(response.results);
+        }
+      });
+    }
   }
 
 
@@ -85,19 +87,19 @@ class Home extends React.Component {
     // if (this.state.view === 'recentRelease') {
 
     // }
-    var lable = '';
-    if (this.state.value === '') {
-      lable = 'recent releases';
+    var lable = 'recent releases';
+    if (this.state.recentRelease === false) {
+      lable = 'back to recent releases';
     }
 
     return (
-      <div className='Home'> {lable}
+      <div className='Home'> 
+        <div onClick={this.getRecentReleasesInitialize.bind(this)}>{lable}</div>
         <div className='searchMovie'>
           <input type ='text' id='movieInput' 
             className='movieInput'
             placeholder='Insert Movie Title'
-            value={this.state.value}
-            onChange={this.handleSearch.bind(this)}/>
+            onKeyPress={this.handleSearch.bind(this)}/>
         </div>
         <MovieList movies={this.state.movies}
         change={this.props.change.bind(this)}
