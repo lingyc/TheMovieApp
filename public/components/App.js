@@ -10,7 +10,8 @@ class App extends React.Component {
       pendingFriendRequests:[],
       myFriends:['krishan','justin'],
       friendToFocusOn:'',
-      individualFriendsMovies:[]
+      individualFriendsMovies:[],
+      potentialMovieBuddies:['barack','obama']
     };
   }
 
@@ -57,6 +58,31 @@ $.post('http://127.0.0.1:3000/decline',{personToDecline:final},function(a,b){
 })
 })
 }
+
+findMovieBuddies(){
+
+var that=this;
+$.post('http://127.0.0.1:3000/findMovieBuddies',{dummy:'info'},function(a,b){
+console.log(a,b)
+
+  that.setState({
+      view:"FNMB",
+      potentialMovieBuddies:a 
+    })
+
+
+
+
+})
+}
+
+
+
+
+
+
+
+
 
 
   changeView(){
@@ -235,7 +261,7 @@ listPotentials() {
       return ( 
         <div> 
           <div>
-            <Nav 
+            <Nav find={this.findMovieBuddies.bind(this)}
             onClick={this.changeViews.bind(this)}
             logout={this.logout.bind(this)} 
             />
@@ -251,7 +277,7 @@ listPotentials() {
     } else if (this.state.view === "Inbox" ){
 
       return (
-        <div><div><Nav 
+        <div><div><Nav  find={this.findMovieBuddies.bind(this)}
           onClick={this.changeViews.bind(this)}
           logout={this.logout.bind(this)}
                     />
@@ -266,7 +292,7 @@ listPotentials() {
     } else if (this.state.view === "Friends" ){
 
       return (
-        <div><div><Nav 
+        <div><div><Nav find={this.findMovieBuddies.bind(this)}
           onClick={this.changeViews.bind(this)}
           logout={this.logout.bind(this)}/></div>
         <Friends fof= {this.focusOnFriend.bind(this)} getFriends={this.getCurrentFriends.bind(this)} myFriends={this.state.myFriends} 
@@ -278,7 +304,7 @@ listPotentials() {
     else if (this.state.view === "Home"){
       return (
         <div>
-          <div><Nav onClick={this.changeViews.bind(this)}logout={this.logout.bind(this)}/></div>
+          <div><Nav find={this.findMovieBuddies.bind(this)} onClick={this.changeViews.bind(this)}logout={this.logout.bind(this)}/></div>
           <Home/>
         </div>
       );
@@ -291,6 +317,16 @@ listPotentials() {
         </div>
 
         )
+    } else if (this.state.view === "FNMB"){
+return (
+        <div>
+       <div><Nav find={this.findMovieBuddies.bind(this)} onClick={this.changeViews.bind(this)}logout={this.logout.bind(this)}/></div>
+     <FindMovieBuddy buddies={this.state.potentialMovieBuddies} />
+
+        </div>
+
+        )
+
     }
   }
 }
