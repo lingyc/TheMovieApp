@@ -11,7 +11,8 @@ class App extends React.Component {
       myFriends:['krishan','justin'],
       friendToFocusOn:'',
       individualFriendsMovies:[],
-      potentialMovieBuddies:{}
+      potentialMovieBuddies:{},
+      username: null
     };
   }
 
@@ -86,6 +87,7 @@ console.log(a,b)
   }
 
   logInFunction(name,password){
+    this.setState({username: name})
     var that=this;
     console.log(name,password)
 
@@ -106,7 +108,7 @@ console.log(a,b)
     console.log(name,password);
     $.post('http://127.0.0.1:3000/signup',{name:name,password:password}).then(function() {
       console.log('success'); 
-
+      this.setState({username: name})
     }).catch(function(){console.log('error')})
 
   }
@@ -169,6 +171,13 @@ console.log(a,b)
   changeViews(targetState) {
     this.setState({
       view: targetState
+    });
+  }
+
+  changeViewsMovie(targetState, movie) {
+    this.setState({
+      view: targetState,
+      movie: movie
     });
   }
 
@@ -308,7 +317,17 @@ listPotentials() {
       return (
         <div>
           <div><Nav find={this.findMovieBuddies.bind(this)} onClick={this.changeViews.bind(this)}logout={this.logout.bind(this)}/></div>
-          <Home/>
+          <Home change={this.changeViewsMovie.bind(this)}/>
+        </div>
+      );
+    } else if (this.state.view === "SingleMovie") {
+      return (
+        <div>
+          <div><Nav onClick={this.changeViews.bind(this)}logout={this.logout.bind(this)}/></div>
+          <SingleMovieRating 
+          currentMovie={this.state.movie}
+          currentUser={this.state.username}
+          />
         </div>
       );
     } else if (this.state.view==='singleFriend'){

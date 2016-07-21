@@ -26,6 +26,7 @@
     "react-dom": "latest",
     "react-star-rating-component": "^1.0.0",
     "request": "^2.73.0",
+    "react-router": "^2.6.0",
     "underscore": "latest"
   },
   "devDependencies": {

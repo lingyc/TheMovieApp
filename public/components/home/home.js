@@ -6,7 +6,7 @@ class Home extends React.Component {
       value: '',
       movies: [],
       view: 'recentRelease',
-      focalMovie: null
+      focalMovie: null,
     };
   }
 
@@ -76,7 +76,7 @@ class Home extends React.Component {
   }
 
 
-  handleClick(event) {
+  handleClick(events) {
     //handle click between movielist view and friendRating view
   }
 
@@ -97,10 +97,11 @@ class Home extends React.Component {
             className='movieInput'
             placeholder='Insert Movie Title'
             value={this.state.value}
-            onChange={this.handleSearch.bind(this)}
-          />
+            onChange={this.handleSearch.bind(this)}/>
         </div>
-        <MovieList movies={this.state.movies}/>
+        <MovieList movies={this.state.movies}
+        change={this.props.change.bind(this)}
+        />
       </div>
     )
   }
