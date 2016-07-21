@@ -42,7 +42,7 @@ console.log('loeijwfloejfelifjdp')
 app.post('/listRequests', handler.listRequests);
 app.post('/sendRequest', handler.sendRequest);
 //Friend requests
-
+app.post('/getThisFriendsMovies',handler.getThisFriendsMovies)
 app.post('/logout', handler.logout);
 
 
