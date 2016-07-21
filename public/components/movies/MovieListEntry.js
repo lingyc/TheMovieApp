@@ -4,6 +4,7 @@ class MovieListEntry extends React.Component {
     super(props);
     this.state = {
       userRating: this.props.movie.score,
+      userReview: this.props.movie.review,
       friendAverageRating: this.props.movie.friendAverageRating
     };
   }
@@ -12,6 +13,7 @@ class MovieListEntry extends React.Component {
     console.log('componentWillReceiveProps');
     this.setState({
       userRating: nextProps.movie.score,
+      userReview: this.props.movie.review,
       friendAverageRating: nextProps.movie.friendAverageRating
     });
     console.log('user rating', nextProps.movie.title, nextProps.userRating);
@@ -42,7 +44,7 @@ class MovieListEntry extends React.Component {
   			<h1 className='movieTitle' onClick={() => (this.props.change("SingleMovie", movie))}>{movie.title}</h1>
   			<p className='movieYear'>{movie.release_date}</p>
   			<p className='movieDescription'>{movie.description}</p>
-  			<p className='userReview'>{(movie.review === '') ? movie.review : 'you have not review the movie yet'}</p>
+        <ReviewComponent review={movie.review}/>
   			<p className='imdbRating'>IMDB rating: {movie.imdbRating}</p>
   			<div className='watchRequestButton'>send watch request</div>
         <div className='userRating'>{(this.state.userRating === null) ? 'you have not rated this movie' : 'your rating is ' + this.state.userRating}
