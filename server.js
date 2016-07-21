@@ -34,6 +34,7 @@ app.post('/getFriends',handler.getFriends)
 app.get('/login',function(req,res){
 console.log('loeijwfloejfelifjdp')
 })
+app.post('/findMovieBuddies',handler.findMovieBuddies)
 
 
 
