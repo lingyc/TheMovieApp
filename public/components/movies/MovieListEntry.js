@@ -2,17 +2,23 @@ class MovieListEntry extends React.Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
-    	userRating: this.props.movie.score || null,
-    	friendAverageRating: this.props.movie.friendAverageRating || null
+      userRating: this.props.movie.score,
+      friendAverageRating: this.props.movie.friendAverageRating
     };
+    console.log('whattatatat userRating', this.state.userRating);
   }
 
-  onStarClick(value) {
-    console.log('value', value);
-    this.setState({userRating: value});
-    this.updateRating(value);
+  componentWillReceiveProps() {
+    this.setState({
+      userRating: this.props.movie.score,
+      friendAverageRating: this.props.movie.friendAverageRating
+    });
+  }
+
+  onStarClick(event) {
+    this.setState({userRating: event.target.value});
+    this.updateRating(event.target.value);
   }
 
   updateRating(value) {
@@ -28,7 +34,7 @@ class MovieListEntry extends React.Component {
   }
 
   render() {
-  	let movie = this.props.movie
+  	let movie = this.props.movie;
   	return (
   		<div className='movieEntry'>
   			<img className='moviethumnail' src={movie.poster}/>
@@ -38,9 +44,10 @@ class MovieListEntry extends React.Component {
   			<p className='userReview'>{(movie.review === '') ? movie.review : 'you have not review the movie yet'}</p>
   			<p className='imdbRating'>IMDB rating: {movie.imdbRating}</p>
   			<div className='watchRequestButton'>send watch request</div>
-        <StarRatingComponent onStarClick={this.onStarClick.bind(this)} rating={this.state.userRating}/>
+        <div className='userRating'>{(this.state.userRating === null) ? 'you have not rated this movie' : 'your rating is ' + this.state.userRating}
+          <StarRatingComponent onStarClick={this.onStarClick.bind(this)}/>
+        </div>
         <div className='avgFriendRatingBlock'>average friend rating: {(movie.friendAverageRating) ? movie.friendAverageRating : 'no friend ratings' }</div>
-
       </div>);
 	}
 }
