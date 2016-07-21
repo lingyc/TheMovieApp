@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 var sessions = require("client-sessions");
 
 
-console.log('handler', handler)
+// console.log('handler', handler)
 
 
 app.use(sessions({
@@ -51,7 +51,7 @@ app.post('/logout', handler.logout);
 //Handling movies
 //////////////////
 app.post('/ratemovie', handler.rateMovie);
-app.get('/recentRelease', handler.getRecentRelease); //only for testing
+app.get('/recentRelease', handler.getRecentRelease);
 app.get('/getUserRating', handler.getUserRatings);
 app.post('/getMultipleMovieRatings', handler.getMultipleMovieRatings);
 

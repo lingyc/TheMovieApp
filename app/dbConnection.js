@@ -35,6 +35,7 @@ db.knex.schema.hasTable('ratings').then(function(exists) {
       rating.integer('movieid');
       rating.integer('userid');
       rating.string('review', 255);
+      rating.timestamps();
     }).then(function (table) {
       console.log('Created Table', table);
     });
