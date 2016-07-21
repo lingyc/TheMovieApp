@@ -13,7 +13,7 @@ var Friends = (props) => (
 
 
 
-{props.myFriends.map(function(friend){ return (<FriendEntry Friend={friend} /> )})}
+{props.myFriends.map(function(friend){ return (<FriendEntry Friend={friend} fof={props.fof} /> )})}
 
 
 

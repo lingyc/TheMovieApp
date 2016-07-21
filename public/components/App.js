@@ -8,7 +8,9 @@ class App extends React.Component {
       movie: null,
       friendRequests:[],
       pendingFriendRequests:[],
-      myFriends:['pigFriend','dogFriend']
+      myFriends:['krishan','justin'],
+      friendToFocusOn:'',
+      individualFriendsMovies:[]
     };
   }
 
@@ -62,6 +64,8 @@ $.post('http://127.0.0.1:3000/decline',{personToDecline:final},function(a,b){
     this.setState({
       view:"SignUp" 
     })
+
+
   }
 
   logInFunction(name,password){
@@ -182,6 +186,30 @@ $.post('http://127.0.0.1:3000/listRequests',function(response,error){
 });
 };
 
+focusOnFriend(){
+var that=this
+ $('.individual').on('click',function(){
+var test=$(this).html();
+console.log(test)
+that.setState({
+  view:'singleFriend',
+  friendToFocusOn:test
+})
+
+$.post('http://127.0.0.1:3000/getThisFriendsMovies',{specificFriend:test},function(a,b){
+console.log(a,b);
+that.setState({
+  individualFriendsMovies:a
+})
+})
+
+
+
+})
+
+
+
+}
 
 
 
@@ -241,7 +269,7 @@ listPotentials() {
         <div><div><Nav 
           onClick={this.changeViews.bind(this)}
           logout={this.logout.bind(this)}/></div>
-        <Friends getFriends={this.getCurrentFriends.bind(this)} myFriends={this.state.myFriends} 
+        <Friends fof= {this.focusOnFriend.bind(this)} getFriends={this.getCurrentFriends.bind(this)} myFriends={this.state.myFriends} 
         listPotentials={this.listPotentials.bind(this)} logout={this.logout.bind(this)} sendRequest={this.sendRequest.bind(this)}/>
         </div>
 
@@ -254,6 +282,15 @@ listPotentials() {
           <Home/>
         </div>
       );
+    } else if (this.state.view==='singleFriend'){
+      return (
+        <div>
+
+     <SingleFriend moviesOfFriend={this.state.individualFriendsMovies} friendName={this.state.friendToFocusOn} onClick={this.changeViews.bind(this)}/>
+
+        </div>
+
+        )
     }
   }
 }
