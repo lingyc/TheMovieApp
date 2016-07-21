@@ -11,7 +11,7 @@ class App extends React.Component {
       myFriends:['krishan','justin'],
       friendToFocusOn:'',
       individualFriendsMovies:[],
-      potentialMovieBuddies:['barack','obama']
+      potentialMovieBuddies:{}
     };
   }
 
