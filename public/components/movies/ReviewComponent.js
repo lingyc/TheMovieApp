@@ -9,6 +9,10 @@ class ReviewComponent extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    this.setState({
+      userReview: nextProps.review,
+      editMode: false
+    });
   }
 
   handleEdit(event) {
@@ -21,6 +25,8 @@ class ReviewComponent extends React.Component {
     this.setState({
       editMode: false
     });
+
+    this.props.onSubmit(this.state.userReview);
   }
 
   handleChange(event) {
