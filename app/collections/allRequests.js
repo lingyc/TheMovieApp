@@ -1,5 +1,5 @@
 var db = require('../dbConnection');
-var FriendRequest = require('../models/allRequest');
+var allRequest = require('../models/allRequest');
 
 //create FriendRequests collection
 var allRequests = new db.Collection();

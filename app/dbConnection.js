@@ -72,7 +72,7 @@ db.knex.schema.hasTable('relations').then(function(exists) {
   }
 });
 
-db.knex.schema.hasTable('requests').then(function(exists) {
+db.knex.schema.hasTable('allRequests').then(function(exists) {
   if (!exists) {
     db.knex.schema.createTable('allRequests', function(request) {
       request.increments('id').primary();
