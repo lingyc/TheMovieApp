@@ -53,6 +53,7 @@ app.post('/logout', handler.logout);
 app.post('/ratemovie', handler.rateMovie);
 app.get('/recentRelease', handler.getRecentRelease);
 app.get('/getUserRatings', handler.getUserRatings);
+app.get('/getFriendUserRatings', handler.getFriendUserRatings);
 app.post('/getMultipleMovieRatings', handler.getMultipleMovieRatings);
 app.post('/getFriendRatings', handler.handleGetFriendRatings);
 app.get('/searchRatedMovie', handler.searchRatedMovie);

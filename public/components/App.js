@@ -240,30 +240,24 @@ $.post('http://127.0.0.1:3000/listRequests',function(response,error){
 });
 };
 
-focusOnFriend(){
-var that=this
- $('.individual').on('click',function(){
-var test=$(this).html();
-console.log(test)
-that.setState({
-  view:'singleFriend',
-  friendToFocusOn:test
-})
+  focusOnFriend() {
+    var that=this
+    $('.individual').on('click',function(){
+      var friendName = $(this).html();
 
-$.post('http://127.0.0.1:3000/getThisFriendsMovies',{specificFriend:test},function(a,b){
-console.log(a,b);
-that.setState({
-  individualFriendsMovies:a
-})
-})
+      that.setState({
+        view:'singleFriend',
+        friendToFocusOn: friendName
+      });
 
-
-
-})
-
-
-
-}
+      $.get('http://127.0.0.1:3000/getFriendUserRatings',{friendName: friendName},function(response){
+        console.log('getting friend movies:', response);
+        that.setState({
+          individualFriendsMovies: response
+        });
+      });
+    });
+  }
 
 
 
@@ -350,8 +344,12 @@ listPotentials() {
       return (
         <div>
 
-     <SingleFriend moviesOfFriend={this.state.individualFriendsMovies} friendName={this.state.friendToFocusOn} onClick={this.changeViews.bind(this)}/>
-
+          <SingleFriend 
+            moviesOfFriend={this.state.individualFriendsMovies} 
+            friendName={this.state.friendToFocusOn} 
+            onClick={this.changeViews.bind(this)}
+            change={this.changeViewsMovie.bind(this)}
+          />
         </div>
 
         )
