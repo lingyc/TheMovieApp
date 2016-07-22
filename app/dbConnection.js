@@ -79,6 +79,7 @@ db.knex.schema.hasTable('allRequests').then(function(exists) {
       request.string('requestor', 255);
       request.string('requestee', 255);
       request.string('requestTyp', 255);
+      request.string('movie',255);
     }).then(function (table) {
       console.log('Created Table', table);
     });
