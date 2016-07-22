@@ -39,7 +39,8 @@ class MovieListEntry extends React.Component {
   }
 
   render() {
-  	let movie = this.props.movie;
+    let movie = this.props.movie;
+    console.log(movie.release_date);
   	return (
   		<div className='movieEntry'>
   			<img className='moviethumnail' src={movie.poster} onClick={() => (this.props.change("SingleMovie", movie))}/>
