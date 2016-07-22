@@ -33,7 +33,6 @@ class MyRatings extends React.Component {
   //and set the reponse to the movies state
   handleSearch(event) {
     if (event.charCode == 13) {
-      console.log('enter event triggered');
       var that = this;
 
       //this will search database

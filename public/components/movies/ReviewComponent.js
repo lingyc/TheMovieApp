@@ -46,7 +46,6 @@ class ReviewComponent extends React.Component {
   }
 
   render() {
-    console.log('rerendering');
     if (this.state.editMode) {
   		return (
         <div className='userReviewInput'>

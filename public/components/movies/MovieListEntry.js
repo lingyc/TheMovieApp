@@ -10,13 +10,11 @@ class MovieListEntry extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('componentWillReceiveProps');
     this.setState({
       userRating: nextProps.movie.score,
       userReview: this.props.movie.review,
       friendAverageRating: nextProps.movie.friendAverageRating
     });
-    console.log('user rating', nextProps.movie.title, nextProps.userRating);
   }
 
   onStarClick(event) {
@@ -40,7 +38,18 @@ class MovieListEntry extends React.Component {
 
   render() {
     let movie = this.props.movie;
-    console.log(movie.release_date);
+
+    if (this.props.friendName) {
+      var friendSection = (
+        <div>
+          <div>{`${this.props.friendName} rates`} <span className='friendScore'>{movie.friendScore}</span> </div>
+          <div className='friendReview'>{`${this.props.friendName}'s review: ${(movie.friendReview !== null) ? movie.friendReview : this.props.friendName + ' did not leave a review'}`}</div>
+        </div>
+      )
+    } else {
+      var friendSection = '';
+    }
+
   	return (
   		<div className='movieEntry'>
   			<img className='moviethumnail' src={movie.poster} onClick={() => (this.props.change("SingleMovie", movie))}/>
@@ -57,7 +66,9 @@ class MovieListEntry extends React.Component {
           <StarRatingComponent onStarClick={this.onStarClick.bind(this)}/>
         </div>
         <div className='avgFriendRatingBlock'>average friend rating: {(movie.friendAverageRating) ? movie.friendAverageRating : 'no friend ratings' }</div>
+        {friendSection}
       </div>);
+
 	}
 }
 

@@ -56,7 +56,6 @@ class Home extends React.Component {
   //and set the reponse to the movies state
   handleSearch(event) {
     if (event.charCode == 13) {
-      console.log('enter event triggered');
       var that = this;
 
       //this will search TMDB for movie and send it to server to retrive user ratings
@@ -70,7 +69,6 @@ class Home extends React.Component {
             format: "json",
         },
         success: function(response) {
-          console.log('TMDB response', response);
           var sorted = _.sortBy(response.results, 'release_date').reverse();
           that.getUserRatingsForMovies(sorted);
         }
