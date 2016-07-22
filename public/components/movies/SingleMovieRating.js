@@ -16,13 +16,13 @@ class SingleMovieRating extends React.Component {
     //note need to change app state movie
     //when other things are clicked later on
     this.getFriendsRating(this.state.movie);
-    $.get('http://127.0.0.1:3000/getFriends', {name: this.state.mainUser})
-      .then(function(data) {
-        console.log(data);
-      })
-      .catch(function(err) {
-        console.log(err);
-      });
+    // $.get('http://127.0.0.1:3000/getFriends', {name: this.state.mainUser})
+    //   .then(function(data) {
+    //     console.log(data);
+    //   })
+    //   .catch(function(err) {
+    //     console.log(err);
+    //   });
   }
 
   componentWillReceiveProps() {
@@ -38,16 +38,16 @@ class SingleMovieRating extends React.Component {
 
   //get friend ratings by calling requesthandler
   //get friendratings, passing in mainUser and movieobj
-  getFriendsRating(title) {
-    $.get('http://127.0.0.1:3000/getFriendRatings', 
-      {name: this.state.mainUser, movie:this.state.movie})
+  getFriendsRating(movie) {
+    $.post('http://127.0.0.1:3000/handleGetFriendRatings', 
+      {movie: movie})
       .then(function(response) {
         console.log('success');
       })
       .catch(function(err) {
         console.log(err)
       });
-    console.log(title);
+    console.log(movie);
   }
 
   render() {
