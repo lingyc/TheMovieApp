@@ -67,11 +67,12 @@ class Home extends React.Component {
         data: {
             query: event.target.value,
             api_key: "9d3b035ef1cd669aed398400b17fcea2",
-            format: "json"
+            format: "json",
         },
         success: function(response) {
           console.log('TMDB response', response);
-          that.getUserRatingsForMovies(response.results);
+          var sorted = _.sortBy(response.results, 'release_date').reverse();
+          that.getUserRatingsForMovies(sorted);
         }
       });
     }
