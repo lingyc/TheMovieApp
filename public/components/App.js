@@ -20,6 +20,7 @@ getCurrentFriends(){
   var that=this;
 console.log('testinggg')
   $.post('http://127.0.0.1:3000/getFriends',{test:'info'},function(a,b){
+  console.log(a,b)
 that.setState({
   myFriends:a
 })
