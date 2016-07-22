@@ -3,9 +3,7 @@ let Nav = (props) => (
     <div>
         
         <button onClick={() => (props.onClick("Home"))}>Home</button>
-        <button>My Ratings (not yet functional(nyf))</button>
-        <button onClick={() => (props.onClick("MovieSearchView"))}>
-        IMDB Movie Ratings</button>
+        <button onClick={() => (props.onClick("MyRatings"))}>My Ratings</button>
         <button onClick={() => (props.onClick("Friends"))}>My Friends </button>
         <button onClick={props.find}>Find New Movie Buddies</button>
         <div id='logOutButton'>

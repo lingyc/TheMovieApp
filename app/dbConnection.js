@@ -21,7 +21,9 @@ db.knex.schema.hasTable('movies').then(function(exists) {
       movie.string('release_date', 255);
       movie.string('description', 255);
       movie.integer('imdbRating');
-    }).then(function (table) {
+    })
+    .raw(`ALTER TABLE movies ADD FULLTEXT (title)`)
+    .then(function (table) {
       console.log('Created Table', table);
     });
   }
@@ -70,24 +72,13 @@ db.knex.schema.hasTable('relations').then(function(exists) {
   }
 });
 
-db.knex.schema.hasTable('friendRequests').then(function(exists) {
+db.knex.schema.hasTable('requests').then(function(exists) {
   if (!exists) {
-    db.knex.schema.createTable('friendRequests', function(friendRequest) {
-      friendRequest.increments('id').primary();
-      friendRequest.string('requestor', 255);
-      friendRequest.string('requestee', 255);
-    }).then(function (table) {
-      console.log('Created Table', table);
-    });
-  }
-});
-
-db.knex.schema.hasTable('watchRequests').then(function(exists) {
-  if (!exists) {
-    db.knex.schema.createTable('watchRequests', function(watchRequest) {
-      watchRequest.increments('id').primary();
-      watchRequest.string('requestor', 255);
-      watchRequest.string('requestee', 255);
+    db.knex.schema.createTable('allRequests', function(request) {
+      request.increments('id').primary();
+      request.string('requestor', 255);
+      request.string('requestee', 255);
+      request.string('requestTyp', 255);
     }).then(function (table) {
       console.log('Created Table', table);
     });

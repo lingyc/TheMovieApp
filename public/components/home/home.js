@@ -77,16 +77,7 @@ class Home extends React.Component {
     }
   }
 
-
-  handleClick(events) {
-    //handle click between movielist view and friendRating view
-  }
-
   render() {
-
-    // if (this.state.view === 'recentRelease') {
-
-    // }
     var lable = 'recent releases';
     if (this.state.recentRelease === false) {
       lable = 'back to recent releases';

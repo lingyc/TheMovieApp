@@ -52,9 +52,10 @@ app.post('/logout', handler.logout);
 //////////////////
 app.post('/ratemovie', handler.rateMovie);
 app.get('/recentRelease', handler.getRecentRelease);
-app.get('/getUserRating', handler.getUserRatings);
+app.get('/getUserRatings', handler.getUserRatings);
 app.post('/getMultipleMovieRatings', handler.getMultipleMovieRatings);
 app.post('/getFriendRatings', handler.handleGetFriendRatings);
+app.get('/searchRatedMovie', handler.searchRatedMovie);
 
 
 app.listen(3000, function () {

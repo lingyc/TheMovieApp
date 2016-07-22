@@ -349,6 +349,13 @@ return (
 
         )
 
+    } else if (this.state.view === "MyRatings"){
+      return (
+        <div>
+          <div><Nav find={this.findMovieBuddies.bind(this)} onClick={this.changeViews.bind(this)}logout={this.logout.bind(this)}/></div>
+          <MyRatings change={this.changeViewsMovie.bind(this)}/>
+        </div>
+      );
     }
   }
 }
