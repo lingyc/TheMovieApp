@@ -38,7 +38,7 @@ class MyRatings extends React.Component {
 
       //this will search database
     $.get('http://127.0.0.1:3000/searchRatedMovie', {title: event.target.value})
-    .then(userRatedMovies => {
+    .then(searchResults => {
       console.log('response from server', searchResults);
       this.setState({
         movies: searchResults,
@@ -49,9 +49,17 @@ class MyRatings extends React.Component {
   }
 
   render() {
-    var lable = 'all rated movies';
+    var lable;
+    var results;
     if (this.state.allRatedMovies === false) {
       lable = 'back to all rated movies';
+      results = (this.state.movies.length === 0) ? 'results cannot be found' : 'current results:'
+    } else if (this.state.allRatedMovies && this.state.movies.length === 0) {
+      lable = 'you have not rated any movies';
+    } else if (this.state.movies.length === 0) {
+
+    } else {
+      lable = 'all rated movies';
     }
 
     return (
@@ -63,6 +71,7 @@ class MyRatings extends React.Component {
             placeholder='Insert Movie Title'
             onKeyPress={this.handleSearch.bind(this)}/>
         </div>
+        <div>{results}</div>
         <MovieList movies={this.state.movies}
         change={this.props.change.bind(this)}
         />
