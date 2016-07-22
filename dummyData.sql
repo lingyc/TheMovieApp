@@ -13,18 +13,18 @@ INSERT INTO users (id,username, password, firstName, lastName, email)
 VALUES (3,'justin', '12345', 'Justin', 'Ou', 'justin@gmail.com');
 
 
-INSERT INTO ratings (score,movieid,userid,review)
-VALUES (5.5, 1, 1, 'pretty good');
-INSERT INTO ratings (score,movieid,userid,review)
-VALUES (3, 2, 1, 'pretty okay');
-INSERT INTO ratings (score,movieid,userid,review)
-VALUES (10, 1, 2, 'fun');
-INSERT INTO ratings (score,movieid,userid,review)
-VALUES (4.2, 2, 2, 'good movie');
-INSERT INTO ratings (score,movieid,userid,review)
-VALUES (1, 1, 3, 'classic');
-INSERT INTO ratings (score,movieid,userid,review)
-VALUES (8.2, 2, 3, 'alright');
+INSERT INTO ratings (score,movieid,userid,review,created_at,updated_at)
+VALUES (5.5, 209112, 1, 'pretty good', '2016/7/1 11*30*45', '2016/7/1 11*30*45');
+INSERT INTO ratings (score,movieid,userid,review,created_at,updated_at)
+VALUES (3, 258489, 1, 'pretty okay', '2016/7/1 11*30*45', '2016/7/1 11*30*45');
+INSERT INTO ratings (score,movieid,userid,review,created_at,updated_at)
+VALUES (10, 209112, 2, 'fun', '2016/7/1 11*30*45', '2016/7/1 11*30*45');
+INSERT INTO ratings (score,movieid,userid,review,created_at,updated_at)
+VALUES (4.2, 258489, 2, 'good movie', '2016/7/1 11*30*45', '2016/7/1 11*30*45');
+INSERT INTO ratings (score,movieid,userid,review,created_at,updated_at)
+VALUES (1, 209112, 3, 'classic', '2016/7/1 11*30*45', '2016/7/1 11*30*45');
+INSERT INTO ratings (score,movieid,userid,review,created_at,updated_at)
+VALUES (8.2, 258489, 3, 'alright', '2016/7/1 11*30*45', '2016/7/1 11*30*45');
 
 
 INSERT INTO relations (user1id,user2id)

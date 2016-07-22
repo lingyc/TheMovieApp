@@ -2,25 +2,24 @@ class SingleMovieRatingEntry extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      movie: props.currentMovie
+      rating: props.rating
     };
   }
 
   componentsDidMount() {
-    console.log(this.state.friendTargeted);
+    console.log(this.props);
   }
 
   render() {
     //note, on click of portrait, name, review
     //should be able to see all the movies reviewed by friend
     //on send watch request click, should send a watch request
+    let rating = this.state.rating;
     return (
       <div>
-        <h1 className='singleMovieFriend'>{props.friendFocus}</h1>
-        <p>reviews</p>
-        <p>send watch request</p>
-        <p>taste compatability</p>
-        <p>Friend rating</p>
+        <h1 className='singleMovieFriend'>{rating.friendFirstName}</h1>
+        <p>{rating.review}</p>
+        <p>{rating.score}</p>
       </div>
     );
   }

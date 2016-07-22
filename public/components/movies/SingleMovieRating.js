@@ -6,7 +6,7 @@ class SingleMovieRating extends React.Component {
       movie: props.currentMovie,
       view: 'SingleMovie',
       mainUser: props.currentUser,
-      friends: []
+      friendRatings: []
     };
   }
 
@@ -15,11 +15,8 @@ class SingleMovieRating extends React.Component {
     //into singlemovierating 
     //note need to change app state movie
     //when other things are clicked later on
-    this.setState({
-      friends: this.getFriends();
-    });
-    console.log('this is friends', this.state.friends);
-    // this.getFriendsRating(this.state.movie);
+    // this.getFriends();
+    this.getFriendsRating(this.state.movie);
     // $.get('http://127.0.0.1:3000/getFriends', {name: this.state.mainUser})
     //   .then(function(data) {
     //     console.log(data);
@@ -41,29 +38,32 @@ class SingleMovieRating extends React.Component {
   }
 
   getFriends() {
-    console.log('hi');
+    var that = this;
     $.post('http://127.0.0.1:3000/getFriends')
       .then(function(resp) {
-        console.log(resp);
+        console.log(that.state.friends)
       })
       .catch(function(err) {
         console.log(err);
       });
-    console.log('hi2')
   }
 
   //get friend ratings by calling requesthandler
   //get friendratings, passing in mainUser and movieobj
   getFriendsRating(inputMovie) {
+    var that = this;
     $.post('http://127.0.0.1:3000/getFriendRatings', 
       {movie: inputMovie})
       .then(function(response) {
         console.log(response);
+        that.setState({
+          friendRatings: response
+        })
       })
       .catch(function(err) {
         console.log(err)
       });
-    console.log('this is the movie', inputMovie);
+    // console.log('this is the movie', inputMovie);
   }
 
   render() {
@@ -83,13 +83,10 @@ class SingleMovieRating extends React.Component {
           <div className='avgFriendRatingBlock'>average friend rating: {(movie.friendAverageRating) ? movie.friendAverageRating : 'no friend ratings' }</div>
         </div>
         <div>
-          {this.state.friends.map((friend, i) => 
-            <singleMovieRatingEntry
-            currentMovie={this.state.movie}
-            mainUser={this.state.mainUser}
-            friendFocus={this.state.friends[i]}
-            />
-          )}
+          {this.state.friendRatings.map(friendRating => 
+            <SingleMovieRatingEntry 
+            rating={friendRating}/>
+            )}
         </div>
       </div>
     );
