@@ -22,27 +22,15 @@ class MovieListEntry extends React.Component {
   onStarClick(event) {
     //setState is async
     this.setState({userRating: event.target.value});
-    this.updateRatingOrReview(event.target.value, null);
+    this.updateRating(event.target.value);
   }
 
-  onSubmitReview(review) {
-    //setState is async
-    this.setState({userReview: review})
-    this.updateRatingOrReview(null, review);
-  }
 
-  updateRatingOrReview(rating, review) {
-    if (rating) {
-      var review = this.state.userReview;
-    } else if (review) {
-      var rating = this.state.userRating;
-    }
-
+  updateRating(rating) {
     var movieObj = {
       title: this.props.movie.title, 
       id: this.props.movie.id,
-      rating: rating,
-      review: review
+      rating: rating
     };
     $.post('http://127.0.0.1:3000/ratemovie', movieObj)
     .done(response => {
@@ -58,7 +46,10 @@ class MovieListEntry extends React.Component {
   			<h1 className='movieTitle' onClick={() => (this.props.change("SingleMovie", movie))}>{movie.title}</h1>
   			<p className='movieYear'>{movie.release_date}</p>
   			<p className='movieDescription'>{movie.description}</p>
-        <ReviewComponent review={movie.review} onSubmit={this.onSubmitReview.bind(this)}/>
+        <ReviewComponent 
+          review={movie.review} 
+          title={this.props.movie.title}
+          id={this.props.movie.id}/>
   			<p className='imdbRating'>IMDB rating: {movie.imdbRating}</p>
   			<div className='watchRequestButton'>send watch request</div>
         <div className='userRating'>{(this.state.userRating === null) ? 'you have not rated this movie' : 'your rating is ' + this.state.userRating}

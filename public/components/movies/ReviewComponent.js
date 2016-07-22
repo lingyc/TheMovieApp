@@ -21,12 +21,10 @@ class ReviewComponent extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(event);
     this.setState({
-      editMode: false
+      editMode: false,
     });
-
-    this.props.onSubmit(this.state.userReview);
+    this.updateReview(this.state.userReview);
   }
 
   handleChange(event) {
@@ -34,7 +32,21 @@ class ReviewComponent extends React.Component {
       userReview: event.target.value
     });
   }
+
+  updateReview(review) {
+    var movieObj = {
+      title: this.props.title, 
+      id: this.props.id,
+      review: review
+    };
+    $.post('http://127.0.0.1:3000/ratemovie', movieObj)
+    .done(response => {
+      console.log('movie rating updated');
+    })
+  }
+
   render() {
+    console.log('rerendering');
     if (this.state.editMode) {
   		return (
         <div className='userReviewInput'>
@@ -44,7 +56,6 @@ class ReviewComponent extends React.Component {
            <input type='submit' value='submit review'/>
           </form>
         </div>);
-
     } else {
       return (
         <div className='userReview'>
