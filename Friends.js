@@ -8,11 +8,11 @@ var Friends = (props) => (
 
 
 <br/>
-<h2>Here are your current friends</h2>
+<h2 >Here are your current friends</h2>
 <button onClick={props.getFriends}>Click to get your current friends</button>
 
 
-{props.myFriends.map(function(friend){ return (<FriendEntry  Friend={friend} fof={props.fof} /> )})}
+{props.myFriends.map(function(friend){ return (<FriendEntry sendARequest={props.sendWatchRequest}  Friend={friend} fof={props.fof} /> )})}
 
 
 

@@ -140,6 +140,17 @@ console.log(a,b)
   }
 
 
+sendWatchRequest(friend){
+
+console.log(friend);
+var toSend={requestee:friend};
+$.post('http://127.0.0.1:3000/sendWatchRequest', {requestee:friend} ,function(a,b){
+  console.log(a,b);
+});
+
+
+}
+
   /////////////////////
   /////movie render
   /////////////////////
@@ -307,7 +318,7 @@ listPotentials() {
         <div><div><Nav find={this.findMovieBuddies.bind(this)}
           onClick={this.changeViews.bind(this)}
           logout={this.logout.bind(this)}/></div>
-        <Friends fof= {this.focusOnFriend.bind(this)} getFriends={this.getCurrentFriends.bind(this)} myFriends={this.state.myFriends} 
+        <Friends sendWatchRequest={this.sendWatchRequest.bind(this)} fof= {this.focusOnFriend.bind(this)} getFriends={this.getCurrentFriends.bind(this)} myFriends={this.state.myFriends} 
         listPotentials={this.listPotentials.bind(this)} logout={this.logout.bind(this)} sendRequest={this.sendRequest.bind(this)}/>
         </div>
 

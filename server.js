@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 app.use('/scripts', express.static(__dirname + '/node_modules'));
 app.use('/compiled', express.static(__dirname + '/compiled'));
-
+app.post('/sendWatchRequest',handler.sendWatchRequest)
 app.post('/signup', handler.signupUser);
 app.post('/login', handler.signinUser);
 app.post('/decline', handler.decline);
