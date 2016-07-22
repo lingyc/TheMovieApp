@@ -24,9 +24,10 @@
     "q": "^1.4.1",
     "react": "^15.2.1",
     "react-dom": "latest",
+    "react-dropzone": "^3.5.3",
+    "react-router": "^2.6.0",
     "react-star-rating-component": "^1.0.0",
     "request": "^2.73.0",
-    "react-router": "^2.6.0",
     "underscore": "latest"
   },
   "devDependencies": {
