@@ -6,7 +6,7 @@ class SingleMovieRating extends React.Component {
       movie: props.currentMovie,
       view: 'SingleMovie',
       mainUser: props.currentUser,
-      friends: []
+      friendRatings: []
     };
   }
 
@@ -15,14 +15,15 @@ class SingleMovieRating extends React.Component {
     //into singlemovierating 
     //note need to change app state movie
     //when other things are clicked later on
+    // this.getFriends();
     this.getFriendsRating(this.state.movie);
-    $.get('http://127.0.0.1:3000/getFriends', {name: this.state.mainUser})
-      .then(function(data) {
-        console.log(data);
-      })
-      .catch(function(err) {
-        console.log(err);
-      });
+    // $.get('http://127.0.0.1:3000/getFriends', {name: this.state.mainUser})
+    //   .then(function(data) {
+    //     console.log(data);
+    //   })
+    //   .catch(function(err) {
+    //     console.log(err);
+    //   });
   }
 
   componentWillReceiveProps() {
@@ -36,18 +37,33 @@ class SingleMovieRating extends React.Component {
     this.updateRating(event.target.value);
   }
 
+  getFriends() {
+    var that = this;
+    $.post('http://127.0.0.1:3000/getFriends')
+      .then(function(resp) {
+        console.log(that.state.friends)
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+  }
+
   //get friend ratings by calling requesthandler
   //get friendratings, passing in mainUser and movieobj
-  getFriendsRating(title) {
-    $.get('http://127.0.0.1:3000/getFriendRatings', 
-      {name: this.state.mainUser, movie:this.state.movie})
+  getFriendsRating(inputMovie) {
+    var that = this;
+    $.post('http://127.0.0.1:3000/getFriendRatings', 
+      {movie: inputMovie})
       .then(function(response) {
-        console.log('success');
+        console.log(response);
+        that.setState({
+          friendRatings: response
+        })
       })
       .catch(function(err) {
         console.log(err)
       });
-    console.log(title);
+    // console.log('this is the movie', inputMovie);
   }
 
   render() {
@@ -67,13 +83,10 @@ class SingleMovieRating extends React.Component {
           <div className='avgFriendRatingBlock'>average friend rating: {(movie.friendAverageRating) ? movie.friendAverageRating : 'no friend ratings' }</div>
         </div>
         <div>
-          {this.state.friends.map((friend, i) => 
-            <singleMovieRatingEntry
-            currentMovie={this.state.movie}
-            mainUser={this.state.mainUser}
-            friendFocus={this.state.friends[i]}
-            />
-          )}
+          {this.state.friendRatings.map(friendRating => 
+            <SingleMovieRatingEntry 
+            rating={friendRating}/>
+            )}
         </div>
       </div>
     );
