@@ -78,3 +78,10 @@ text-align:center;
 }
 
 
+.inboxFriend{
+display: inline;
+color:red;
+}
+.nh{
+  color:red;
+}

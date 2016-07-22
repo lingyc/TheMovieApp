@@ -31,6 +31,10 @@ that.setState({
 acceptFriend(a){
 var final=a;
 
+$('button').on('click',function(){
+  console.log($(this).html());
+})
+
 console.log(final +'should be accepted')
 
 
@@ -225,11 +229,12 @@ listPendingFriendRequests(){
   var that=this;
 console.log('this should list friend reqs')
 $.post('http://127.0.0.1:3000/listRequests',function(response,error){
+  console.log('Response I get!!!!!!!',response);
   that.setState(
   {
     pendingFriendRequests:response
   })
- var result= that.state.pendingFriendRequests.map(function(a){return a.requestor})
+ var result= that.state.pendingFriendRequests.map(function(a){return [a.requestor,a.requestTyp]})
  console.log(result)
 
 });
@@ -308,7 +313,7 @@ listPotentials() {
 
           </div>
         <Inbox logout={this.logout.bind(this)}  accept= {this.acceptFriend.bind(this)} decline={this.declineFriend.bind(this)} listRequests={this.listPendingFriendRequests.bind(this)} 
-        pplWhoWantToBeFriends={this.state.pendingFriendRequests.map(function(a){return a.requestor})} />
+        pplWhoWantToBeFriends={this.state.pendingFriendRequests.map(function(a){return [a.requestor,a.requestTyp]})} />
         </div>
 
         )
