@@ -324,7 +324,7 @@ listPotentials() {
 
           </div>
         <Inbox logout={this.logout.bind(this)}  accept= {this.acceptFriend.bind(this)} decline={this.declineFriend.bind(this)} listRequests={this.listPendingFriendRequests.bind(this)} 
-        pplWhoWantToBeFriends={this.state.pendingFriendRequests.map(function(a){return [a.requestor,a.requestTyp]})} />
+        pplWhoWantToBeFriends={this.state.pendingFriendRequests.map(function(a){return [a.requestor,a.requestTyp,a.movie===null?"": "("+a.movie+")"]})} />
         </div>
 
         )
