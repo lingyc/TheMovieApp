@@ -5,7 +5,6 @@ class SingleMovieRating extends React.Component {
       value: '',
       movie: props.currentMovie,
       view: 'SingleMovie',
-      mainUser: props.currentUser,
       friendRatings: []
     };
   }
@@ -67,6 +66,7 @@ class SingleMovieRating extends React.Component {
   }
 
   render() {
+    let that = this;
     let movie = this.state.movie;
     return (
       <div>
@@ -85,7 +85,10 @@ class SingleMovieRating extends React.Component {
         <div>
           {this.state.friendRatings.map(friendRating => 
             <SingleMovieRatingEntry 
-            rating={friendRating}/>
+            rating={friendRating}
+            change={that.props.change}
+            fof={that.props.fof}
+            />
             )}
         </div>
       </div>
