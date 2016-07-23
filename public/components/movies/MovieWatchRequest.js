@@ -7,7 +7,9 @@ class MovieWatchRequest extends React.Component {
    		friends: [],
    		friendStash:[],
       filter: '',
-      message: ''
+      message: '',
+      requestSent: false,
+      noRequesteeWarning: false,
     };
   }
 
@@ -25,7 +27,9 @@ class MovieWatchRequest extends React.Component {
   handleClick() {
   	//will turn this.state.active to true and rerender the view
     this.setState({
-      active: !this.state.active
+      active: !this.state.active,
+      requestSent: false
+
     })
     this.getFriendList();
   }
@@ -42,24 +46,31 @@ class MovieWatchRequest extends React.Component {
   	//set this.state.active to false
     //set the stash to empty
   	//show send another request button
+    if (this.state.friendStash.length) {
+      var requestObj = {
+        requestTyp: 'watch',
+        movie: this.props.movie.title,
+        movieid: this.props.movie.id,
+        message: this.state.message,
+        requestee: this.state.friendStash,
+      };
 
-    var requestObj = {
-      requestTyp: 'watch',
-      movie: this.props.movie.title,
-      movieid: this.props.movie.id,
-      message: this.state.message,
-      requestees: this.state.friendStash,
-    };
-
-    $.post('http://127.0.0.1:3000/sendWatchRequest', requestObj)
-    .done(response => console.log('request send'));
-
-    this.setState({
-      active: false,
-      friendStash: [],
-      filter: '',
-      message: ''
-    })
+      $.post('http://127.0.0.1:3000/sendWatchRequest', requestObj)
+      .done(response => {
+        console.log('request send')
+        this.setState({
+          active: false,
+          friendStash: [],
+          filter: '',
+          message: '',
+          requestSent: true,
+        })
+      });
+    } else {
+      this.setState({
+        noRequesteeWarning: true
+      })
+    }
 
   }
 
@@ -106,7 +117,7 @@ class MovieWatchRequest extends React.Component {
             </ul>
           </div>)
       } else if (this.state.friendStash.length === 0) {
-        var stash = 'friend stash is empty';
+        var stash = 'please select your friend';
       }
 
       return(
@@ -125,7 +136,12 @@ class MovieWatchRequest extends React.Component {
         </div>
       )
     } else {
-      return (<button onClick={this.handleClick.bind(this)}>send watch request</button>)
+      return (
+        <div>
+          <button onClick={this.handleClick.bind(this)}>send watch request</button>
+          <div>{(this.state.requestSent === true) ? 'your request has been sent' : ''}</div>
+        </div>
+        )
     }
   }
 }
