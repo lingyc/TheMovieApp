@@ -149,11 +149,16 @@ sendWatchRequest(friend){
 
 var movie= document.getElementById('movieToWatch').value;
 var toSend={requestee:friend, movie:movie};
+if (movie.length>0){
 $.post('http://127.0.0.1:3000/sendWatchRequest', toSend ,function(a,b){
   console.log(a,b);
 });
-
 document.getElementById('movieToWatch').value='';
+} else {
+  console.log('you need to enter a movie to send a watch request!!!!')
+}
+
+
 
 }
 
@@ -189,6 +194,10 @@ document.getElementById('movieToWatch').value='';
     if (targetState==='Friends'){
       this.getCurrentFriends();
     }
+
+     if (targetState==="Inbox"){
+       this.listPendingFriendRequests()
+     }
 
     this.setState({
       view: targetState
@@ -320,7 +329,7 @@ listPotentials() {
 
           </div>
         <Inbox logout={this.logout.bind(this)}  accept= {this.acceptFriend.bind(this)} decline={this.declineFriend.bind(this)} listRequests={this.listPendingFriendRequests.bind(this)} 
-        pplWhoWantToBeFriends={this.state.pendingFriendRequests.map(function(a){return [a.requestor,a.requestTyp]})} />
+        pplWhoWantToBeFriends={this.state.pendingFriendRequests.map(function(a){return [a.requestor,a.requestTyp,a.movie===null?"": "("+a.movie+")"]})} />
         </div>
 
         )
