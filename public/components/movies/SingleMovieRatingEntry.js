@@ -6,8 +6,13 @@ class SingleMovieRatingEntry extends React.Component {
     };
   }
 
-  componentsDidMount() {
+  componentDidMount() {
     console.log(this.props);
+  }
+
+  handleClick() {
+    this.props.fof();
+    this.props.change('singleFriend', this.state.rating.friendUserName);
   }
 
   render() {
@@ -17,12 +22,12 @@ class SingleMovieRatingEntry extends React.Component {
     let rating = this.state.rating;
     var that = this;
     return (
-      <div>
-        <h1 className='singleMovieFriend' onClick={() => 
-          that.props.fof();
-          that.props.change('singleFriend', rating.friendFirstName)}>{rating.friendFirstName}</h1>
+      <div onClick={() => that.handleClick()}>
+        <h1 className='singleMovieFriend'>{rating.friendUserName}</h1>
         <p>{rating.review}</p>
         <p>{rating.score}</p>
+        <p>PLACEHOLDER: taste compatability with me: 90%</p>
+        <p>PLACEHOLDER: send watch request</p>
       </div>
     );
   }
