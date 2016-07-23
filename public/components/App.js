@@ -149,11 +149,16 @@ sendWatchRequest(friend){
 
 var movie= document.getElementById('movieToWatch').value;
 var toSend={requestee:friend, movie:movie};
+if (movie.length>0){
 $.post('http://127.0.0.1:3000/sendWatchRequest', toSend ,function(a,b){
   console.log(a,b);
 });
-
 document.getElementById('movieToWatch').value='';
+} else {
+  console.log('you need to enter a movie to send a watch request!!!!')
+}
+
+
 
 }
 
