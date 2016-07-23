@@ -61,7 +61,7 @@ class MovieListEntry extends React.Component {
           title={this.props.movie.title}
           id={this.props.movie.id}/>
   			<p className='imdbRating'>IMDB rating: {movie.imdbRating}</p>
-  			<div className='watchRequestButton'>send watch request</div>
+  			<MovieWatchRequest movie={this.props.movie}/>
         <div className='userRating'>{(this.state.userRating === null) ? 'you have not rated this movie' : 'your rating is ' + this.state.userRating}
           <StarRatingComponent onStarClick={this.onStarClick.bind(this)}/>
         </div>

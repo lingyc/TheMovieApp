@@ -57,6 +57,7 @@ app.get('/getFriendUserRatings', handler.getFriendUserRatings);
 app.post('/getMultipleMovieRatings', handler.getMultipleMovieRatings);
 app.post('/getFriendRatings', handler.handleGetFriendRatings);
 app.get('/searchRatedMovie', handler.searchRatedMovie);
+app.get('/getFriendList', handler.getFriendList)
 
 
 app.listen(3000, function () {
