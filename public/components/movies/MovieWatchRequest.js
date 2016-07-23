@@ -7,7 +7,6 @@ class MovieWatchRequest extends React.Component {
    		friends: [],
       filteredFriends: [],
    		friendStash:[],
-      filter: '',
       message: '',
       requestSent: false,
       noRequesteeWarning: false,
@@ -59,7 +58,6 @@ class MovieWatchRequest extends React.Component {
 
       $.post('http://127.0.0.1:3000/sendWatchRequest', requestObj)
       .done(response => {
-        console.log('request send')
         this.setState({
           active: false,
           friendStash: [],
@@ -76,10 +74,19 @@ class MovieWatchRequest extends React.Component {
 
   }
 
-  handleFilter() {
+  handleFilter(event) {
   	//Filter a particular friend in the friend list
-    this.state.friends
+
+    var filteredFriends = [];
+    this.state.friends.forEach(friend => {
+      if (friend.indexOf(event.target.value) > -1 ) {
+        filteredFriends.push(friend);
+      }
+    })
     
+    this.setState({
+      filteredFriends: filteredFriends
+    });
   }
 
   handleAddFriend(friend) {
@@ -125,8 +132,9 @@ class MovieWatchRequest extends React.Component {
       return(
         <div className="activeWatchRequest">
           <div className="MovieWatchRequestFriendList">
-            <input type="text" value={this.state.filter} placeholder="filter friends" onChange={this.handleFilter.bind(this)}/>
+            <input type="text" placeholder="filter friends" onChange={this.handleFilter.bind(this)}/>
             <ul className="friendList" name="friendsList" multiple>
+              {(this.state.filteredFriends.length === 0 ) ? 'no friend match is found' : ''}
               {this.state.filteredFriends.map(friend => <WatchRequestFriendEntry friend={friend} handleAddFriend={this.handleAddFriend.bind(this)}/>)}
             </ul>
           </div>
