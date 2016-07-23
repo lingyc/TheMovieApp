@@ -8,7 +8,7 @@ class App extends React.Component {
       movie: null,
       friendRequests:[],
       pendingFriendRequests:[],
-      myFriends:['krishan','justin'],
+      myFriends:[],
       friendToFocusOn:'',
       individualFriendsMovies:[],
       potentialMovieBuddies:{},
@@ -147,12 +147,13 @@ console.log(a,b)
 
 sendWatchRequest(friend){
 
-console.log(friend);
-var toSend={requestee:friend};
-$.post('http://127.0.0.1:3000/sendWatchRequest', {requestee:friend} ,function(a,b){
+var movie= document.getElementById('movieToWatch').value;
+var toSend={requestee:friend, movie:movie};
+$.post('http://127.0.0.1:3000/sendWatchRequest', toSend ,function(a,b){
   console.log(a,b);
 });
 
+document.getElementById('movieToWatch').value='';
 
 }
 
@@ -185,6 +186,10 @@ $.post('http://127.0.0.1:3000/sendWatchRequest', {requestee:friend} ,function(a,
   /////Nav change
   /////////////////////
   changeViews(targetState) {
+    if (targetState==='Friends'){
+      this.getCurrentFriends();
+    }
+
     this.setState({
       view: targetState
     });
