@@ -37,6 +37,6 @@
     "mocha": "^2.4.5"
   },
   "scripts": {
-    "start": "babel . --out-dir compiled --presets=es2015,react --ignore=node_modules,compiled --source-maps inline"
+    
   }
 }
