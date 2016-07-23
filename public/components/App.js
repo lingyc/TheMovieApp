@@ -117,34 +117,19 @@ class App extends React.Component {
     });
   }
 
-  sendWatchRequest(friend){
+  sendWatchRequest(friend) {
     var movie= document.getElementById('movieToWatch').value;
     var toSend={requestee:friend, movie:movie};
-    $.post('http://127.0.0.1:3000/sendWatchRequest', toSend ,function(a,b){
-      console.log(a,b);
-     });
-    document.getElementById('movieToWatch').value='';
+    if (movie.length>0) {
+      $.post('http://127.0.0.1:3000/sendWatchRequest', toSend ,function(a,b) {
+        console.log(a,b);
+      });
+      document.getElementById('movieToWatch').value='';
+    } else {
+      console.log('you need to enter a movie to send a watch request!!!!')
+    }
   }
 
-<<<<<<< b7dc540c4715408fa749a876c45837478ae7ebcf
-sendWatchRequest(friend){
-
-var movie= document.getElementById('movieToWatch').value;
-var toSend={requestee:friend, movie:movie};
-if (movie.length>0){
-$.post('http://127.0.0.1:3000/sendWatchRequest', toSend ,function(a,b){
-  console.log(a,b);
-});
-document.getElementById('movieToWatch').value='';
-} else {
-  console.log('you need to enter a movie to send a watch request!!!!')
-}
-
-
-
-}
-=======
->>>>>>> Minor formatting
 
   /////////////////////
   /////movie render
