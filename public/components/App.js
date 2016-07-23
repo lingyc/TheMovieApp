@@ -241,6 +241,7 @@ document.getElementById('movieToWatch').value='';
   focusOnFriend() {
     var that=this
     $('.individual').on('click',function() {
+      console.log('focus triggered')
       var friendName = $(this).html();
 
       that.setState({
