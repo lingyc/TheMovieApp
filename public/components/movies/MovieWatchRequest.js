@@ -30,6 +30,12 @@ class MovieWatchRequest extends React.Component {
     this.getFriendList();
   }
 
+  handleMsg(event) {
+    this.setState({
+      message: event.target.value
+    })
+  }
+
   handleSubmit() {
   	//will send out a watch request for this.props.movie to friends in the stash
   	//will display a message saying the request is made
@@ -37,12 +43,24 @@ class MovieWatchRequest extends React.Component {
     //set the stash to empty
   	//show send another request button
 
+    var requestObj = {
+      requestTyp: 'watch',
+      movie: this.props.movie.title,
+      movieid: this.props.movie.id,
+      message: this.state.message,
+      requestees: this.state.friendStash,
+    };
+
+    $.post('http://127.0.0.1:3000/sendWatchRequest', requestObj)
+    .done(response => console.log('request send'));
+
     this.setState({
       active: false,
       friendStash: [],
       filter: '',
       message: ''
     })
+
   }
 
   handleFilter() {
@@ -54,37 +72,40 @@ class MovieWatchRequest extends React.Component {
     //add friend to stash
     console.log('calling handleAddFriend');
     if (this.state.friendStash.indexOf(friend) < 0) {
-      var stashCopy = this.state.friendStash.unshift(friend)
-      stashCopy.unshift(friend)
+      var stashCopy = this.state.friendStash;
+      stashCopy.unshift(friend);
       this.setState({
         friendStash: stashCopy
       });
-      console.log(this.state.friendStash);
     }
   }
 
   handleRemoveFriend(friend) {
     //remove friend from stash
-    console.log('calling handleRemoveFriend');
+    console.log('calling handleRemoveFriend', this.state.friendStash);
     var idx = this.state.friendStash.indexOf(friend)
-    this.setState({
-      friendStash: this.state.friendStash.splice(idx, 1)
-    });
+    if (this.state.friendStash.length === 1) {
+      this.setState({
+        friendStash: []
+      });
+    } else {
+      this.setState({
+        friendStash: this.state.friendStash.splice(idx, 1)
+      });
+    }
+    console.log('stash after remove', this.state.friendStash)
   }
 
   render() {
     if (this.state.active) {
-      if (this.state.friendStash) {
-
+      if (this.state.friendStash.length > 0) {
         var stash = 
-          this.state.friendStash.map(fue => console.log('asdfasd'));
           (<div className="MovieWatchRequestFriendStash">
             <ul className="friendStash" name="friendStash" multiple>
               {this.state.friendStash.map(friend => <WatchRequestStashEntry friend={friend} handleRemoveFriend={this.handleRemoveFriend.bind(this)}/>)}
             </ul>
           </div>)
-
-      } else {
+      } else if (this.state.friendStash.length === 0) {
         var stash = 'friend stash is empty';
       }
 
@@ -98,12 +119,13 @@ class MovieWatchRequest extends React.Component {
           </div>
 
           {stash}
-          <input className="messageBox" value={this.state.message} placeholder="add a message"/>
+          <input className="messageBox" onChange={this.handleMsg.bind(this)} placeholder="add a message"/>
           <button className="watchRequest" onClick={this.handleSubmit.bind(this)}>send watch request</button>
+          <button className="closeWatchRequest" onClick={this.handleClick.bind(this)}>close watch request</button>
         </div>
       )
     } else {
-      return (<div onClick={this.handleClick.bind(this)}>send watch request</div>)
+      return (<button onClick={this.handleClick.bind(this)}>send watch request</button>)
     }
   }
 }
