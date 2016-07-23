@@ -23,6 +23,8 @@ class SingleMovieRatingEntry extends React.Component {
           that.props.change('singleFriend', rating.friendFirstName)}>{rating.friendFirstName}</h1>
         <p>{rating.review}</p>
         <p>{rating.score}</p>
+        <p>PLACEHOLDER: taste compatability with me: 90%</p>
+        <p>PLACEHOLDER: send watch request</p>
       </div>
     );
   }
