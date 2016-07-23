@@ -126,7 +126,6 @@ class App extends React.Component {
     document.getElementById('movieToWatch').value='';
   }
 
-<<<<<<< b7dc540c4715408fa749a876c45837478ae7ebcf
 sendWatchRequest(friend){
 
 var movie= document.getElementById('movieToWatch').value;
@@ -143,8 +142,7 @@ document.getElementById('movieToWatch').value='';
 
 
 }
-=======
->>>>>>> Minor formatting
+
 
   /////////////////////
   /////movie render
