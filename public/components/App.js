@@ -12,7 +12,8 @@ class App extends React.Component {
       friendToFocusOn:'',
       individualFriendsMovies:[],
       potentialMovieBuddies:{},
-      username: null
+      username: null,
+      requestResponses:[]
     };
   }
 
