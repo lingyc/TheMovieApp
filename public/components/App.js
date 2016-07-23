@@ -246,9 +246,9 @@ console.log('tr',top,response)
   };
 
   focusOnFriend() {
-    var that=this
-    $('.individual').on('click',function() {
-      console.log('focus triggered')
+    var that = this;
+    $('.individual').on('click', function(event) {
+      event.preventDefault();
       var friendName = $(this).html();
 
       that.setState({
@@ -262,6 +262,7 @@ console.log('tr',top,response)
           individualFriendsMovies: response
         });
       });
+      return false;
     });
   }
 
