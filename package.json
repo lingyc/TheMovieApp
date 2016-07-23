@@ -5,6 +5,7 @@
   "license": "UNLICENSE",
   "main": "server.js",
   "dependencies": {
+    "nodejs"
     "bcrypt-nodejs": "latest",
     "bluebird": "^3.4.1",
     "body-parser": "~1.4.2",
@@ -28,9 +29,7 @@
     "react-router": "^2.6.0",
     "react-star-rating-component": "^1.0.0",
     "request": "^2.73.0",
-    "underscore": "latest"
-  },
-  "devDependencies": {
+    "underscore": "latest",
     "babel-cli": "latest",
     "babel-preset-es2015": "latest",
     "babel-preset-react": "^6.11.1",
@@ -39,7 +38,7 @@
     "mocha": "^2.4.5"
   },
   "scripts": {
-    "start": "babel . --out-dir compiled --presets=es2015,react --ignore=node_modules,compiled --source-maps inline --watch",
+    "start": "babel . --out-dir compiled --presets=es2015,react --ignore=node_modules,compiled --source-maps inline",
     "comp": "babel . --out-dir compiled --presets=es2015,react --ignore=node_modules,compiled --source-maps inline --watch",
     "watch": "nodemon server.js",
     "server": "mysql.server start | mysqladmin -u root -p password"
