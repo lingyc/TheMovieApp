@@ -197,6 +197,13 @@ $.post('http://127.0.0.1:3000/sendWatchRequest', {requestee:friend} ,function(a,
     });
   }
 
+  changeViewsFriends(targetState, friend) {
+    this.setState({
+      view: targetState,
+      friendToFocusOn: friend
+    });
+  }
+
 
 buddyRequest(a){
   console.log('callingbuddy')
@@ -337,7 +344,8 @@ listPotentials() {
           <div><Nav onClick={this.changeViews.bind(this)}logout={this.logout.bind(this)}/></div>
           <SingleMovieRating 
           currentMovie={this.state.movie}
-          currentUser={this.state.username}
+          change={this.changeViewsFriends.bind(this)}
+          fof={this.focusOnFriend.bind(this)}
           />
         </div>
       );
