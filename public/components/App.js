@@ -190,6 +190,10 @@ document.getElementById('movieToWatch').value='';
       this.getCurrentFriends();
     }
 
+     if (targetState==="Inbox"){
+       this.listPendingFriendRequests()
+     }
+
     this.setState({
       view: targetState
     });
