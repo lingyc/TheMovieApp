@@ -3,7 +3,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      view:'Home',
+      view:'Login',
       friendsRatings:[],
       movie: null,
       friendRequests:[],
@@ -53,6 +53,7 @@ class App extends React.Component {
     var that=this;
     $.post('http://127.0.0.1:3000/findMovieBuddies',{dummy:'info'},function(a,b) {
       var final=a.sort(function(a,b){return b[1]-a[1]})
+console.log(that.state.myFriends,that.state.potentialMovieBuddies);
 
       that.setState({
         view:"FNMB",
@@ -76,6 +77,8 @@ class App extends React.Component {
       
    
       if (response[0]==='it worked') {
+          that.getCurrentFriends();
+          
        console.log('hi')
           that.setState({
             view:'Home',
@@ -164,6 +167,7 @@ class App extends React.Component {
   /////Nav change
   /////////////////////
   changeViews(targetState) {
+    console.log(this.state);
     if (targetState==='Friends'){
       this.getCurrentFriends();
     }
