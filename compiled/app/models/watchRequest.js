@@ -1,0 +1,13 @@
+'use strict';
+
+var db = require('../dbConnection');
+var User = require('./user');
+
+//create friendRequest model
+var WatchRequest = db.Model.extend({
+  tableName: 'watchRequests',
+  hasTimestamps: true
+});
+
+module.exports = WatchRequest;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2FwcC9tb2RlbHMvd2F0Y2hSZXF1ZXN0LmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsSUFBSSxLQUFLLFFBQVEsaUJBQVIsQ0FBVDtBQUNBLElBQUksT0FBTyxRQUFRLFFBQVIsQ0FBWDs7QUFFQTtBQUNBLElBQUksZUFBZSxHQUFHLEtBQUgsQ0FBUyxNQUFULENBQWdCO0FBQ2pDLGFBQVcsZUFEc0I7QUFFakMsaUJBQWU7QUFGa0IsQ0FBaEIsQ0FBbkI7O0FBS0EsT0FBTyxPQUFQLEdBQWlCLFlBQWpCIiwiZmlsZSI6IndhdGNoUmVxdWVzdC5qcyIsInNvdXJjZXNDb250ZW50IjpbInZhciBkYiA9IHJlcXVpcmUoJy4uL2RiQ29ubmVjdGlvbicpO1xudmFyIFVzZXIgPSByZXF1aXJlKCcuL3VzZXInKTtcblxuLy9jcmVhdGUgZnJpZW5kUmVxdWVzdCBtb2RlbFxudmFyIFdhdGNoUmVxdWVzdCA9IGRiLk1vZGVsLmV4dGVuZCh7XG4gIHRhYmxlTmFtZTogJ3dhdGNoUmVxdWVzdHMnLFxuICBoYXNUaW1lc3RhbXBzOiB0cnVlXG59KTtcblxubW9kdWxlLmV4cG9ydHMgPSBXYXRjaFJlcXVlc3Q7XG4iXX0=
