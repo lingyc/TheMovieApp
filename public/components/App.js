@@ -21,7 +21,7 @@ class App extends React.Component {
     var that=this;
     console.log('testinggg')
     $.post('http://127.0.0.1:3000/getFriends',{test:'info'},function(a,b) {
-      console.log(a,b)
+       
       that.setState({
         myFriends:a
       })
@@ -220,10 +220,12 @@ var top=[]
 var bottom=[]
 console.log('tr',top,response)
       for (var i=0;i<response[0].length;i++){
-if (response[0][i]['requestor']!==response[1]){
+if (response[0][i]['requestor']!==response[1] && response[0][i]['response']===null ){
           top.push(response[0][i]);
         }
+      if (response[0][i]['requestor']===response[1] &&response[0][i]['response']!==null){
           bottom.push(response[0][i]);
+        }
       }
 
 console.log('tr',top,response)
