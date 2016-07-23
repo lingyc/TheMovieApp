@@ -5,6 +5,7 @@ class MovieWatchRequest extends React.Component {
     this.state = {
    		active: false,
    		friends: [],
+      filteredFriends: [],
    		friendStash:[],
       filter: '',
       message: '',
@@ -19,7 +20,8 @@ class MovieWatchRequest extends React.Component {
     .then(friends => {
       console.log('response from server', friends);
       this.setState({
-        friends: friends
+        friends: friends,
+        filteredFriends: friends
       });
     })
   }
@@ -76,7 +78,8 @@ class MovieWatchRequest extends React.Component {
 
   handleFilter() {
   	//Filter a particular friend in the friend list
-
+    this.state.friends
+    
   }
 
   handleAddFriend(friend) {
@@ -104,7 +107,6 @@ class MovieWatchRequest extends React.Component {
         friendStash: this.state.friendStash.splice(idx, 1)
       });
     }
-    console.log('stash after remove', this.state.friendStash)
   }
 
   render() {
@@ -125,7 +127,7 @@ class MovieWatchRequest extends React.Component {
           <div className="MovieWatchRequestFriendList">
             <input type="text" value={this.state.filter} placeholder="filter friends" onChange={this.handleFilter.bind(this)}/>
             <ul className="friendList" name="friendsList" multiple>
-              {this.state.friends.map(friend => <WatchRequestFriendEntry friend={friend} handleAddFriend={this.handleAddFriend.bind(this)}/>)}
+              {this.state.filteredFriends.map(friend => <WatchRequestFriendEntry friend={friend} handleAddFriend={this.handleAddFriend.bind(this)}/>)}
             </ul>
           </div>
 
@@ -138,8 +140,8 @@ class MovieWatchRequest extends React.Component {
     } else {
       return (
         <div>
-          <button onClick={this.handleClick.bind(this)}>send watch request</button>
-          <div>{(this.state.requestSent === true) ? 'your request has been sent' : ''}</div>
+          <div>{(this.state.requestSent) ? 'your request has been sent' : ''}</div>
+          <button onClick={this.handleClick.bind(this)}>{(this.state.requestSent) ? 'send another watch request' : 'send a watch request'}</button>
         </div>
         )
     }
