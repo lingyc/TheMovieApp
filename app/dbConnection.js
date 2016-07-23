@@ -1,11 +1,10 @@
 var knex = require('knex')({
   client: 'mysql',
   connection: {
-    host     : '127.0.0.1',
-    user     : 'root',
-    password : '12345',
-    database : 'MainDatabase',
-    charset  : 'utf8'
+    host     : 'us-cdbr-iron-east-04.cleardb.net',
+    user     : 'b4a24a2c3715e7',
+    password : 'fb639af9',
+    database : 'heroku_d9adeb5ca79352b'
   }
 });
 
