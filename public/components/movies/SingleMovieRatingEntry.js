@@ -11,7 +11,7 @@ class SingleMovieRatingEntry extends React.Component {
   }
 
   handleClick() {
-    this.props.fof();
+    this.props.fof;
     this.props.change('singleFriend', this.state.rating.friendUserName);
   }
 
@@ -22,8 +22,8 @@ class SingleMovieRatingEntry extends React.Component {
     let rating = this.state.rating;
     var that = this;
     return (
-      <div onClick={() => that.handleClick()}>
-        <h1 className='singleMovieFriend'>{rating.friendUserName}</h1>
+      <div>
+        <h1 className='singleMovieFriend' onClick={() => that.handleClick()}>{rating.friendUserName}</h1>
         <p>{rating.review}</p>
         <p>{rating.score}</p>
         <p>PLACEHOLDER: taste compatability with me: 90%</p>
