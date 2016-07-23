@@ -3,7 +3,7 @@ var knex = require('knex')({
   connection: {
     host     : '127.0.0.1',
     user     : 'root',
-    password : '12345',
+    password : '123',
     database : 'MainDatabase',
     charset  : 'utf8'
   }
@@ -80,13 +80,13 @@ db.knex.schema.hasTable('allRequests').then(function(exists) {
       request.string('requestee', 255);
       request.string('requestTyp', 255);
       request.string('movie',255);
+      request.string('message', 255);
+      request.string('response', 255);
     }).then(function (table) {
       console.log('Created Table', table);
     });
   }
 });
-
-
 
 module.exports = db;
 
