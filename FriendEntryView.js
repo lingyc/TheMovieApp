@@ -1,5 +1,5 @@
 var FriendEntry = (props) => {
-//var test=props.Friend;
+
 
   return (
   <div className="FriendEntry">

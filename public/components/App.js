@@ -3,7 +3,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      view:'Home',
+      view:'Login',
       friendsRatings:[],
       movie: null,
       friendRequests:[],
@@ -12,7 +12,9 @@ class App extends React.Component {
       friendToFocusOn:'',
       individualFriendsMovies:[],
       potentialMovieBuddies:{},
-      username: null
+      username: null,
+      requestResponses:[],
+      currentUser:null
     };
   }
 
@@ -20,9 +22,9 @@ class App extends React.Component {
     var that=this;
     console.log('testinggg')
     $.post('http://127.0.0.1:3000/getFriends',{test:'info'},function(a,b) {
-      console.log(a,b)
+       var final= a.sort(function(a,b){return b[1]-a[1]});
       that.setState({
-        myFriends:a
+        myFriends:final
       })
     })
   }
@@ -50,11 +52,12 @@ class App extends React.Component {
   findMovieBuddies() {
     var that=this;
     $.post('http://127.0.0.1:3000/findMovieBuddies',{dummy:'info'},function(a,b) {
-      console.log(a,b)
+      var final=a.sort(function(a,b){return b[1]-a[1]})
+console.log(that.state.myFriends,that.state.potentialMovieBuddies);
 
       that.setState({
         view:"FNMB",
-        potentialMovieBuddies:a 
+        potentialMovieBuddies:final
       })
     })
   }
@@ -71,12 +74,16 @@ class App extends React.Component {
     console.log(name,password)
 
     $.post('http://127.0.0.1:3000/login',{name:name,password:password}).then(function(response) {
-      console.log(response==='it worked')
+      
    
-      if (response==='it worked') {
+      if (response[0]==='it worked') {
+          that.getCurrentFriends();
+          
        console.log('hi')
           that.setState({
-            view:'Home'
+            view:'Home',
+            currentUser:response[1]
+
           })
         }
        console.log('this.state.view after state is set again',that.state.view)
@@ -160,6 +167,7 @@ class App extends React.Component {
   /////Nav change
   /////////////////////
   changeViews(targetState) {
+    console.log(this.state);
     if (targetState==='Friends'){
       this.getCurrentFriends();
     }
@@ -215,11 +223,25 @@ class App extends React.Component {
     console.log('this should list friend reqs')
     $.post('http://127.0.0.1:3000/listRequests',function(response,error) {
       console.log('Response I get!!!!!!!',response);
+var top=[]
+var bottom=[]
+console.log('tr',top,response)
+      for (var i=0;i<response[0].length;i++){
+if (response[0][i]['requestor']!==response[1] && response[0][i]['response']===null ){
+          top.push(response[0][i]);
+        }
+      if (response[0][i]['requestor']===response[1] &&response[0][i]['response']!==null){
+          bottom.push(response[0][i]);
+        }
+      }
+
+console.log('tr',top,response)
       that.setState({
-        pendingFriendRequests:response
+        pendingFriendRequests:top,
+        requestResponses:bottom
       })
-      var result= that.state.pendingFriendRequests.map(function(a) {return [a.requestor,a.requestTyp]})
-      console.log(result)
+
+
     });
   };
 
@@ -265,7 +287,8 @@ class App extends React.Component {
       return ( 
         <div> 
           <div>
-            <Nav find={this.findMovieBuddies.bind(this)}
+            <Nav name={this.state.currentUser}
+            find={this.findMovieBuddies.bind(this)}
             onClick={this.changeViews.bind(this)}
             logout={this.logout.bind(this)} 
             />
@@ -282,13 +305,14 @@ class App extends React.Component {
       return (
         <div>
           <div>
-            <Nav  
+            <Nav name={this.state.currentUser}
               find={this.findMovieBuddies.bind(this)}
               onClick={this.changeViews.bind(this)}
               logout={this.logout.bind(this)}
             />
           </div>
             <Inbox 
+            responsesAnswered={this.state.requestResponses}
               logout={this.logout.bind(this)}  
               accept= {this.acceptFriend.bind(this)} 
               decline={this.declineFriend.bind(this)} 
@@ -302,7 +326,7 @@ class App extends React.Component {
       return (
         <div>
           <div>
-            <Nav 
+            <Nav name={this.state.currentUser}
               find={this.findMovieBuddies.bind(this)}
               onClick={this.changeViews.bind(this)}
               logout={this.logout.bind(this)}/>
@@ -323,7 +347,7 @@ class App extends React.Component {
       return (
         <div>
           <div>
-            <Nav 
+            <Nav name={this.state.currentUser}
               find={this.findMovieBuddies.bind(this)} 
               onClick={this.changeViews.bind(this)}
               logout={this.logout.bind(this)}
@@ -338,7 +362,7 @@ class App extends React.Component {
       return (
         <div>
           <div>
-            <Nav 
+            <Nav name={this.state.currentUser}
               onClick={this.changeViews.bind(this)}
               logout={this.logout.bind(this)}
             />
@@ -365,7 +389,7 @@ class App extends React.Component {
       return (
         <div>
           <div>
-            <Nav 
+            <Nav name={this.state.currentUser}
               find={this.findMovieBuddies.bind(this)} 
               onClick={this.changeViews.bind(this)}
               logout={this.logout.bind(this)}
@@ -381,7 +405,7 @@ class App extends React.Component {
       return (
         <div>
           <div>
-            <Nav 
+            <Nav name={this.state.currentUser}
               find={this.findMovieBuddies.bind(this)} 
               onClick={this.changeViews.bind(this)}
               logout={this.logout.bind(this)}
