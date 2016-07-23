@@ -216,11 +216,23 @@ class App extends React.Component {
     console.log('this should list friend reqs')
     $.post('http://127.0.0.1:3000/listRequests',function(response,error) {
       console.log('Response I get!!!!!!!',response);
+var top=[]
+var bottom=[]
+console.log('tr',top,response)
+      for (var i=0;i<response[0].length;i++){
+if (response[0][i]['requestor']!==response[1]){
+          top.push(response[0][i]);
+        }
+          bottom.push(response[0][i]);
+      }
+
+console.log('tr',top,response)
       that.setState({
-        pendingFriendRequests:response
+        pendingFriendRequests:top,
+        requestResponses:bottom
       })
-      var result= that.state.pendingFriendRequests.map(function(a) {return [a.requestor,a.requestTyp]})
-      console.log(result)
+
+
     });
   };
 
@@ -290,6 +302,7 @@ class App extends React.Component {
             />
           </div>
             <Inbox 
+            responsesAnswered={this.state.requestResponses}
               logout={this.logout.bind(this)}  
               accept= {this.acceptFriend.bind(this)} 
               decline={this.declineFriend.bind(this)} 
