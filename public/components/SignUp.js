@@ -30,11 +30,11 @@ class SignUp extends React.Component {
       <div id='buttons2'>
         <button onClick = {
           function() {
-            props.enterUser(document.getElementById('SignUpName').value, document.getElementById('SignUpPassword').value)
+            this.props.enterUser(document.getElementById('SignUpName').value, document.getElementById('SignUpPassword').value)
           }
         }> Sign Up! </button>
         <button onClick={() => 
-          (props.onClick("Login"))}> Log In Instead
+          (this.props.onClick("Login"))}> Log In Instead
         </button>
       </div> 
     </div>)
