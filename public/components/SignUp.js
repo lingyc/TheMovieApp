@@ -83,22 +83,33 @@ class SignUp extends React.Component {
   render() {
     let that = this;
     return (
-    <div className='signUpForm'>
-      <h2 id='loginHeader'>SignUp</h2><br/>
-      <p id='loginFields'>Name</p>  
-      <input type = 'text' id='SignUpName' autocomplete="off" placeholder='enter a username' name='SignUpName' onChange={this.handleChange.bind(this)}/><br/>
-      <p id='loginFields'>Password</p> 
-      <input type = 'password' id='SignUpName' autocomplete="off" placeholder='enter a password' name='SignUpPassword' onChange={this.handleChange.bind(this)}/><br/> 
-      <p id='loginFields'>First Name</p> 
-      <input type = 'text' id='SignUpName' autocomplete="off" placeholder='enter your first name' name='SignUpFirstname' onChange={this.handleChange.bind(this)}/><br/> 
-      <p id='loginFields'>Last Name</p> 
-      <input type = 'text' id='SignUpName' autocomplete="off" placeholder='enter your last name' name='SignUpLastname' onChange={this.handleChange.bind(this)}/><br/> 
-      <div id='buttons'>
+    <div className='login'>
+      <a className="waves-effect waves-light btn" onClick={() => this.props.changeViews('Login')}>Go to Log In</a>
+      <div className="or">---------- OR -----------</div>
+      <div className='loginForm'>
+        <div className="input-field col s6">
+          <input placeholder="username" id="user_name" name='SignUpName' type="text" className="validate" onChange={this.handleChange.bind(this)}/>
+          <label for="user_name" className="active">Username</label>
+        </div>
+
+        <div className="input-field col s6">
+          <input placeholder="password" id="password" name='SignUpPassword' type="password" className="validate" onChange={this.handleChange.bind(this)}/>
+          <label for="password" className="active">Password</label>
+        </div>
+
+        <div className="input-field col s6">
+          <input placeholder="first name" id="first_name" name='SignUpFirstname' type="text" className="validate" onChange={this.handleChange.bind(this)}/>
+          <label for="first_name" className="active">first name</label>
+        </div>
+
+        <div className="input-field col s6">
+          <input placeholder="last name" id="last_name" name='SignUpLastname' type="text" className="validate" onChange={this.handleChange.bind(this)}/>
+          <label for="last_name" className="active">last name</label>
+        </div>
+
         <div className="errorMsg">{this.state.errorMsg}</div>
-        <button onClick = {this.enterNewUser.bind(this)}> Sign Up! </button>
-        <button onClick={() => (this.props.onClick("Login"))}> Log In Instead
-        </button>
-      </div> 
+        <a className="waves-effect waves-light btn" onClick={this.enterNewUser.bind(this)}>Sign Up!</a>
+      </div>
     </div>)
   }
 

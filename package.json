@@ -24,6 +24,7 @@
     "jquery": "latest",
     "knex": "latest",
     "live-server": "^1.0.0",
+    "materialize-css": "^0.97.7",
     "method-override": "~2.0.2",
     "mocha": "^2.4.5",
     "mysql": "latest",
