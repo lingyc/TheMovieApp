@@ -91,27 +91,11 @@ class App extends React.Component {
     })
   }
 
-  logInFunction(name,password) {
-    this.setState({username: name})
-    var that=this;
-    console.log(name,password)
-
-    $.post('http://127.0.0.1:3000/login',{name:name,password:password}).then(function(response) {
-      
-   
-      if (response[0]==='it worked') {
-          that.getCurrentFriends();
-          
-       console.log('hi')
-          that.setState({
-            view:'Home',
-            currentUser:response[1]
-
-          })
-        }
-       console.log('this.state.view after state is set again',that.state.view)
-      }).catch(function(err) {console.log(err)})
-    }
+  logInFunction(username) {
+    this.setState({
+      currentUser: username
+    })
+  }
 
   enterNewUser(name,password) {
     console.log(name,password);
@@ -296,11 +280,7 @@ console.log('tr',top,response)
 
   render() {
     if (this.state.view==='Login') {
-      return ( < div > <h2 id='loginHeader'>Login</h2> <br/>
-        < LogIn 
-          ourFunction={this.changeView.bind(this)}
-          logInFunction={this.logInFunction.bind(this)}
-         / >  </div> );
+      return (<LogIn changeViews={this.changeViews.bind(this)} logInFunction={this.logInFunction.bind(this)}/>);
     } else if (this.state.view==="SignUp") {
       return ( < div ><h2 id='loginHeader'>SignUp</h2> <br/>
         < SignUp enterUser={this.enterNewUser.bind(this)} onClick={this.changeViews.bind(this)}/ >
