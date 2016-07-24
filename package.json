@@ -5,12 +5,18 @@
   "license": "UNLICENSE",
   "main": "server.js",
   "dependencies": {
+    "babel-cli": "latest",
+    "babel-preset-es2015": "latest",
+    "babel-preset-react": "^6.11.1",
+    "babel-register": "latest",
     "bcrypt-nodejs": "latest",
     "bluebird": "^3.4.1",
     "body-parser": "~1.4.2",
     "bookshelf": "latest",
     "bootstrap": "latest",
+    "chai": "^3.5.0",
     "client-sessions": "^0.7.0",
+    "cors": "^2.7.1",
     "express": "~4.5.1",
     "express-session": "latest",
     "gulp": "latest",
@@ -19,6 +25,7 @@
     "knex": "latest",
     "live-server": "^1.0.0",
     "method-override": "~2.0.2",
+    "mocha": "^2.4.5",
     "mysql": "latest",
     "nodemon": "^1.9.2",
     "q": "^1.4.1",
@@ -28,13 +35,7 @@
     "react-router": "^2.6.0",
     "react-star-rating-component": "^1.0.0",
     "request": "^2.73.0",
-    "underscore": "latest",
-    "babel-cli": "latest",
-    "babel-preset-es2015": "latest",
-    "babel-preset-react": "^6.11.1",
-    "babel-register": "latest",
-    "chai": "^3.5.0",
-    "mocha": "^2.4.5"
+    "underscore": "latest"
   },
   "scripts": {
     "start": "babel . --out-dir compiled --preset=es2015, react --ignore=node_modules"

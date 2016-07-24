@@ -4,11 +4,9 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var sessions = require("client-sessions");
+var cors = require('cors');
 
-
-// console.log('handler', handler)
-
-
+app.use(cors());
 app.use(sessions({
   cookieName: 'mySession', // cookie name dictates the key name added to the request object
   secret: 'blargadeeblargblarg', // should be a large unguessable string
@@ -18,26 +16,21 @@ app.use(sessions({
   saveInitialized: true
 }));
 
-
-
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 app.use('/scripts', express.static(__dirname + '/node_modules'));
 app.use('/compiled', express.static(__dirname + '/compiled'));
-app.post('/sendWatchRequest',handler.sendWatchRequest)
+
 app.post('/signup', handler.signupUser);
 app.post('/login', handler.signinUser);
-app.post('/decline', handler.decline);
-app.post('/accept', handler.accept);
-app.post('/getFriends',handler.getFriends)
 app.get('/login',function(req,res){
-console.log('loeijwfloejfelifjdp')
+	console.log('loeijwfloejfelifjdp')
 })
-app.post('/findMovieBuddies',handler.findMovieBuddies)
 
-
-
+//////////////////
+//Handling friends
+//////////////////
 
 //friend requests
 app.post('/listRequests', handler.listRequests);
@@ -45,6 +38,15 @@ app.post('/sendRequest', handler.sendRequest);
 //Friend requests
 app.post('/getThisFriendsMovies',handler.getThisFriendsMovies)
 app.post('/logout', handler.logout);
+
+app.post('/sendWatchRequest',handler.sendWatchRequest)
+
+app.post('/decline', handler.decline);
+app.post('/accept', handler.accept);
+
+app.post('/findMovieBuddies',handler.findMovieBuddies)
+app.post('/getFriends',handler.getFriends)
+app.get('/getFriendList', handler.getFriendList)
 
 
 //////////////////
@@ -57,7 +59,6 @@ app.get('/getFriendUserRatings', handler.getFriendUserRatings);
 app.post('/getMultipleMovieRatings', handler.getMultipleMovieRatings);
 app.post('/getFriendRatings', handler.handleGetFriendRatings);
 app.get('/searchRatedMovie', handler.searchRatedMovie);
-app.get('/getFriendList', handler.getFriendList)
 
 
 var port = process.env.PORT || 3000;
