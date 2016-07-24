@@ -23,6 +23,12 @@ class App extends React.Component {
     console.log('testinggg')
     $.post('http://127.0.0.1:3000/getFriends',{test:'info'},function(a,b) {
       console.log('what you get back from server for get friends',a,b);
+             for (var i=0;i<a.length;i++){
+                if (a[i][1]===null){
+                  a[i][1] = "No comparison to be made";
+                }              
+              }
+
        var final= a.sort(function(a,b){return b[1]-a[1]});
       that.setState({
         myFriends:final
@@ -54,12 +60,28 @@ class App extends React.Component {
     var that=this;
     $.post('http://127.0.0.1:3000/findMovieBuddies',{dummy:'info'},function(a,b) {
       var final=a.sort(function(a,b){return b[1]-a[1]})
-console.log(that.state.myFriends,that.state.potentialMovieBuddies);
+      var myFriends=that.state.myFriends
+       var realFinal=[]
+        for (var i=0;i<final.length;i++){
+          var unique=true
+          for (var x=0;x<myFriends.length;x++){
+            if (final[i][0]===myFriends[x][0]){
+              unique=false;
+            }
+          }
+          if (unique){
+            realFinal.push(final[i])
+          }
+        }
+
+
 
       that.setState({
         view:"FNMB",
-        potentialMovieBuddies:final
+        potentialMovieBuddies:realFinal
       })
+      console.log(that.state.myFriends,that.state.potentialMovieBuddies);
+
     })
   }
 
@@ -78,7 +100,7 @@ console.log(that.state.myFriends,that.state.potentialMovieBuddies);
       
    
       if (response[0]==='it worked') {
-         // that.getCurrentFriends();
+          that.getCurrentFriends();
           
        console.log('hi')
           that.setState({
@@ -168,7 +190,7 @@ console.log(that.state.myFriends,that.state.potentialMovieBuddies);
   /////Nav change
   /////////////////////
   changeViews(targetState) {
-    
+    console.log(this.state);
     if (targetState==='Friends'){
       this.getCurrentFriends();
     }
@@ -202,6 +224,7 @@ console.log(that.state.myFriends,that.state.potentialMovieBuddies);
     console.log(a);
     $.post('http://127.0.0.1:3000/sendRequest',{name:a},function(a,b) {
      console.log('a','b');
+
     });
   }
 
