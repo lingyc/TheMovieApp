@@ -77,7 +77,7 @@ console.log(that.state.myFriends,that.state.potentialMovieBuddies);
       
    
       if (response[0]==='it worked') {
-          that.getCurrentFriends();
+         // that.getCurrentFriends();
           
        console.log('hi')
           that.setState({
