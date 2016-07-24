@@ -53,7 +53,7 @@ class LogIn extends React.Component {
           });
 
           that.props.changeViews('Home');
-          that.props.logInFunction(response[1]);
+          that.props.setCurrentUser(response[1]);
         }
          console.log('this.state.view after state is set again',that.state.view);
       })
@@ -68,21 +68,22 @@ class LogIn extends React.Component {
 
 
   render() {
-    return (<div><h2 id='loginHeader'>Login</h2><br/>
-      <div id='logInStyling'>
-        <p id='loginFields'>Name</p>
-        <input type='text' id='LogInName' name='LogInName' placeholder='username' onChange={this.handleChange.bind(this)}/> <br/>
-        <p id='loginFields'>Password</p>
-        <input type='password' id ='LogInPassword' name='LogInPassword' placeholder='password' onChange={this.handleChange.bind(this)}/> <br/>
-        <div id='buttons'> 
-          <div className="errorMsg">{this.state.errorMsg}</div>
-          <button onClick={this.handleLogIn.bind(this)}> 
-            Log In!
-          </button> 
-          <button onClick={() => this.props.changeViews('SignUp')}> Go to Sign Up </button>
+    return (
+      <div><h2 id='loginHeader'>Login</h2><br/>
+        <div id='logInStyling'>
+          <p id='loginFields'>Name</p>
+          <input type='text' id='LogInName' name='LogInName' placeholder='username' onChange={this.handleChange.bind(this)}/> <br/>
+          <p id='loginFields'>Password</p>
+          <input type='password' id ='LogInPassword' name='LogInPassword' placeholder='password' onChange={this.handleChange.bind(this)}/> <br/>
+          <div id='buttons'> 
+            <div className="errorMsg">{this.state.errorMsg}</div>
+            <button onClick={this.handleLogIn.bind(this)}> 
+              Log In!
+            </button> 
+            <button onClick={() => this.props.changeViews('SignUp')}> Go to Sign Up </button>
+          </div>
         </div>
-      </div>
-    </div>)
+      </div>)
   }
 }
 
