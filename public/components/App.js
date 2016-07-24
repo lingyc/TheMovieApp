@@ -58,7 +58,7 @@ class App extends React.Component {
     //   }
     // })
     this.setState({
-      view: "Inbox"
+      view: "Home"
     })
     console.log('refreshed inbox, should delete friend request on the spot instead of moving')
   }
@@ -80,6 +80,9 @@ class App extends React.Component {
     //     console.log(error);
     //   }
     // });
+    this.setState({
+      view: "Home"
+    })
   }
 
   findMovieBuddies() {
@@ -260,7 +263,7 @@ class App extends React.Component {
       console.log('Response I get!!!!!!!',response);
       var top=[]
       var bottom=[]
-      console.log('tr',top,response)
+      console.log('tr', response)
       for (var i=0;i<response[0].length;i++){
         if (response[0][i]['requestor']!==response[1] && response[0][i]['response']===null ){
           top.push(response[0][i]);
@@ -270,7 +273,8 @@ class App extends React.Component {
         }
       }
 
-      console.log('tr bottom',bottom)
+      console.log('pending responses (both friend and watch), which gets passed down to inbox', top)
+      console.log('pending requests, which gets passed down to inbox', bottom)
       that.setState({
         pendingFriendRequests:top,
         requestResponses:bottom
@@ -356,6 +360,7 @@ class App extends React.Component {
             />
           </div>
             <Inbox 
+              requests={this.state.pendingFriendRequests}
               responsesAnswered={this.state.requestResponses}
               logout={this.logout.bind(this)}  
               accept= {this.acceptFriend.bind(this)} 
