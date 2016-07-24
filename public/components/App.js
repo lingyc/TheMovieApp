@@ -219,24 +219,19 @@ class App extends React.Component {
 
 
   buddyRequest(a) {
-    console.log('callingbuddy')
-    console.log(a);
-    $.post('http://127.0.0.1:3000/sendRequest',{name:a},function(a,b) {
-     console.log('a','b');
-
-    });
+    this.sendRequest(a);
   }
 
 
-  sendRequest() {
+  sendRequest(a) {
 
     var that=this;
     if (document.getElementById('findFriendByName')!==null){
     var person=document.getElementById('findFriendByName').value
   } else {
-    var person ='test'
+    var person =a||'test';
   }
-
+console.log('person:',person)
 var friends1=[];
 
 for (var i=0;i<this.state.myFriends;i++){
@@ -254,7 +249,7 @@ console.log('tof',friends1.indexOf(person)!== -1, friends1.length!==0)
 if (friends1.indexOf(person)!== -1 && friends1.length!==0){
   $("#AlreadyReq").fadeIn(1000);
       $("#AlreadyReq").fadeOut(1000);
-  
+
   console.log('this person is already in there!!')
 } else if (person.length===0) {
       $("#enterRealFriend").fadeIn(1000);
