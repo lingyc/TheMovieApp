@@ -18,9 +18,10 @@ class MovieWatchRequest extends React.Component {
     $.get('http://127.0.0.1:3000/getFriendList')
     .then(friends => {
       console.log('response from server', friends);
+      var uniqFriend = _.uniq(friends);
       this.setState({
-        friends: friends,
-        filteredFriends: friends
+        friends: uniqFriend,
+        filteredFriends: uniqFriend
       });
     })
   }
