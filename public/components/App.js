@@ -22,6 +22,7 @@ class App extends React.Component {
     var that=this;
     console.log('testinggg')
     $.post('http://127.0.0.1:3000/getFriends',{test:'info'},function(a,b) {
+      console.log('what you get back from server for get friends',a,b);
        var final= a.sort(function(a,b){return b[1]-a[1]});
       that.setState({
         myFriends:final
@@ -77,7 +78,7 @@ console.log(that.state.myFriends,that.state.potentialMovieBuddies);
       
    
       if (response[0]==='it worked') {
-          that.getCurrentFriends();
+         // that.getCurrentFriends();
           
        console.log('hi')
           that.setState({
@@ -167,7 +168,7 @@ console.log(that.state.myFriends,that.state.potentialMovieBuddies);
   /////Nav change
   /////////////////////
   changeViews(targetState) {
-    console.log(this.state);
+    
     if (targetState==='Friends'){
       this.getCurrentFriends();
     }

@@ -8,7 +8,6 @@ var SignUp = (props) => (
     id = 'SignUpPassword'
     name = 'SignUpPassword'/><br/> 
 
-    <SignUpDrop />
 
     <div id='buttons2'>
       <button onClick = {
