@@ -69,21 +69,23 @@ class LogIn extends React.Component {
 
   render() {
     return (
-      <div className='login'>
-        <a className="waves-effect waves-light btn" onClick={() => this.props.changeViews('SignUp')}>Go to Sign Up</a>
-        <div className="or">---------- OR -----------</div>
-        <div className='loginForm'>
-          <div className="input-field col s6">
-            <input placeholder="username" id="user_name" name='LogInName' type="text" className="validate" onChange={this.handleChange.bind(this)}/>
-            <label for="user_name" className="active">Username</label>
-          </div>
+      <div className='landing'>
+        <div className='login'>
+          <a className="waves-effect waves-light btn" onClick={() => this.props.changeViews('SignUp')}>Go to Sign Up</a>
+          <div className="or">---------- OR -----------</div>
+          <div className='loginForm'>
+            <div className="input-field col s6">
+              <input placeholder="username" id="user_name" name='LogInName' type="text" className="validate" onChange={this.handleChange.bind(this)}/>
+              <label for="user_name" className="active">Username</label>
+            </div>
 
-          <div className="input-field col s6">
-            <input placeholder="password" id="password" name='LogInPassword' type="password" className="validate" onChange={this.handleChange.bind(this)}/>
-            <label for="password" className="active">Password</label>
+            <div className="input-field col s6">
+              <input placeholder="password" id="password" name='LogInPassword' type="password" className="validate" onChange={this.handleChange.bind(this)}/>
+              <label for="password" className="active">Password</label>
+            </div>
+            <div className="errorMsg">{this.state.errorMsg}</div>
+            <a className="waves-effect waves-light btn" onClick={this.handleLogIn.bind(this)}>log in</a>
           </div>
-          <div className="errorMsg">{this.state.errorMsg}</div>
-          <a className="waves-effect waves-light btn" onClick={this.handleLogIn.bind(this)}>log in</a>
         </div>
       </div>)
   }
