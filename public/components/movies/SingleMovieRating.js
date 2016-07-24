@@ -71,15 +71,17 @@ class SingleMovieRating extends React.Component {
     return (
       <div>
         <div className="singleMovie">
-          <img className='moviethumbnail' src={movie.poster} />
-          <h1 className='movieTitle'>{movie.title}</h1>
+          <img className='moviethumnail' src={movie.poster} onClick={() => (this.props.change("SingleMovie", movie))}/>
+          <h1 className='movieTitle' onClick={() => (this.props.change("SingleMovie", movie))}>{movie.title}</h1>
           <p className='movieYear'>{movie.release_date}</p>
           <p className='movieDescription'>{movie.description}</p>
+          <ReviewComponent 
+            review={movie.review} 
+            title={movie.title}
+            id={movie.id}/>
           <p className='imdbRating'>IMDB rating: {movie.imdbRating}</p>
-          <div className='watchRequestButton'>send watch request</div>
-          <div className='userRating'>{(this.state.userRating === null) ? 'you have not rated this movie' : 'your rating is ' + this.state.userRating}
-          <StarRatingComponent onStarClick={this.onStarClick.bind(this)} movie={this.props.currentMovie}/>
-          </div>
+          <MovieWatchRequest movie={movie}/>
+          <StarRatingComponent movie={movie}/>
           <div className='avgFriendRatingBlock'>average friend rating: {(movie.friendAverageRating) ? movie.friendAverageRating : 'no friend ratings' }</div>
         </div>
         <div>
