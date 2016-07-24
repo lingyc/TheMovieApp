@@ -252,6 +252,9 @@ var pplYouCantSendTo=friends1;
 console.log('ppl you cant send to',friends1,person);
 console.log('tof',friends1.indexOf(person)!== -1, friends1.length!==0)
 if (friends1.indexOf(person)!== -1 && friends1.length!==0){
+  $("#AlreadyReq").fadeIn(1000);
+      $("#AlreadyReq").fadeOut(1000);
+  
   console.log('this person is already in there!!')
 } else if (person.length===0) {
       $("#enterRealFriend").fadeIn(1000);
@@ -265,7 +268,10 @@ if (friends1.indexOf(person)!== -1 && friends1.length!==0){
           that.setState({
             requestsOfCurrentUser:a
           })
-     // console.log('here it is',that.state.requestsOfCurrentUser,that.state.myFriends);
+
+ $("#reqSent").fadeIn(1000);
+      $("#reqSent").fadeOut(1000);
+
 
       });
       if ( document.getElementById('findFriendByName')!==null){
