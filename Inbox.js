@@ -10,7 +10,13 @@ var Inbox = (props) => (
   inboxName={friend[0]} requestType={friend[1]} requestMovie={friend[2]} /> )})}
 
 Request Responses:
-{props.responsesAnswered.map(function(unit){ return <Responses responsesInfo={unit.requestee} responseAnswer={unit.response} responseType={unit.requestTyp} />})}
+{props.responsesAnswered.map(function(unit){ return <Responses 
+  responsesInfo={unit.requestee} 
+  responseAnswer={unit.response} 
+  responseType={unit.requestTyp} 
+  self={unit.requestor}
+  remove={props.remove}
+/>})}
 
 </div>
 

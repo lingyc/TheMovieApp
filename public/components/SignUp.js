@@ -81,6 +81,7 @@ class SignUp extends React.Component {
   }
 
   render() {
+    let that = this;
     return (
     <div className='signUpForm'>
       <h2 id='loginHeader'>SignUp</h2><br/>

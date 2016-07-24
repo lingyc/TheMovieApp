@@ -46,6 +46,21 @@ class App extends React.Component {
     $.post('http://127.0.0.1:3000/accept',{personToAccept:final},function(a,b) {
       console.log(a,b)
     })
+
+    // $.ajax({
+    //   url: 'http://127.0.0.1:3000/removeFriendRequest',
+    //   type: 'DELETE',
+    //   success: function(response) {
+    //     console.log('REQUEST REMOVED!');
+    //   },    
+    //   error: function(error) {
+    //     console.log(error);
+    //   }
+    // })
+    this.setState({
+      view: "Inbox"
+    })
+    console.log('refreshed inbox, should delete friend request on the spot instead of moving')
   }
 
   declineFriend(a) {
@@ -54,6 +69,17 @@ class App extends React.Component {
     $.post('http://127.0.0.1:3000/decline',{personToDecline:final},function(a,b) {
       console.log(a,b)
     })
+
+    // $.ajax({
+    //   url: 'http://127.0.0.1:3000/removeFriendRequest',
+    //   type: 'DELETE',
+    //   success: function(response) {
+    //     console.log('REQUEST REMOVED!');
+    //   }, 
+    //   error: function(error) {
+    //     console.log(error);
+    //   }
+    // });
   }
 
   findMovieBuddies() {
@@ -232,25 +258,23 @@ class App extends React.Component {
     console.log('this should list friend reqs')
     $.post('http://127.0.0.1:3000/listRequests',function(response,error) {
       console.log('Response I get!!!!!!!',response);
-var top=[]
-var bottom=[]
-console.log('tr',top,response)
+      var top=[]
+      var bottom=[]
+      console.log('tr',top,response)
       for (var i=0;i<response[0].length;i++){
-if (response[0][i]['requestor']!==response[1] && response[0][i]['response']===null ){
+        if (response[0][i]['requestor']!==response[1] && response[0][i]['response']===null ){
           top.push(response[0][i]);
         }
-      if (response[0][i]['requestor']===response[1] &&response[0][i]['response']!==null){
+        if (response[0][i]['requestor']===response[1] &&response[0][i]['response']!==null){
           bottom.push(response[0][i]);
         }
       }
 
-console.log('tr',top,response)
+      console.log('tr bottom',bottom)
       that.setState({
         pendingFriendRequests:top,
         requestResponses:bottom
       })
-
-
     });
   };
 
@@ -277,6 +301,23 @@ console.log('tr',top,response)
 
   listPotentials() {
     console.log('this should list potential friends')
+  }
+
+  removeRequest(person, self) {
+    $.ajax({
+      url: 'http://127.0.0.1:3000/removeRequest',
+      type: 'DELETE',
+      data: {
+        requestor: self,
+        requestee: person
+      },
+      success: function(response) {
+        console.log('REQUEST REMOVED!');
+      },
+      error: function(error) {
+        console.log(error);
+      }
+    });
   }
 
   render() {
@@ -315,13 +356,14 @@ console.log('tr',top,response)
             />
           </div>
             <Inbox 
-            responsesAnswered={this.state.requestResponses}
+              responsesAnswered={this.state.requestResponses}
               logout={this.logout.bind(this)}  
               accept= {this.acceptFriend.bind(this)} 
               decline={this.declineFriend.bind(this)} 
               listRequests={this.listPendingFriendRequests.bind(this)} 
               pplWhoWantToBeFriends={this.state.pendingFriendRequests.map(
                 function(a){return [a.requestor,a.requestTyp,a.movie===null?"": "("+a.movie+")"]})} 
+              remove={this.removeRequest.bind(this)}
             />
         </div>
       );

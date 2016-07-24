@@ -40,9 +40,11 @@ app.post('/getThisFriendsMovies',handler.getThisFriendsMovies)
 app.post('/logout', handler.logout);
 
 app.post('/sendWatchRequest',handler.sendWatchRequest)
+app.delete('/sendWatchRequest', handler.removeWatchRequest)
 
 app.post('/decline', handler.decline);
 app.post('/accept', handler.accept);
+app.delete('/removeRequest', handler.removeRequest)
 
 app.post('/findMovieBuddies',handler.findMovieBuddies)
 app.post('/getFriends',handler.getFriends)
