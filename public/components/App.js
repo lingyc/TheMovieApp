@@ -176,13 +176,13 @@ class App extends React.Component {
   /////////////////////
   changeViews(targetState) {
     console.log(this.state);
-    if (targetState==='Friends'){
-      this.getCurrentFriends();
-      if (this.state.requestsOfCurrentUser.length===0 && this.state.myFriends.length===0){
-       this.sendRequest();
-      }
+    // if (targetState==='Friends'){
+    //   this.getCurrentFriends();
+    //   if (this.state.requestsOfCurrentUser.length===0 && this.state.myFriends.length===0){
+    //    this.sendRequest();
+    //   }
 
-    }
+    // }
     if (targetState==='Home'){
  this.getCurrentFriends();
       if (this.state.requestsOfCurrentUser.length===0 && this.state.myFriends.length===0){

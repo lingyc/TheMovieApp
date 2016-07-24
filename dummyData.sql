@@ -13,6 +13,7 @@ INSERT INTO users (id,username, password, firstName, lastName, email)
 VALUES (3,'justin', '12345', 'Justin', 'Ou', 'justin@gmail.com');
 
 
+
 INSERT INTO ratings (score,movieid,userid,review,created_at,updated_at)
 VALUES (5.5, 209112, 1, 'pretty good', '2016/7/1 11*30*45', '2016/7/1 11*30*45');
 INSERT INTO ratings (score,movieid,userid,review,created_at,updated_at)
