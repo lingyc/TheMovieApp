@@ -91,7 +91,7 @@ class Home extends React.Component {
       if (this.state.movies.length === 0) {
         feedbackMsg = (<div className="errorMsg">no match found, please try another title</div>)
       } else {
-        feedbackMsg = (<div className="updatedMsg">search results</div>)
+        feedbackMsg = (<div className="updatedMsg">all match results:</div>)
       }
     }
 

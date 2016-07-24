@@ -126,7 +126,7 @@ class MovieWatchRequest extends React.Component {
             </ul>
           </div>)
       } else if (this.state.friendStash.length === 0) {
-        var stash = 'please select your friend';
+        var stash = <div className="updateMsg">please select your friend</div>;
       }
 
       return(
