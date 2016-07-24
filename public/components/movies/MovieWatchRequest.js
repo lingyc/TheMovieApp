@@ -9,7 +9,7 @@ class MovieWatchRequest extends React.Component {
    		friendStash:[],
       message: '',
       requestSent: false,
-      noRequesteeWarning: false,
+      noRequesteeWarning: false
     };
   }
 
@@ -53,7 +53,7 @@ class MovieWatchRequest extends React.Component {
         movie: this.props.movie.title,
         movieid: this.props.movie.id,
         message: this.state.message,
-        requestee: this.state.friendStash,
+        requestee: this.state.friendStash
       };
 
       $.post('http://127.0.0.1:3000/sendWatchRequest', requestObj)
@@ -63,7 +63,7 @@ class MovieWatchRequest extends React.Component {
           friendStash: [],
           filter: '',
           message: '',
-          requestSent: true,
+          requestSent: true
         })
       });
     } else {

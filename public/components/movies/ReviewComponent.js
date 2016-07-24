@@ -4,7 +4,9 @@ class ReviewComponent extends React.Component {
     super(props);
     this.state = {
       userReview: this.props.review,
-      editMode: false
+      editMode: false,
+      reviewSubmitted: false,
+      currentInput: this.props.review
     };
   }
 
@@ -15,21 +17,31 @@ class ReviewComponent extends React.Component {
     });
   }
 
-  handleEdit(event) {
-    this.setState({editMode: true});
+  handleEdit() {
+    this.setState({
+      editMode: true,
+      reviewSubmitted: false
+    });
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
+  closeEdit() {
     this.setState({
       editMode: false,
+      currentInput: this.state.userReview
     });
-    this.updateReview(this.state.userReview);
+  }
+
+  handleSubmit() {
+    this.setState({
+      editMode: false,
+      userReview: this.state.currentInput
+    });
+    this.updateReview(this.state.currentInput);
   }
 
   handleChange(event) {
     this.setState({
-      userReview: event.target.value
+      currentInput: event.target.value
     });
   }
 
@@ -42,6 +54,9 @@ class ReviewComponent extends React.Component {
     $.post('http://127.0.0.1:3000/ratemovie', movieObj)
     .done(response => {
       console.log('movie rating updated');
+      this.setState({
+        reviewSubmitted: true
+      })
     })
   }
 
@@ -50,16 +65,16 @@ class ReviewComponent extends React.Component {
   		return (
         <div className='userReviewInput'>
           Enter your review, 255 characters maximum
-          <form onSubmit={this.handleSubmit.bind(this)}>
-    	     <input type='text' value={this.state.userReview} onChange={this.handleChange.bind(this)} maxlength="255"/>
-           <input type='submit' value='submit review'/>
-          </form>
+    	     <input type='text' value={this.state.currentInput} onChange={this.handleChange.bind(this)} maxlength="255"/>
+           <button onClick={this.handleSubmit.bind(this)}>submit review</button>
+           <button onClick={this.closeEdit.bind(this)}>cancel</button>
         </div>);
     } else {
       return (
         <div className='userReview'>
           your review: {(this.state.userReview === '') ? 'you have not review the movie yet' : this.state.userReview}
           <button className='editReviewButton' onClick={this.handleEdit.bind(this)}>edit review</button>
+          {(this.state.reviewSubmitted) ? <div className="updateMsg">review submitted</div> : ''}
         </div>);
     }
 	}

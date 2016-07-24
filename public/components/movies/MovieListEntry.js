@@ -17,25 +17,6 @@ class MovieListEntry extends React.Component {
     });
   }
 
-  onStarClick(event) {
-    //setState is async
-    this.setState({userRating: event.target.value});
-    this.updateRating(event.target.value);
-  }
-
-
-  updateRating(rating) {
-    var movieObj = {
-      title: this.props.movie.title, 
-      id: this.props.movie.id,
-      rating: rating
-    };
-    $.post('http://127.0.0.1:3000/ratemovie', movieObj)
-    .done(response => {
-      console.log('movie rating updated');
-    })
-  }
-
   render() {
     let movie = this.props.movie;
 
@@ -58,13 +39,11 @@ class MovieListEntry extends React.Component {
   			<p className='movieDescription'>{movie.description}</p>
         <ReviewComponent 
           review={movie.review} 
-          title={this.props.movie.title}
-          id={this.props.movie.id}/>
+          title={movie.title}
+          id={movie.id}/>
   			<p className='imdbRating'>IMDB rating: {movie.imdbRating}</p>
-  			<MovieWatchRequest movie={this.props.movie}/>
-        <div className='userRating'>{(this.state.userRating === null) ? 'you have not rated this movie' : 'your rating is ' + this.state.userRating}
-          <StarRatingComponent onStarClick={this.onStarClick.bind(this)}/>
-        </div>
+  			<MovieWatchRequest movie={movie}/>
+        <StarRatingComponent movie={movie}/>
         <div className='avgFriendRatingBlock'>average friend rating: {(movie.friendAverageRating) ? movie.friendAverageRating : 'no friend ratings' }</div>
         {friendSection}
       </div>);
