@@ -1,4 +1,17 @@
-var SingleFriend = (props) => (
+var SingleFriend = (props) => {
+
+
+console.log('props.moviesOfFriend',props.moviesOfFriend)
+if (props.moviesOfFriend.length===0){
+	return (
+		<div>
+		<button onClick={() => (props.onClick("Friends"))}>Back to all friends</button>
+		Aint no movies
+		</div>
+		)
+
+} else {
+	return (
   <div>
 		<button onClick={() => (props.onClick("Friends"))}>Back to all friends</button>
 		<h2> List of {props.friendName}'s Movies</h2>
@@ -8,6 +21,8 @@ var SingleFriend = (props) => (
 	</div>
 
 
-	);
+	)
+}
+};
 
 window.SingleFriend = SingleFriend;
