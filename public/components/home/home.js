@@ -37,15 +37,22 @@ class Home extends React.Component {
   //function that takes movies from external API and query the database for ratings
   //will set the movies state after ratings are successfully retrived
   getUserRatingsForMovies(moviesFromOMDB) {
-    console.log('posting to:', 'http://127.0.0.1:3000/getMultipleMovieRatings');
-    $.post('http://127.0.0.1:3000/getMultipleMovieRatings', { movies: moviesFromOMDB })
-    .done(moviesWithRatings => {
-      console.log('response from server', moviesWithRatings);
+    if (moviesFromOMDB.length === 0) {
       this.setState({
-        movies: moviesWithRatings,
+        movies: [],
         recentRelease: false
       });
-    })
+    } else {
+      console.log('posting to:', 'http://127.0.0.1:3000/getMultipleMovieRatings');
+      $.post('http://127.0.0.1:3000/getMultipleMovieRatings', { movies: moviesFromOMDB })
+      .done(moviesWithRatings => {
+        console.log('response from server', moviesWithRatings);
+        this.setState({
+          movies: moviesWithRatings,
+          recentRelease: false
+        });
+      })
+    }
   }
 
   //////////////////////
@@ -78,12 +85,18 @@ class Home extends React.Component {
 
   render() {
     var lable = 'recent releases';
+    var feedbackMsg = '';
     if (this.state.recentRelease === false) {
       lable = 'back to recent releases';
+      if (this.state.movies.length === 0) {
+        feedbackMsg = (<div className="errorMsg">no match found, please try another title</div>)
+      } else {
+        feedbackMsg = (<div className="updatedMsg">search results</div>)
+      }
     }
 
     return (
-      <div className='Home'> 
+      <div className='Home'>
         <div onClick={this.getRecentReleasesInitialize.bind(this)}>{lable}</div>
         <div className='searchMovie'>
           <input type ='text' id='movieInput' 
@@ -91,6 +104,7 @@ class Home extends React.Component {
             placeholder='Insert Movie Title'
             onKeyPress={this.handleSearch.bind(this)}/>
         </div>
+        {feedbackMsg}
         <MovieList movies={this.state.movies}
         change={this.props.change.bind(this)}
         />
