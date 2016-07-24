@@ -77,6 +77,7 @@ class SingleMovieRating extends React.Component {
           <p className='movieDescription'>{movie.description}</p>
           <p className='imdbRating'>IMDB rating: {movie.imdbRating}</p>
           <div className='watchRequestButton'>send watch request</div>
+          <div className='userRating'>{(this.state.userRating === null) ? 'you have not rated this movie' : 'your rating is ' + this.state.userRating}
           <StarRatingComponent onStarClick={this.onStarClick.bind(this)} movie={this.props.currentMovie}/>
           </div>
           <div className='avgFriendRatingBlock'>average friend rating: {(movie.friendAverageRating) ? movie.friendAverageRating : 'no friend ratings' }</div>
