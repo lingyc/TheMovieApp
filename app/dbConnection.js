@@ -6,6 +6,7 @@ var knex = require('knex')({
     password : '12345',
     database : 'MainDatabase',
     charset  : 'utf8'
+
   }
 });
 
