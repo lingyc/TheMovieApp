@@ -14,7 +14,8 @@ class App extends React.Component {
       potentialMovieBuddies:{},
       username: null,
       requestResponses:[],
-      currentUser:null
+      currentUser:null,
+      requestsOfCurrentUser:[]
     };
   }
 
@@ -176,9 +177,23 @@ class App extends React.Component {
   /////////////////////
   changeViews(targetState) {
     console.log(this.state);
-    if (targetState==='Friends'){
-      this.getCurrentFriends();
+    // if (targetState==='Friends'){
+    //   this.getCurrentFriends();
+    //   if (this.state.requestsOfCurrentUser.length===0 && this.state.myFriends.length===0){
+    //    this.sendRequest();
+    //   }
+
+    // }
+    if (targetState==='Home'){
+ this.getCurrentFriends();
+      if (this.state.requestsOfCurrentUser.length===0 && this.state.myFriends.length===0){
+       this.sendRequest();
+      }
+
+
     }
+
+
 
      if (targetState==="Inbox"){
        this.listPendingFriendRequests()
@@ -205,25 +220,59 @@ class App extends React.Component {
 
 
   buddyRequest(a) {
-    console.log('callingbuddy')
-    console.log(a);
-    $.post('http://127.0.0.1:3000/sendRequest',{name:a},function(a,b) {
-     console.log('a','b');
-
-    });
+    this.sendRequest(a);
   }
 
 
-  sendRequest() {
-    var person=document.getElementById('findFriendByName').value;
-    if (person.length===0) {
+  sendRequest(a) {
+
+    var that=this;
+    if (document.getElementById('findFriendByName')!==null){
+    var person=document.getElementById('findFriendByName').value
+  } else {
+    var person =a||'test';
+  }
+console.log('person:',person)
+var friends1=[];
+
+for (var i=0;i<this.state.myFriends;i++){
+  friends1.push(this.state.myFriends[i][0])
+}
+
+for (var i=0;i<this.state.requestsOfCurrentUser.length;i++){
+  friends1.push(this.state.requestsOfCurrentUser[i])
+}
+
+
+var pplYouCantSendTo=friends1;
+console.log('ppl you cant send to',friends1,person);
+console.log('tof',friends1.indexOf(person)!== -1, friends1.length!==0)
+if (friends1.indexOf(person)!== -1 && friends1.length!==0){
+  $("#AlreadyReq").fadeIn(1000);
+      $("#AlreadyReq").fadeOut(1000);
+
+  console.log('this person is already in there!!')
+} else if (person.length===0) {
       $("#enterRealFriend").fadeIn(1000);
       $("#enterRealFriend").fadeOut(1000);
+
     } else {
+
+
       $.post('http://127.0.0.1:3000/sendRequest',{name:person},function(a,b) {
-        console.log(a,b);
+       
+          that.setState({
+            requestsOfCurrentUser:a
+          })
+
+ $("#reqSent").fadeIn(1000);
+      $("#reqSent").fadeOut(1000);
+
+
       });
-      var person = document.getElementById('findFriendByName').value = '';
+      if ( document.getElementById('findFriendByName')!==null){
+      document.getElementById('findFriendByName').value = '';
+}
     }
   }
 

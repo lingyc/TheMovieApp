@@ -47,7 +47,7 @@ class LogIn extends React.Component {
       .then(function(response) {
         if (response[0] === 'it worked') {
           console.log('hi');
-
+          
           that.setState({
             errorMsg: ''
           });
