@@ -52,11 +52,9 @@ class MyRatings extends React.Component {
     var results;
     if (this.state.allRatedMovies === false) {
       lable = 'back to all rated movies';
-      results = (this.state.movies.length === 0) ? 'results cannot be found' : 'current results:'
+      results = (this.state.movies.length === 0) ? (<div className="errorMsg">results cannot be found</div>) : (<div className="updateMsg">all match results:</div>)
     } else if (this.state.allRatedMovies && this.state.movies.length === 0) {
       lable = 'you have not rated any movies';
-    } else if (this.state.movies.length === 0) {
-
     } else {
       lable = 'all rated movies';
     }
@@ -70,7 +68,7 @@ class MyRatings extends React.Component {
             placeholder='Insert Movie Title'
             onKeyPress={this.handleSearch.bind(this)}/>
         </div>
-        <div>{results}</div>
+        {results}
         <MovieList movies={this.state.movies}
         change={this.props.change.bind(this)}
         />

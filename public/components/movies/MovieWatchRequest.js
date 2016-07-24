@@ -9,7 +9,7 @@ class MovieWatchRequest extends React.Component {
    		friendStash:[],
       message: '',
       requestSent: false,
-      noRequesteeWarning: false,
+      noRequesteeWarning: false
     };
   }
 
@@ -53,7 +53,7 @@ class MovieWatchRequest extends React.Component {
         movie: this.props.movie.title,
         movieid: this.props.movie.id,
         message: this.state.message,
-        requestee: this.state.friendStash,
+        requestee: this.state.friendStash
       };
 
       $.post('http://127.0.0.1:3000/sendWatchRequest', requestObj)
@@ -63,7 +63,7 @@ class MovieWatchRequest extends React.Component {
           friendStash: [],
           filter: '',
           message: '',
-          requestSent: true,
+          requestSent: true
         })
       });
     } else {
@@ -126,7 +126,7 @@ class MovieWatchRequest extends React.Component {
             </ul>
           </div>)
       } else if (this.state.friendStash.length === 0) {
-        var stash = 'please select your friend';
+        var stash = <div className="updateMsg">please select your friend</div>;
       }
 
       return(
@@ -134,7 +134,7 @@ class MovieWatchRequest extends React.Component {
           <div className="MovieWatchRequestFriendList">
             <input type="text" placeholder="filter friends" onChange={this.handleFilter.bind(this)}/>
             <ul className="friendList" name="friendsList" multiple>
-              {(this.state.filteredFriends.length === 0 ) ? 'no friend match is found' : ''}
+              {(this.state.filteredFriends.length === 0) ? <div className="errorMsg">'no friend match is found'</div> : ''}
               {this.state.filteredFriends.map(friend => <WatchRequestFriendEntry friend={friend} handleAddFriend={this.handleAddFriend.bind(this)}/>)}
             </ul>
           </div>
