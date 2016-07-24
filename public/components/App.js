@@ -14,7 +14,8 @@ class App extends React.Component {
       potentialMovieBuddies:{},
       username: null,
       requestResponses:[],
-      currentUser:null
+      currentUser:null,
+      requestsOfCurrentUser:[]
     };
   }
 
@@ -177,7 +178,21 @@ class App extends React.Component {
     console.log(this.state);
     if (targetState==='Friends'){
       this.getCurrentFriends();
+      if (this.state.requestsOfCurrentUser.length===0 && this.state.myFriends.length===0){
+       this.sendRequest();
+      }
+
     }
+    if (targetState==='Home'){
+ this.getCurrentFriends();
+      if (this.state.requestsOfCurrentUser.length===0 && this.state.myFriends.length===0){
+       this.sendRequest();
+      }
+
+
+    }
+
+
 
      if (targetState==="Inbox"){
        this.listPendingFriendRequests()
@@ -214,15 +229,48 @@ class App extends React.Component {
 
 
   sendRequest() {
-    var person=document.getElementById('findFriendByName').value;
-    if (person.length===0) {
+
+    var that=this;
+    if (document.getElementById('findFriendByName')!==null){
+    var person=document.getElementById('findFriendByName').value
+  } else {
+    var person ='test'
+  }
+
+var friends1=[];
+
+for (var i=0;i<this.state.myFriends;i++){
+  friends1.push(this.state.myFriends[i][0])
+}
+
+for (var i=0;i<this.state.requestsOfCurrentUser.length;i++){
+  friends1.push(this.state.requestsOfCurrentUser[i])
+}
+
+
+var pplYouCantSendTo=friends1;
+console.log('ppl you cant send to',friends1,person);
+console.log('tof',friends1.indexOf(person)!== -1, friends1.length!==0)
+if (friends1.indexOf(person)!== -1 && friends1.length!==0){
+  console.log('this person is already in there!!')
+} else if (person.length===0) {
       $("#enterRealFriend").fadeIn(1000);
       $("#enterRealFriend").fadeOut(1000);
+
     } else {
+
+
       $.post('http://127.0.0.1:3000/sendRequest',{name:person},function(a,b) {
-        console.log(a,b);
+       
+          that.setState({
+            requestsOfCurrentUser:a
+          })
+     // console.log('here it is',that.state.requestsOfCurrentUser,that.state.myFriends);
+
       });
-      var person = document.getElementById('findFriendByName').value = '';
+      if ( document.getElementById('findFriendByName')!==null){
+      document.getElementById('findFriendByName').value = '';
+}
     }
   }
 
