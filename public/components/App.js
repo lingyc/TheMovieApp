@@ -91,7 +91,8 @@ class App extends React.Component {
     })
   }
 
-  logInFunction(username) {
+  setCurrentUser(username) {
+    console.log('calling setCurrentUser');
     this.setState({
       currentUser: username
     })
@@ -280,12 +281,9 @@ console.log('tr',top,response)
 
   render() {
     if (this.state.view==='Login') {
-      return (<LogIn changeViews={this.changeViews.bind(this)} logInFunction={this.logInFunction.bind(this)}/>);
+      return (<LogIn changeViews={this.changeViews.bind(this)} setCurrentUser={this.setCurrentUser.bind(this)}/>);
     } else if (this.state.view==="SignUp") {
-      return ( < div ><h2 id='loginHeader'>SignUp</h2> <br/>
-        < SignUp enterUser={this.enterNewUser.bind(this)} onClick={this.changeViews.bind(this)}/ >
-        < /div>
-      );
+      return (< SignUp onClick={this.changeViews.bind(this)} setCurrentUser={this.setCurrentUser.bind(this)}/>);
     } 
     //this view is added for moviesearch rendering
     else if (this.state.view === "MovieSearchView") {
