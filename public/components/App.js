@@ -245,18 +245,23 @@ console.log('send request is being run!!')
     }
     console.log('person:',person)
     console.log('state', this.state);
+    console.log('line 248',this.state.myFriends)
     var friends1=[];
-console.log('this should also be my friends',this.state.myFriends)
-    for (var i=0;i<this.state.myFriends;i++){
-      friends1.push(this.state.myFriends[i][0])
+    var friends2=[]
+    for (var i=0;i<this.state.myFriends.length;i++){
+      console.log('line 251',this.state.myFriends[i])
+      friends1.push(this.state.myFriends[i][0]);
+      friends2.push(this.state.myFriends[i][0])
     }
 
     for (var i=0;i<this.state.requestsOfCurrentUser.length;i++){
       friends1.push(this.state.requestsOfCurrentUser[i])
     }
 
+    console.log('this should also be my friends',this.state.myFriends,friends1,friends2)
+
+
     var pplYouCantSendTo=friends1;
-    console.log('ppl you cant send to',friends1,person);
     console.log('tof',friends1.indexOf(person)!== -1, friends1.length!==0)
     if (friends1.indexOf(person)!== -1 && friends1.length!==0){
       $("#AlreadyReq").fadeIn(1000);
@@ -307,7 +312,7 @@ console.log('this should also be my friends',this.state.myFriends)
     });
   };
 
-  focusOnFriend() {
+  focusOnFriend(friend) {
     var that = this;
     $('.individual').on('click', function(event) {
       event.preventDefault();
@@ -315,14 +320,16 @@ console.log('this should also be my friends',this.state.myFriends)
 
       that.setState({
         view:'singleFriend',
-        friendToFocusOn: friendName
+        friendToFocusOn: friend
       });
 
-      $.get(Url + '/getFriendUserRatings',{friendName: friendName},function(response) {
+      $.get(Url + '/getFriendUserRatings',{friendName: friend},function(response) {
+        console.log(friend)
         console.log('getting friend movies:', response);
         that.setState({
           individualFriendsMovies: response
         });
+
       });
       return false;
     });

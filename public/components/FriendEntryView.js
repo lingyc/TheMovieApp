@@ -7,7 +7,7 @@ var FriendEntry = (props) => {
   		<img className='profilethumnail' src={'https://unsplash.it/170/170/?random'}/>
   	</div>
     <div id="Friend" className="col s9">
-    	<a className='individual'><h3 className="friendName" onClick={props.fof}>{props.Friend}</h3></a>  
+    	<a className='individual'><h3 className="friendName" onClick={function(){props.fof(props.Friend)}}>{props.Friend}</h3></a>  
     	<div className="compatability" >Compatability: {props.Comp}%</div>
     </div>
   </div>
