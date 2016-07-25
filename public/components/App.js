@@ -213,12 +213,10 @@ class App extends React.Component {
 
     // }
     if (targetState==='Home'){
- this.getCurrentFriends();
+      // this.getCurrentFriends();
       if (this.state.requestsOfCurrentUser.length===0 && this.state.myFriends.length===0){
-       this.sendRequest();
+        this.sendRequest();
       }
-
-
     }
 
 
@@ -256,51 +254,44 @@ class App extends React.Component {
 
     var that=this;
     if (document.getElementById('findFriendByName')!==null){
-    var person=document.getElementById('findFriendByName').value
-  } else {
-    var person =a||'test';
-  }
-console.log('person:',person)
-var friends1=[];
+      var person=document.getElementById('findFriendByName').value
+    } else {
+      var person = a || 'test';
+    }
+    console.log('person:',person)
+    console.log('state', this.state);
+    var friends1=[];
 
-for (var i=0;i<this.state.myFriends;i++){
-  friends1.push(this.state.myFriends[i][0])
-}
+    for (var i=0;i<this.state.myFriends;i++){
+      friends1.push(this.state.myFriends[i][0])
+    }
 
-for (var i=0;i<this.state.requestsOfCurrentUser.length;i++){
-  friends1.push(this.state.requestsOfCurrentUser[i])
-}
+    for (var i=0;i<this.state.requestsOfCurrentUser.length;i++){
+      friends1.push(this.state.requestsOfCurrentUser[i])
+    }
 
-
-var pplYouCantSendTo=friends1;
-console.log('ppl you cant send to',friends1,person);
-console.log('tof',friends1.indexOf(person)!== -1, friends1.length!==0)
-if (friends1.indexOf(person)!== -1 && friends1.length!==0){
-  $("#AlreadyReq").fadeIn(1000);
+    var pplYouCantSendTo=friends1;
+    console.log('ppl you cant send to',friends1,person);
+    console.log('tof',friends1.indexOf(person)!== -1, friends1.length!==0)
+    if (friends1.indexOf(person)!== -1 && friends1.length!==0){
+      $("#AlreadyReq").fadeIn(1000);
       $("#AlreadyReq").fadeOut(1000);
-
-  console.log('this person is already in there!!')
-} else if (person.length===0) {
+      console.log('this person is already in there!!')
+    } else if (person.length===0) {
       $("#enterRealFriend").fadeIn(1000);
       $("#enterRealFriend").fadeOut(1000);
-
     } else {
-
-
       $.post('http://127.0.0.1:3000/sendRequest',{name:person},function(a,b) {
-       
-          that.setState({
-            requestsOfCurrentUser:a
-          })
+        that.setState({
+          requestsOfCurrentUser:a
+        })
 
- $("#reqSent").fadeIn(1000);
-      $("#reqSent").fadeOut(1000);
-
-
+        $("#reqSent").fadeIn(1000);
+        $("#reqSent").fadeOut(1000);
       });
       if ( document.getElementById('findFriendByName')!==null){
-      document.getElementById('findFriendByName').value = '';
-}
+        document.getElementById('findFriendByName').value = '';
+      }
     }
   }
 
@@ -378,7 +369,27 @@ if (friends1.indexOf(person)!== -1 && friends1.length!==0){
     if (this.state.view==='Login') {
       return (<LogIn changeViews={this.changeViews.bind(this)} setCurrentUser={this.setCurrentUser.bind(this)}/>);
     } else if (this.state.view==="SignUp") {
-      return (< SignUp changeViews={this.changeViews.bind(this)} setCurrentUser={this.setCurrentUser.bind(this)}/>);
+      return (<SignUp onClick={this.changeViews.bind(this)} setCurrentUser={this.setCurrentUser.bind(this)}/>);
+    } 
+    //this view is added for moviesearch rendering
+    else if (this.state.view === "MovieSearchView") {
+      return ( 
+        <div> 
+          <div>
+            <Nav name={this.state.currentUser}
+            find={this.findMovieBuddies.bind(this)}
+            onClick={this.changeViews.bind(this)}
+            logout={this.logout.bind(this)} 
+            />
+          </div>
+          <div>
+          <MovieRating 
+            handleSearchMovie={this.getMovie.bind(this)} 
+            movie={this.state.movie}
+            />
+          </div>
+        </div>
+      );
     } else if (this.state.view === "Inbox" ) {
       return (
         <div>
