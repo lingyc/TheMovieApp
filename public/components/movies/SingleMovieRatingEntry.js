@@ -23,12 +23,18 @@ class SingleMovieRatingEntry extends React.Component {
     let rating = this.state.rating;
     var that = this;
     return (
-      <div className="collection-item">
-        <h1 className='individual' onClick={that.props.fof}>{rating.friendUserName}</h1>
-        <p>{rating.review}</p>
-        <p>{rating.score}</p>
-        <p>PLACEHOLDER: taste compatability with me: 90%</p>
-        <p>PLACEHOLDER: send watch request</p>
+      <div className="collection-item row">
+        <div className="col s3">
+          <img className='profilethumnail' src={'https://unsplash.it/170/170/?random'}/>
+        </div>
+        <div id="Friend" className="MovieEntryFriend col s9">
+          <div className="top">
+            <div className="firendCompatability">taste compatability with me: 90%</div>
+            <a className='individual'><div className="friendName" onClick={that.props.fof}>{rating.friendUserName}</div></a>
+          </div>
+          <div className="friendReview">{(rating.review === null) ? rating.friendUserName + ' did not leave a review' : rating.friendUserName + "'s review: " + rating.review}</div>
+          <div className="friendRating">{(rating.score === null) ? rating.friendUserName + ' have not rate the movie yet' : rating.friendUserName + "'s rating is: " + rating.score}</div>
+        </div>
       </div>
     );
   }

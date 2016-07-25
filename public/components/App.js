@@ -439,6 +439,7 @@ console.log('this should also be my friends',this.state.myFriends)
               logout={this.logout.bind(this)}
             />
           <SingleMovieRating 
+            compatibility={this.state.myFriends}
             currentMovie={this.state.movie}
             change={this.changeViewsFriends.bind(this)}
             fof={this.focusOnFriend.bind(this)}
