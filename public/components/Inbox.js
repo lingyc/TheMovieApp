@@ -65,6 +65,7 @@ var empty2=this.props.responsesAnswered.length===0? "No news :(":"";
             responsesInfo={unit.requestee} 
             responseAnswer={unit.response} 
             responseType={unit.requestTyp} 
+            movie={unit.movie}
             self={unit.requestor}
             remove={that.props.remove}
           />

@@ -88,7 +88,7 @@ class SingleMovieRating extends React.Component {
               <div className='avgFriendRatingBlock col s4'>average friend rating: {(movie.friendAverageRating) ? <b>{movie.friendAverageRating}</b> : 'n/a' }</div>
             </div>
           </div>
-      <div>
+        </div>
         <div className="singleMovie">
           <img className='moviethumnail' src={movie.poster} />
           <h1 className='movieTitle' >{movie.title}</h1>

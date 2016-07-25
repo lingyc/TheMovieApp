@@ -346,17 +346,18 @@ class App extends React.Component {
     console.log('this should list potential friends')
   }
 
-  removeRequest(person, self) {
+  removeRequest(person, self, movie) {
     var that= this;
     $.ajax({
       url: 'http://127.0.0.1:3000/removeRequest',
       type: 'DELETE',
       data: {
         requestor: self,
-        requestee: person
+        requestee: person,
+        movie: movie
       },
       success: function(response) {
-        console.log('REQUEST REMOVED!');
+        console.log('REQUEST REMOVED! Movie is: ', movie);
         that.listPendingFriendRequests();
       },
       error: function(error) {
