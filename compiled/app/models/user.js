@@ -1,0 +1,15 @@
+'use strict';
+
+var db = require('../dbConnection');
+var Relation = require('./relation');
+
+var User = db.Model.extend({
+  tableName: 'users',
+  relation: function relation() {
+    return this.hasMany(Relation);
+  }
+
+});
+
+module.exports = User;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2FwcC9tb2RlbHMvdXNlci5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLElBQUksS0FBSyxRQUFRLGlCQUFSLENBQVQ7QUFDQSxJQUFJLFdBQVcsUUFBUSxZQUFSLENBQWY7O0FBRUEsSUFBSSxPQUFPLEdBQUcsS0FBSCxDQUFTLE1BQVQsQ0FBZ0I7QUFDekIsYUFBVyxPQURjO0FBRXpCLFlBQVUsb0JBQVc7QUFDbkIsV0FBTyxLQUFLLE9BQUwsQ0FBYSxRQUFiLENBQVA7QUFDRDs7QUFKd0IsQ0FBaEIsQ0FBWDs7QUFRQSxPQUFPLE9BQVAsR0FBaUIsSUFBakIiLCJmaWxlIjoidXNlci5qcyIsInNvdXJjZXNDb250ZW50IjpbInZhciBkYiA9IHJlcXVpcmUoJy4uL2RiQ29ubmVjdGlvbicpO1xudmFyIFJlbGF0aW9uID0gcmVxdWlyZSgnLi9yZWxhdGlvbicpO1xuXG52YXIgVXNlciA9IGRiLk1vZGVsLmV4dGVuZCh7XG4gIHRhYmxlTmFtZTogJ3VzZXJzJyxcbiAgcmVsYXRpb246IGZ1bmN0aW9uKCkge1xuICAgIHJldHVybiB0aGlzLmhhc01hbnkoUmVsYXRpb24pO1xuICB9LFxuXG59KTtcblxubW9kdWxlLmV4cG9ydHMgPSBVc2VyOyJdfQ==

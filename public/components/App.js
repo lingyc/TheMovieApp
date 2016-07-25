@@ -502,5 +502,6 @@ console.log('send request is being run!!')
 }
 
 window.App = App;
-var Url = 'http://127.0.0.1:3000';
+var Url = 'https://thawing-island-99747.herokuapp.com';
+// var Url = 'http://127.0.0.1:3000';
 window.Url = Url;

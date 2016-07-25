@@ -1,0 +1,20 @@
+'use strict';
+
+var db = require('../dbConnection');
+var User = require('./user');
+var Movie = require('./movie');
+
+//create rating model
+var Rating = db.Model.extend({
+  tableName: 'ratings',
+  user: function user() {
+    return this.belongsTo(User, 'userid');
+  },
+  movie: function movie() {
+    return this.belongsTo(Movie, 'movieid');
+  },
+  hasTimestamps: true
+});
+
+module.exports = Rating;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2FwcC9tb2RlbHMvcmF0aW5nLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsSUFBSSxLQUFLLFFBQVEsaUJBQVIsQ0FBVDtBQUNBLElBQUksT0FBTyxRQUFRLFFBQVIsQ0FBWDtBQUNBLElBQUksUUFBUSxRQUFRLFNBQVIsQ0FBWjs7QUFFQTtBQUNBLElBQUksU0FBUyxHQUFHLEtBQUgsQ0FBUyxNQUFULENBQWdCO0FBQzNCLGFBQVcsU0FEZ0I7QUFFM0IsUUFBTSxnQkFBVztBQUNmLFdBQU8sS0FBSyxTQUFMLENBQWUsSUFBZixFQUFxQixRQUFyQixDQUFQO0FBQ0QsR0FKMEI7QUFLM0IsU0FBTyxpQkFBVztBQUNoQixXQUFPLEtBQUssU0FBTCxDQUFlLEtBQWYsRUFBc0IsU0FBdEIsQ0FBUDtBQUNELEdBUDBCO0FBUTNCLGlCQUFlO0FBUlksQ0FBaEIsQ0FBYjs7QUFXQSxPQUFPLE9BQVAsR0FBaUIsTUFBakIiLCJmaWxlIjoicmF0aW5nLmpzIiwic291cmNlc0NvbnRlbnQiOlsidmFyIGRiID0gcmVxdWlyZSgnLi4vZGJDb25uZWN0aW9uJyk7XG52YXIgVXNlciA9IHJlcXVpcmUoJy4vdXNlcicpO1xudmFyIE1vdmllID0gcmVxdWlyZSgnLi9tb3ZpZScpO1xuXG4vL2NyZWF0ZSByYXRpbmcgbW9kZWxcbnZhciBSYXRpbmcgPSBkYi5Nb2RlbC5leHRlbmQoe1xuICB0YWJsZU5hbWU6ICdyYXRpbmdzJyxcbiAgdXNlcjogZnVuY3Rpb24oKSB7XG4gICAgcmV0dXJuIHRoaXMuYmVsb25nc1RvKFVzZXIsICd1c2VyaWQnKTtcbiAgfSxcbiAgbW92aWU6IGZ1bmN0aW9uKCkge1xuICAgIHJldHVybiB0aGlzLmJlbG9uZ3NUbyhNb3ZpZSwgJ21vdmllaWQnKTtcbiAgfSxcbiAgaGFzVGltZXN0YW1wczogdHJ1ZVxufSk7XG5cbm1vZHVsZS5leHBvcnRzID0gUmF0aW5nO1xuIl19
