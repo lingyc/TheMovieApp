@@ -37,7 +37,7 @@ class Inbox extends React.Component {
     return (
       <div onClick={()=>console.log(that.props)}>
         <h2 className='nh'>Inbox</h2>
-        List of people who've sent you requests:<br/>
+        People who've sent you requests<br/>
         {this.props.pplWhoWantToBeFriends.map(friend =>
           <InboxEntry
             accept={that.props.accept}
@@ -48,7 +48,7 @@ class Inbox extends React.Component {
             messageInfo={friend[3]}
           />
         )}
-        Request Responses:
+        Request Responses
         {this.props.responsesAnswered.map((unit) =>
           <Responses
             responsesInfo={unit.requestee} 
