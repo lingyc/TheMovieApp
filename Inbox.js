@@ -45,6 +45,7 @@ class Inbox extends React.Component {
             inboxName={friend[0]}
             requestType={friend[1]}
             requestMovie={friend[2]}
+            messageInfo={friend[3]}
           />
         )}
         Request Responses:
