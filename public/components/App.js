@@ -450,6 +450,11 @@ if (friends1.indexOf(person)!== -1 && friends1.length!==0){
     } else if (this.state.view==='singleFriend') {
       return (
         <div>
+            <Nav name={this.state.currentUser}
+              find={this.findMovieBuddies.bind(this)} 
+              onClick={this.changeViews.bind(this)}
+              logout={this.logout.bind(this)}
+            />
           <SingleFriend 
             moviesOfFriend={this.state.individualFriendsMovies} 
             friendName={this.state.friendToFocusOn} 
