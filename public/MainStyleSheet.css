@@ -309,7 +309,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
   ========================================
 */
 
-.Home, .MyRatings, .myFriends {
+.Home, .MyRatings, .myFriends, .movieBuddy {
   width: 80%;
   margin: 30px auto 30px auto;
 /*  border-left: 1px solid #ccc;
@@ -329,13 +329,14 @@ textarea.materialize-textarea:focus:not([readonly]) {
 }
 
 .Home.collection, .singleMovie.collection, 
-.MyRatings.collection, .myFriends.collection {
+.MyRatings.collection, .myFriends.collection,
+.movieBuddy.collection {
   border-radius: 15px;
   padding: 20px 20px 20px 20px;
 }
 
 .Home .header, .MyRatings .header,
-.myFriends .header {
+.myFriends .header, .movieBuddy .header {
   text-align: center;
   cursor: pointer;
 }
@@ -596,4 +597,18 @@ textarea {
   margin-top: 20px;
   font-weight: 400;
   font-size: 30px;
+}
+
+/*
+  ========================================
+  movie buddy view
+  ========================================
+*/
+
+.buddyName, .buddyCompatibility, {
+  text-align: right;
+}
+
+.buddy a {
+  right: 0;
 }
