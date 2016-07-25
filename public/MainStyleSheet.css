@@ -297,3 +297,52 @@ textarea.materialize-textarea:focus:not([readonly]) {
   background-image: url("montage.jpg");
   background-size: cover;
 }
+
+/*
+  ========================================
+  home view
+  ========================================
+*/
+
+.Home {
+  width: 70%;
+  margin: 30px auto 30px auto;
+/*  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;*/
+}
+
+/*search bar*/
+
+.Home .searchMovie{
+  width: 300px;
+  margin: 30px auto 30px auto;
+}
+
+.Home a{
+  margin: 0px 80px 0px 80px;
+}
+
+.Home.collection {
+  border-radius: 15px;
+  padding: 20px 20px 20px 20px;
+}
+/*
+  ========================================
+  movie list view
+  ========================================
+*/
+
+/*.movieList.collection {
+  border-radius: 15px;
+  padding: 20px 20px 20px 20px;
+}*/
+
+/*
+  ========================================
+  movie list entry view
+  ========================================
+*/
+
+
+
+

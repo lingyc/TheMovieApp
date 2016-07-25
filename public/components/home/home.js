@@ -96,13 +96,14 @@ class Home extends React.Component {
     }
 
     return (
-      <div className='Home'>
+      <div className='Home collection'>
         <div onClick={this.getRecentReleasesInitialize.bind(this)}>{lable}</div>
         <div className='searchMovie'>
           <input type ='text' id='movieInput' 
             className='movieInput'
-            placeholder='Insert Movie Title'
+            placeholder='find a movie'
             onKeyPress={this.handleSearch.bind(this)}/>
+          <a className="waves-effect waves-light btn">search</a>
         </div>
         {feedbackMsg}
         <MovieList movies={this.state.movies}
