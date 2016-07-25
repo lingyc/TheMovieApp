@@ -38,6 +38,7 @@ class App extends React.Component {
   }
 
   acceptFriend(a) {
+    var that=this;
     var final=a;
     $('button').on('click',function() {
       console.log($(this).html());
@@ -46,6 +47,7 @@ class App extends React.Component {
 
     $.post('http://127.0.0.1:3000/accept',{personToAccept:final},function(a,b) {
       console.log(a,b)
+      that.listPendingFriendRequests();
     })
 
     // $.ajax({
@@ -58,9 +60,7 @@ class App extends React.Component {
     //     console.log(error);
     //   }
     // })
-    this.setState({
-      view: "Home"
-    })
+    
     console.log('refreshed inbox, should delete friend request on the spot instead of moving')
   }
 
@@ -69,6 +69,7 @@ class App extends React.Component {
 
     $.post('http://127.0.0.1:3000/decline',{personToDecline:final},function(a,b) {
       console.log(a,b)
+      that.listPendingFriendRequests();
     })
 
     // $.ajax({
@@ -397,7 +398,7 @@ if (friends1.indexOf(person)!== -1 && friends1.length!==0){
               decline={this.declineFriend.bind(this)} 
               listRequests={this.listPendingFriendRequests.bind(this)} 
               pplWhoWantToBeFriends={this.state.pendingFriendRequests.map(
-                function(a){return [a.requestor,a.requestTyp,a.movie===null?"": "("+a.movie+")","Message:"+a.message]})} 
+                function(a){return [a.requestor,a.requestTyp,a.movie===null?"": "("+a.movie+")","Message:"+ a.message==='null'?"none":a.message]})} 
               remove={this.removeRequest.bind(this)}
             />
         </div>
