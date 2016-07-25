@@ -42,7 +42,7 @@ var empty=this.props.pplWhoWantToBeFriends.length===0?"No requests :(":"";
 var empty2=this.props.responsesAnswered.length===0? "No news :(":"";
 
     return (
-      <div onClick={()=>console.log(that.props)}>
+      <div>
         <h2 className='nh'>Inbox</h2>
 
         People who've sent you requests<br/>

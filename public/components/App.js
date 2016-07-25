@@ -64,11 +64,13 @@ class App extends React.Component {
     console.log('refreshed inbox, should delete friend request on the spot instead of moving')
   }
 
-  declineFriend(a) {
+  declineFriend(a, movie) {
+    var that=this;
     var final=a;
 
-    $.post('http://127.0.0.1:3000/decline',{personToDecline:final},function(a,b) {
+    $.post('http://127.0.0.1:3000/decline',{personToDecline:final, movie: movie},function(a,b) {
       console.log(a,b)
+      console.log('this is the state after declining friend, ', that.state);
       that.listPendingFriendRequests();
     })
 
@@ -312,8 +314,6 @@ class App extends React.Component {
         }
       }
 
-      console.log('pending responses (both friend and watch), which gets passed down to inbox', top)
-      console.log('pending requests, which gets passed down to inbox', bottom)
       that.setState({
         pendingFriendRequests:top,
         requestResponses:bottom
