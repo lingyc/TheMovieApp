@@ -30,17 +30,72 @@ class StarRatingComponent extends React.Component {
   }
 
   render() {
+    if (this.state.userRating === 1) {
+      var stars = (
+        <form className="star-rating col-sm-10">
+          <input id="star-rating" checked="true" type="radio" name="group1" value="1" onChange={this.onStarClick.bind(this)}/><i></i>
+          <input id="star-rating" type="radio" name="group1" value="2" onChange={this.onStarClick.bind(this)}/><i></i>
+          <input id="star-rating" type="radio" name="group1" value="3" onChange={this.onStarClick.bind(this)}/><i></i>
+          <input id="star-rating" type="radio" name="group1" value="4" onChange={this.onStarClick.bind(this)}/><i></i>
+          <input id="star-rating" type="radio" name="group1" value="5" onChange={this.onStarClick.bind(this)}/><i></i>
+        </form>
+        )
+    } else if (this.state.userRating === 2) {
+      var stars = (
+        <form className="star-rating col-sm-10">
+          <input id="star-rating" type="radio" name="group1" value="1" onChange={this.onStarClick.bind(this)}/><i></i>
+          <input id="star-rating" checked="true" type="radio" name="group1" value="2" onChange={this.onStarClick.bind(this)}/><i></i>
+          <input id="star-rating" type="radio" name="group1" value="3" onChange={this.onStarClick.bind(this)}/><i></i>
+          <input id="star-rating" type="radio" name="group1" value="4" onChange={this.onStarClick.bind(this)}/><i></i>
+          <input id="star-rating" type="radio" name="group1" value="5" onChange={this.onStarClick.bind(this)}/><i></i>
+        </form>
+        )
+    } else if (this.state.userRating === 3) {
+      var stars = (
+        <form className="star-rating col-sm-10">
+          <input id="star-rating" type="radio" name="group1" value="1" onChange={this.onStarClick.bind(this)}/><i></i>
+          <input id="star-rating" type="radio" name="group1" value="2" onChange={this.onStarClick.bind(this)}/><i></i>
+          <input id="star-rating" checked="true" type="radio" name="group1" value="3" onChange={this.onStarClick.bind(this)}/><i></i>
+          <input id="star-rating" type="radio" name="group1" value="4" onChange={this.onStarClick.bind(this)}/><i></i>
+          <input id="star-rating" type="radio" name="group1" value="5" onChange={this.onStarClick.bind(this)}/><i></i>
+        </form>
+        )
+    } else if (this.state.userRating === 4) {
+      var stars = (
+        <form className="star-rating col-sm-10">
+          <input id="star-rating" type="radio" name="group1" value="1" onChange={this.onStarClick.bind(this)}/><i></i>
+          <input id="star-rating" type="radio" name="group1" value="2" onChange={this.onStarClick.bind(this)}/><i></i>
+          <input id="star-rating" type="radio" name="group1" value="3" onChange={this.onStarClick.bind(this)}/><i></i>
+          <input id="star-rating" checked="true" type="radio" name="group1" value="4" onChange={this.onStarClick.bind(this)}/><i></i>
+          <input id="star-rating" type="radio" name="group1" value="5" onChange={this.onStarClick.bind(this)}/><i></i>
+        </form>
+        )
+    } else if (this.state.userRating === 5) {
+      var stars = (
+        <form className="star-rating col-sm-10">
+          <input id="star-rating" type="radio" name="group1" value="1" onChange={this.onStarClick.bind(this)}/><i></i>
+          <input id="star-rating" type="radio" name="group1" value="2" onChange={this.onStarClick.bind(this)}/><i></i>
+          <input id="star-rating" type="radio" name="group1" value="3" onChange={this.onStarClick.bind(this)}/><i></i>
+          <input id="star-rating" type="radio" name="group1" value="4" onChange={this.onStarClick.bind(this)}/><i></i>
+          <input id="star-rating" checked="true" type="radio" name="group1" value="5" onChange={this.onStarClick.bind(this)}/><i></i>
+        </form>
+        )
+    } else {
+      var stars = (
+        <form className="star-rating col-sm-10">
+          <input id="star-rating" type="radio" name="group1" value="1" onChange={this.onStarClick.bind(this)}/><i></i>
+          <input id="star-rating" type="radio" name="group1" value="2" onChange={this.onStarClick.bind(this)}/><i></i>
+          <input id="star-rating" type="radio" name="group1" value="3" onChange={this.onStarClick.bind(this)}/><i></i>
+          <input id="star-rating" type="radio" name="group1" value="4" onChange={this.onStarClick.bind(this)}/><i></i>
+          <input id="star-rating" type="radio" name="group1" value="5" onChange={this.onStarClick.bind(this)}/><i></i>
+        </form>
+        )
+    }
 		return (
-		<div className="userRating">
-			<div className="star-rating col-sm-10">
-			  <input type="radio" name="rating" value="1" onChange={this.onStarClick.bind(this)}/><i></i>
-			  <input type="radio" name="rating" value="2" onChange={this.onStarClick.bind(this)}/><i></i>
-			  <input type="radio" name="rating" value="3" onChange={this.onStarClick.bind(this)}/><i></i>
-			  <input type="radio" name="rating" value="4" onChange={this.onStarClick.bind(this)}/><i></i>
-			  <input type="radio" name="rating" value="5" onChange={this.onStarClick.bind(this)}/><i></i>
-			</div>
-			{(this.state.userRating === null) ? 'you have not rated this movie' : 'your rating is ' + this.state.userRating}
-			{(this.state.ratingUpdated) ? <div className="updatedMsg">rating has updated</div> : ''}
+		<div className="userRating col s4">
+      {stars}
+			{(this.state.userRating === null) ? <div className="notRatedMsg">you didn't rated this movie</div> : <div className="yourRating">your rating is <b>{this.state.userRating}</b></div>}
+			{(this.state.ratingUpdated) ? <div className="updateMsg">rating has updated</div> : ''}
 		</div>);
   }
 }

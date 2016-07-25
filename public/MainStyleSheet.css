@@ -248,6 +248,11 @@ body {
   margin-left: 0px;
 }
 
+.errorMsg {
+  color: red;
+  text-align: center;
+}
+
 
 input:not([type]):focus:not([readonly]), 
 input[type=text]:focus:not([readonly]), 
@@ -304,8 +309,8 @@ textarea.materialize-textarea:focus:not([readonly]) {
   ========================================
 */
 
-.Home {
-  width: 70%;
+.Home, .MyRatings{
+  width: 80%;
   margin: 30px auto 30px auto;
 /*  border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;*/
@@ -313,18 +318,23 @@ textarea.materialize-textarea:focus:not([readonly]) {
 
 /*search bar*/
 
-.Home .searchMovie{
+.Home .searchMovie, .MyRatings .searchMovie{
   width: 300px;
   margin: 30px auto 30px auto;
 }
 
-.Home a{
+.Home a, .MyRatings a{
   margin: 0px 80px 0px 80px;
 }
 
-.Home.collection {
+.Home.collection, .singleMovie.collection, .MyRatings.collection {
   border-radius: 15px;
   padding: 20px 20px 20px 20px;
+}
+
+.Home .header, .MyRatings .header {
+  text-align: center;
+  cursor: pointer;
 }
 /*
   ========================================
@@ -343,6 +353,170 @@ textarea.materialize-textarea:focus:not([readonly]) {
   ========================================
 */
 
+.right.col.s9 {
+  position: relative; 
+  min-height: 340px;
+}
+
+.movieEntry h5 {
+  display: inline;
+}
+
+.movieYear {
+  display: inline;
+  margin-left: 20px;
+}
 
 
+.movieEntry p {
+  font-size: 14px;
+  position: relative;
+}
 
+.movieEntry p {
+  margin: 1px, auto, 1px, auto;
+  font-size: 14px;
+}
+
+.theReview {
+  margin-right: 50px;
+  font-size: 14px;
+  color: #3b7fc7;
+}
+
+.movieEntry .review {
+  margin: 1px, auto, 1px, auto;
+  font-size: 14px;
+  color: #3b7fc7;
+}
+.editReviewButton {
+  float: right;
+}
+
+.ratings {
+  /*position: absolute;*/
+  margin-top: 30px;
+  width: 100%;
+  bottom: 0;
+}
+
+textarea {
+  height: 80px;
+}
+
+/*watch request*/
+
+.watchRequestButton {
+  margin-top: 50px;
+}
+
+.activeWatchRequest a {
+  position: absolute;
+  right: 0;
+}
+
+.activeWatchRequest li {
+  position: relative;
+  padding-top: 10px;
+  margin-bottom: 20px;
+}
+
+.activeWatchRequest span {
+  margin-left: 140px;
+}
+
+.friendList, .friendStash {
+  border: 1px solid #CCCCCC;
+  margin-top: 0px;
+  height: 150px;
+  overflow: scroll;
+}
+
+.sent {
+  margin-left: 30px;
+}
+
+.updateMsg {
+  color: green;
+}
+
+.userRating .updateMsg {
+  margin-left: 10px;
+}
+
+.yourRating {
+  margin-left: 25px;
+}
+
+.notRatedMsg {
+
+}
+
+/*star rating*/
+
+#star-rating {
+  position: relative;
+  left: 0;
+  opacity: 1;
+  margin-left: 30px;
+}
+
+.star-rating {
+  font-size: 0;
+  white-space: nowrap;
+  display: inline-block;
+  width: 150px;
+  height: 30px;
+  overflow: hidden;
+  position: relative;
+  background: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjREREREREIiBwb2ludHM9IjEwLDAgMTMuMDksNi41ODMgMjAsNy42MzkgMTUsMTIuNzY0IDE2LjE4LDIwIDEwLDE2LjU4MyAzLjgyLDIwIDUsMTIuNzY0IDAsNy42MzkgNi45MSw2LjU4MyAiLz48L3N2Zz4=');
+  background-size: contain;
+}
+.star-rating i {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 20%;
+  z-index: 1;
+  background: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjRkZERjg4IiBwb2ludHM9IjEwLDAgMTMuMDksNi41ODMgMjAsNy42MzkgMTUsMTIuNzY0IDE2LjE4LDIwIDEwLDE2LjU4MyAzLjgyLDIwIDUsMTIuNzY0IDAsNy42MzkgNi45MSw2LjU4MyAiLz48L3N2Zz4=');
+  background-size: contain;
+}
+.star-rating input {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  opacity: 0;
+  display: inline-block;
+  width: 20%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  z-index: 2;
+  position: relative;
+}
+.star-rating input:hover + i,
+.star-rating:not(:hover) input:checked + i {
+  opacity: 1;
+}
+.star-rating i ~ i {
+  width: 40%;
+}
+.star-rating i ~ i ~ i {
+  width: 60%;
+}
+.star-rating i ~ i ~ i ~ i {
+  width: 80%;
+}
+.star-rating i ~ i ~ i ~ i ~ i {
+  width: 100%;
+}
+::after,
+::before {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-align: center;
+  vertical-align: middle;
+}

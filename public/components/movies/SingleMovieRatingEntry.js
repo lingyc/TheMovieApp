@@ -23,7 +23,7 @@ class SingleMovieRatingEntry extends React.Component {
     let rating = this.state.rating;
     var that = this;
     return (
-      <div>
+      <div className="collection-item">
         <h1 className='individual' onClick={that.props.fof}>{rating.friendUserName}</h1>
         <p>{rating.review}</p>
         <p>{rating.score}</p>
