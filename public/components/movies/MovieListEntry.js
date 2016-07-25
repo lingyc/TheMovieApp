@@ -33,7 +33,7 @@ class MovieListEntry extends React.Component {
 
   	return (
   		<div className='movieEntry collection-item row'>
-  			<img className='moviethumnail col s3' src={movie.poster} onClick={() => (this.props.change("SingleMovie", movie))}/>
+  			<img className='moviethumnail col s3' src={movie.poster} onClick={() => (this.props.change("SingleMovie", movie))} alt="no_image_available.gif"/>
         <div className='right col s9'>
     			<h5 className='movieTitle' onClick={() => (this.props.change("SingleMovie", movie))}>{movie.title}</h5>
     			<p className='movieYear'>{movie.release_date}</p>
