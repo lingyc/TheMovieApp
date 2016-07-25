@@ -38,15 +38,15 @@ class Inbox extends React.Component {
 
 
     let that = this;
-var empty=this.props.pplWhoWantToBeFriends.length===0?"No requests :(":"";
-var empty2=this.props.responsesAnswered.length===0? "No news :(":"";
+    var empty = this.props.pplWhoWantToBeFriends.length === 0 ? "No pending requests" : "";
+    var empty2 = this.props.responsesAnswered.length === 0 ? "No request responses" : "";
 
     return (
-      <div>
-        <h2 className='nh'>Inbox</h2>
+      <div className='notification collection'>
+        <div className='header'>Inbox</div>
 
-        People who've sent you requests<br/>
-         {empty} <br/>
+        <div className="notificationLable">your pending requests</div>
+        <div className="updateMsg">{empty}</div>
         {this.props.pplWhoWantToBeFriends.map(friend =>
           <InboxEntry
             accept={that.props.accept}
@@ -57,9 +57,9 @@ var empty2=this.props.responsesAnswered.length===0? "No news :(":"";
             messageInfo={friend[3]}
           />
         )}
-        Request Responses<br/>
-        {empty2}
 
+        <div className="notificationLable">request responses</div>
+        <div className="updateMsg">{empty2}</div>
         {this.props.responsesAnswered.map((unit) =>
           <Responses
             responsesInfo={unit.requestee} 
