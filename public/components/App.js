@@ -3,7 +3,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      view:'Login',
+      view:'Home',
       friendsRatings:[],
       movie: null,
       friendRequests:[],
@@ -378,36 +378,15 @@ if (friends1.indexOf(person)!== -1 && friends1.length!==0){
       return (<LogIn changeViews={this.changeViews.bind(this)} setCurrentUser={this.setCurrentUser.bind(this)}/>);
     } else if (this.state.view==="SignUp") {
       return (< SignUp changeViews={this.changeViews.bind(this)} setCurrentUser={this.setCurrentUser.bind(this)}/>);
-    } 
-    //this view is added for moviesearch rendering
-    else if (this.state.view === "MovieSearchView") {
-      return ( 
-        <div> 
-          <div>
-            <Nav name={this.state.currentUser}
-            find={this.findMovieBuddies.bind(this)}
-            onClick={this.changeViews.bind(this)}
-            logout={this.logout.bind(this)} 
-            />
-          </div>
-          <div>
-          <MovieRating 
-            handleSearchMovie={this.getMovie.bind(this)} 
-            movie={this.state.movie}
-            />
-          </div>
-        </div>
-      );
     } else if (this.state.view === "Inbox" ) {
       return (
         <div>
-          <div>
             <Nav name={this.state.currentUser}
               find={this.findMovieBuddies.bind(this)}
               onClick={this.changeViews.bind(this)}
               logout={this.logout.bind(this)}
+              Home={true}
             />
-          </div>
             <Inbox 
               requests={this.state.pendingFriendRequests}
               responsesAnswered={this.state.requestResponses}
@@ -424,12 +403,10 @@ if (friends1.indexOf(person)!== -1 && friends1.length!==0){
     } else if (this.state.view === "Friends" ) {
       return (
         <div>
-          <div>
             <Nav name={this.state.currentUser}
               find={this.findMovieBuddies.bind(this)}
               onClick={this.changeViews.bind(this)}
               logout={this.logout.bind(this)}/>
-          </div>
           <Friends 
             sendWatchRequest={this.sendWatchRequest.bind(this)} 
             fof= {this.focusOnFriend.bind(this)} 
@@ -445,13 +422,11 @@ if (friends1.indexOf(person)!== -1 && friends1.length!==0){
     else if (this.state.view === "Home") {
       return (
         <div>
-          <div>
             <Nav name={this.state.currentUser}
               find={this.findMovieBuddies.bind(this)} 
               onClick={this.changeViews.bind(this)}
               logout={this.logout.bind(this)}
             />
-          </div>
           <Home 
             change={this.changeViewsMovie.bind(this)}
           />
@@ -460,12 +435,10 @@ if (friends1.indexOf(person)!== -1 && friends1.length!==0){
     } else if (this.state.view === "SingleMovie") {
       return (
         <div>
-          <div>
             <Nav name={this.state.currentUser}
               onClick={this.changeViews.bind(this)}
               logout={this.logout.bind(this)}
             />
-          </div>
           <SingleMovieRating 
             currentMovie={this.state.movie}
             change={this.changeViewsFriends.bind(this)}
@@ -487,13 +460,11 @@ if (friends1.indexOf(person)!== -1 && friends1.length!==0){
     } else if (this.state.view === "FNMB") {
       return (
         <div>
-          <div>
             <Nav name={this.state.currentUser}
               find={this.findMovieBuddies.bind(this)} 
               onClick={this.changeViews.bind(this)}
               logout={this.logout.bind(this)}
             />
-          </div>
           <FindMovieBuddy 
             buddyfunc={this.buddyRequest.bind(this)} 
             buddies={this.state.potentialMovieBuddies} 
@@ -503,13 +474,11 @@ if (friends1.indexOf(person)!== -1 && friends1.length!==0){
     } else if (this.state.view === "MyRatings") {
       return (
         <div>
-          <div>
             <Nav name={this.state.currentUser}
               find={this.findMovieBuddies.bind(this)} 
               onClick={this.changeViews.bind(this)}
               logout={this.logout.bind(this)}
             />
-          </div>
           <MyRatings 
             change={this.changeViewsMovie.bind(this)}
           />

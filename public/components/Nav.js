@@ -1,21 +1,24 @@
 let Nav = (props) => (
-  <nav className="navbar">
     <div>
-        <h1>Hi, {props.name}!</h1>
-        <button onClick={() => (props.onClick("Home"))}>Home</button>
-        <button onClick={() => (props.onClick("MyRatings"))}>My Ratings</button>
-        <button onClick={() => (props.onClick("Friends"))}>My Friends </button>
-        <button onClick={props.find}>Find New Movie Buddies</button>
-        <div id='logOutButton'>
-        <button onClick={props.logout}>Log Out</button> 
-        <button onClick={() => (props.onClick("Inbox"))}>Notifications </button>
-         </div>
-      
+      <div className="navbar-fixed movieBuddyNav">
+        <nav>
+          <div className="nav-wrapper">
+            <a href="#" onClick={() => (props.onClick("Home"))} className="brand-logo">Movie Buddy</a>
+            <ul id="nav-mobile" className="right hide-on-med-and-down">
+              <li><a className={(props.Home === true) ? "active" : ""} onClick={() => (props.onClick("Home"))}>Home</a></li>
+              <li><a onClick={() => (props.onClick("MyRatings"))}>My Ratings</a></li>
+              <li><a onClick={() => (props.onClick("Friends"))}>My Friends</a></li>
+              <li><a onClick={props.find}>Find New Movie Buddies</a></li>
+              <li><a onClick={props.logout}>Log Out</a></li>      
+              <li><a onClick={() => (props.onClick("Inbox"))}>Notifications</a></li>     
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div className="headBand">
+        <h3>Hi, {props.name}!</h3>
+      </div>
     </div>
-  </nav>
 );
 
 window.Nav = Nav;
-
-
-
