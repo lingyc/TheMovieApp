@@ -5,8 +5,8 @@ console.log('props.moviesOfFriend',props.moviesOfFriend)
 if (props.moviesOfFriend.length===0){
 	return (
 		<div>
-		<button onClick={() => (props.onClick("Friends"))}>Back to all friends</button>
-		Aint no movies
+		<button onClick={() => (props.onClick("Friends"))}>Back to all friends</button><br/>
+		Sorry, {props.friendName} hasn't rated any movies.
 		</div>
 		)
 
