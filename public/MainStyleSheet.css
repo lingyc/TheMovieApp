@@ -309,7 +309,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
   ========================================
 */
 
-.Home, .MyRatings, .myFriends, .movieBuddy {
+.Home, .MyRatings, .myFriends, .movieBuddy, .notification {
   width: 80%;
   margin: 30px auto 30px auto;
 /*  border-left: 1px solid #ccc;
@@ -330,15 +330,17 @@ textarea.materialize-textarea:focus:not([readonly]) {
 
 .Home.collection, .singleMovie.collection, 
 .MyRatings.collection, .myFriends.collection,
-.movieBuddy.collection {
+.movieBuddy.collection, .notification.collection {
   border-radius: 15px;
   padding: 20px 20px 20px 20px;
 }
 
 .Home .header, .MyRatings .header,
-.myFriends .header, .movieBuddy .header {
+.myFriends .header, .movieBuddy .header,
+.notification .header {
   text-align: center;
   cursor: pointer;
+  color: #3b7fc7;
 }
 
 .myFriends .btn {
@@ -618,6 +620,41 @@ textarea {
 }
 
 .buddy .btn {
-  margin-top: 30px;
-  margin-left: 400px;
+  position: absolute;
+  right: 0;
+  margin: 30px 50px 0px 0px;
+}
+
+/*
+  ========================================
+  notifications
+  ========================================
+*/
+
+.notificationLable {
+  margin: 30px 0px 10px 0px;
+  padding-bottom: 10px;
+  text-align: center;
+  border-bottom: 1px solid #3b7fc7;
+}
+
+.response {
+  margin-top: 50px;
+  position: relative;
+}
+
+.response .btn {
+  margin-top: 50px;
+  margin-right: 10px;
+  position: absolute;
+  right: 0;
+}
+
+.responseMsg {
+  text-align: right;
+}
+
+.notification .updateMsg {
+  text-align: center;
+  padding-bottom: 30px;
 }

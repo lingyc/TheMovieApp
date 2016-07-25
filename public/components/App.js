@@ -312,7 +312,7 @@ console.log('send request is being run!!')
 
   focusOnFriend(friend) {
     var that = this;
-    $('.individual').on('click', function(event) {
+    $('.friendEntryIndividual').on('click', function(event) {
       event.preventDefault();
       var friendName = $(this).html();
 
