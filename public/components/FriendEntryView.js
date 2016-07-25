@@ -8,7 +8,7 @@ var FriendEntry = (props) => {
   	</div>
     <div id="Friend" className="col s9">
     	<a className='individual'><h3 className="friendName" onClick={props.fof}>{props.Friend}</h3></a>  
-    	<div className="compatability" >Compatability: {props.Comp}</div>
+    	<div className="compatability" >Compatability: {props.Comp}%</div>
     </div>
   </div>
 )};
