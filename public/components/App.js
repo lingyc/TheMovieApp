@@ -213,7 +213,7 @@ class App extends React.Component {
 
     // }
     if (targetState==='Home'){
-      // this.getCurrentFriends();
+      this.getCurrentFriends();
       if (this.state.requestsOfCurrentUser.length===0 && this.state.myFriends.length===0){
         this.sendRequest();
       }
