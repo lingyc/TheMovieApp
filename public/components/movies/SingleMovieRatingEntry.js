@@ -10,10 +10,10 @@ class SingleMovieRatingEntry extends React.Component {
     console.log(this.props);
   }
 
-  handleClick() {
-    console.log(this)
-    // this.props.fof();
-    // this.props.change('singleFriend', this.state.rating.friendUserName);
+  handleClick(buddy) {
+    // console.log(this)
+    this.props.fof(buddy);
+    this.props.change('singleFriend', this.state.rating.friendUserName);
   }
 
   render() {
