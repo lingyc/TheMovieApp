@@ -104,15 +104,16 @@ class MovieWatchRequest extends React.Component {
 
   handleRemoveFriend(friend) {
     //remove friend from stash
-    console.log('calling handleRemoveFriend', this.state.friendStash);
     var idx = this.state.friendStash.indexOf(friend)
     if (this.state.friendStash.length === 1) {
       this.setState({
         friendStash: []
       });
     } else {
+      var stashCopy = this.state.friendStash;
+      stashCopy.splice(idx, 1);
       this.setState({
-        friendStash: this.state.friendStash.splice(idx, 1)
+        friendStash: stashCopy
       });
     }
   }

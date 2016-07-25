@@ -70,7 +70,8 @@ class LogIn extends React.Component {
   render() {
     return (
       <div className='landing'>
-        <div className='login'>
+
+        <div className='login icon-block'>
           <a className="waves-effect waves-light btn" onClick={() => this.props.changeViews('SignUp')}>Go to Sign Up</a>
           <div className="or">---------- OR -----------</div>
           <div className='loginForm'>
