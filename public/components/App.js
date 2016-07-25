@@ -193,6 +193,7 @@ class App extends React.Component {
       console.log('you switched to friends!!')
       this.getCurrentFriends()
       this.sendRequest();
+
       
     }
 
@@ -236,7 +237,6 @@ class App extends React.Component {
 
   sendRequest(a) {
 console.log('send request is being run!!')
-this.getCurrentFriends()
     var that=this;
     if (document.getElementById('findFriendByName')!==null){
       var person=document.getElementById('findFriendByName').value
@@ -246,7 +246,7 @@ this.getCurrentFriends()
     console.log('person:',person)
     console.log('state', this.state);
     var friends1=[];
-
+console.log('this should also be my friends',this.state.myFriends)
     for (var i=0;i<this.state.myFriends;i++){
       friends1.push(this.state.myFriends[i][0])
     }
