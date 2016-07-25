@@ -605,10 +605,11 @@ textarea {
   ========================================
 */
 
-.buddyName, .buddyCompatibility, {
+.buddyName, .buddyCompatibility {
   text-align: right;
 }
 
-.buddy a {
-  right: 0;
+.buddy .btn {
+  float: right;
+  margin-top: 10px;
 }
