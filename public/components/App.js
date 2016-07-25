@@ -41,14 +41,12 @@ class App extends React.Component {
   acceptFriend(a, movie) {
     var that=this;
     var final=a;
-    $('button').on('click',function() {
-      console.log($(this).html());
-    })
-    console.log(final +'should be accepted, for movie....', movie)
-
+    // $('button').on('click',function() {
+    //   console.log($(this).html());
+    // })
+    // console.log(final +'should be accepted, for movie....', movie)
 
     $.post(Url + '/accept',{personToAccept:final, movie: movie},function(a,b) {
-      console.log(a,b)
       that.listPendingFriendRequests();
     })
     
@@ -58,7 +56,6 @@ class App extends React.Component {
   declineFriend(a, movie) {
     var that=this;
     var final=a;
-
 
     $.post(Url + '/decline',{personToDecline:final, movie: movie},function(a,b) {
       console.log(a,b)
@@ -502,6 +499,6 @@ console.log('send request is being run!!')
 }
 
 window.App = App;
-var Url = 'https://thawing-island-99747.herokuapp.com';
-// var Url = 'http://127.0.0.1:3000';
+// var Url = 'https://thawing-island-99747.herokuapp.com';
+var Url = 'http://127.0.0.1:3000';
 window.Url = Url;
