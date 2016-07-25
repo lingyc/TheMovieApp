@@ -658,3 +658,12 @@ textarea {
   text-align: center;
   padding-bottom: 30px;
 }
+
+.header.large {
+  font-size: 15px;
+  margin: 25px 0 15px 0;
+}
+
+.center.btn {
+  margin: auto 30% auto 38%;
+}
