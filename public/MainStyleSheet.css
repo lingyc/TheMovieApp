@@ -1,4 +1,4 @@
-
+/*
 #buttons{
   text-align: center;
   margin: 0 auto;
@@ -36,8 +36,8 @@ body{
   background-image: url("http://bit.ly/29K8OYC");
   background:url("http://bit.ly/29K8OYC");
   height:100vh;
-
 }
+
 #LogInName,#LogInPassword,#SignUpName,#SignUpPassword,#SignUpEmail,#SignUpPicture {
     width: 50%;
     padding: 12px 20px;
@@ -84,4 +84,185 @@ color:red;
 }
 .nh{
   color:red;
+}*/
+
+
+
+/*reset style*/
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+/*html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}*/
+/* HTML5 display-role reset for older browsers */
+/*article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  text-decoration: none;
+}*/
+
+/*
+  ========================================
+  Clearfix
+  ========================================
+*/
+
+.group:before,
+.group:after {
+  content: "";
+  display: table;
+}
+.group:after {
+  clear: both;
+}
+.group {
+  clear: both;
+  *zoom: 1;
+}
+
+/*
+  ========================================
+  Unify styles
+  ========================================
+*/
+
+body {
+  color: #888;
+  font: 300 16px/22px Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/*
+  ========================================
+  landing background
+  ========================================
+*/
+
+.landing {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /*background-color: #EEEEEE;*/
+  background-image: url("montage.jpg");
+  background-size: 100%;
+  background-size: cover;
+}
+
+
+/*
+  ========================================
+  login or signup forms
+  ========================================
+*/
+.landing .container {
+  display: inline;
+}
+
+
+.landing .logo {
+  color: white;
+}
+
+.landing .description {
+  color: white;
+  font-weight: 100;
+}
+
+
+.login {
+  width: 400px;
+  border: 1px solid #CCCCCC;
+  border-radius: 5px;
+  padding: 20px 20px 20px 20px;
+  margin-top: 70px;
+  margin-left: 60%;
+  background-color: rgba(255,255,255,0.8);
+  filter: blur(5px);
+}
+
+.loginForm {
+  margin-top: 40px;
+}
+
+.login .or {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.login .btn {
+  width: 360px;
+  background-color: #3b7fc7;
+
+}
+
+.login .btn:hover {
+  width: 360px;
+}
+
+.login .errorMsg {
+  color: red;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login .lable {
+  margin-left: 0px;
+}
+
+
+input:not([type]):focus:not([readonly]), 
+input[type=text]:focus:not([readonly]), 
+input[type=password]:focus:not([readonly]), 
+input[type=email]:focus:not([readonly]), 
+input[type=url]:focus:not([readonly]), 
+input[type=time]:focus:not([readonly]), 
+input[type=date]:focus:not([readonly]), 
+input[type=datetime]:focus:not([readonly]), 
+input[type=datetime-local]:focus:not([readonly]), 
+input[type=tel]:focus:not([readonly]), 
+input[type=number]:focus:not([readonly]), 
+input[type=search]:focus:not([readonly]), 
+textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #3b7fc7;
+  box-shadow: 0 1px 0 0 #3b7fc7;
 }

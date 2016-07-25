@@ -69,18 +69,22 @@ class LogIn extends React.Component {
 
   render() {
     return (
-      <div><h2 id='loginHeader'>Login</h2><br/>
-        <div id='logInStyling'>
-          <p id='loginFields'>Name</p>
-          <input type='text' id='LogInName' name='LogInName' placeholder='username' onChange={this.handleChange.bind(this)}/> <br/>
-          <p id='loginFields'>Password</p>
-          <input type='password' id ='LogInPassword' name='LogInPassword' placeholder='password' onChange={this.handleChange.bind(this)}/> <br/>
-          <div id='buttons'> 
+      <div className='landing'>
+        <div className='login'>
+          <a className="waves-effect waves-light btn" onClick={() => this.props.changeViews('SignUp')}>Go to Sign Up</a>
+          <div className="or">---------- OR -----------</div>
+          <div className='loginForm'>
+            <div className="input-field col s6">
+              <input placeholder="username" id="user_name" name='LogInName' type="text" className="validate" onChange={this.handleChange.bind(this)}/>
+              <label for="user_name" className="active">Username</label>
+            </div>
+
+            <div className="input-field col s6">
+              <input placeholder="password" id="password" name='LogInPassword' type="password" className="validate" onChange={this.handleChange.bind(this)}/>
+              <label for="password" className="active">Password</label>
+            </div>
             <div className="errorMsg">{this.state.errorMsg}</div>
-            <button onClick={this.handleLogIn.bind(this)}> 
-              Log In!
-            </button> 
-            <button onClick={() => this.props.changeViews('SignUp')}> Go to Sign Up </button>
+            <a className="waves-effect waves-light btn" onClick={this.handleLogIn.bind(this)}>log in</a>
           </div>
         </div>
       </div>)
@@ -88,19 +92,3 @@ class LogIn extends React.Component {
 }
 
 window.LogIn = LogIn;
-
-
-// var LogIn = (props) => (
-
-//   < div id='logInStyling' >
-//   <p id='loginFields'>Name</p> < input type = 'text'
-//   id = 'LogInName'
-//   name = 'LogInName' / > < br / >
-//   <p id='loginFields'>Password</p> < input type = 'text'
-//   id = 'LogInPassword'
-//   name = 'LogInPassword' / > < br / >
-//   <div id='buttons'> < button onClick={function(){props.logInFunction(document.getElementById('LogInName').value, document.getElementById('LogInPassword').value)}}> 
-//   Log In! < /button> < button onClick={props.ourFunction}> Sign Up Instead < /button ></div>
-//   < /div>
-
-// )

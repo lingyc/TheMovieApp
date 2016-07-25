@@ -377,7 +377,7 @@ if (friends1.indexOf(person)!== -1 && friends1.length!==0){
     if (this.state.view==='Login') {
       return (<LogIn changeViews={this.changeViews.bind(this)} setCurrentUser={this.setCurrentUser.bind(this)}/>);
     } else if (this.state.view==="SignUp") {
-      return (< SignUp onClick={this.changeViews.bind(this)} setCurrentUser={this.setCurrentUser.bind(this)}/>);
+      return (< SignUp changeViews={this.changeViews.bind(this)} setCurrentUser={this.setCurrentUser.bind(this)}/>);
     } 
     //this view is added for moviesearch rendering
     else if (this.state.view === "MovieSearchView") {
