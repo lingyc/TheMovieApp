@@ -149,7 +149,7 @@ class MovieWatchRequest extends React.Component {
 
             {stash}
           </div>
-          <textarea className="messageBox" cols="40" rows="5" onChange={this.handleMsg.bind(this)} placeholder="add a message" maxlength="255"></textarea>
+          <textarea className="messageBox" cols="40" rows="5" onChange={this.handleMsg.bind(this)} placeholder="Add a message" maxlength="255"></textarea>
           <button className="watchRequest" onClick={this.handleSubmit.bind(this)}>send watch request</button>
           <button className="closeWatchRequest" onClick={this.handleClick.bind(this)}>close watch request</button>
         </div>

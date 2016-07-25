@@ -34,6 +34,7 @@ class App extends React.Component {
       that.setState({
         myFriends:final
       })
+      console.log('thes are my friends!!!!!!!!!!!!!!!!!',that.state.myFriends)
     })
   }
 
@@ -186,18 +187,21 @@ class App extends React.Component {
   /////////////////////
   changeViews(targetState) {
     console.log(this.state);
-    // if (targetState==='Friends'){
-    //   this.getCurrentFriends();
-    //   if (this.state.requestsOfCurrentUser.length===0 && this.state.myFriends.length===0){
-    //    this.sendRequest();
-    //   }
+    var that=this;
 
-    // }
+    if (targetState==='Friends'){
+      console.log('you switched to friends!!')
+      this.getCurrentFriends()
+      this.sendRequest();
+
+      
+    }
+
+   
     if (targetState==='Home'){
-      this.getCurrentFriends();
-      if (this.state.requestsOfCurrentUser.length===0 && this.state.myFriends.length===0){
-        this.sendRequest();
-      }
+      this.getCurrentFriends()
+      this.sendRequest();
+      
     }
 
 
@@ -232,7 +236,7 @@ class App extends React.Component {
 
 
   sendRequest(a) {
-
+console.log('send request is being run!!')
     var that=this;
     if (document.getElementById('findFriendByName')!==null){
       var person=document.getElementById('findFriendByName').value
@@ -242,7 +246,7 @@ class App extends React.Component {
     console.log('person:',person)
     console.log('state', this.state);
     var friends1=[];
-
+console.log('this should also be my friends',this.state.myFriends)
     for (var i=0;i<this.state.myFriends;i++){
       friends1.push(this.state.myFriends[i][0])
     }
