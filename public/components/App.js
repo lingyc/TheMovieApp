@@ -397,7 +397,7 @@ if (friends1.indexOf(person)!== -1 && friends1.length!==0){
               decline={this.declineFriend.bind(this)} 
               listRequests={this.listPendingFriendRequests.bind(this)} 
               pplWhoWantToBeFriends={this.state.pendingFriendRequests.map(
-                function(a){return [a.requestor,a.requestTyp,a.movie===null?"": "("+a.movie+")"]})} 
+                function(a){return [a.requestor,a.requestTyp,a.movie===null?"": "("+a.movie+")","Message:"+a.message]})} 
               remove={this.removeRequest.bind(this)}
             />
         </div>
