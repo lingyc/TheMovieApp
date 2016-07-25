@@ -68,7 +68,7 @@ class SignUp extends React.Component {
           successMsg: 'new login created'
         });
 
-        that.props.onClick("Home");
+        that.props.changeViews("Home");
         that.props.setCurrentUser(that.state.username);
       })
       .catch(function(err) {

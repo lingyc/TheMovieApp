@@ -110,7 +110,7 @@ class App extends React.Component {
     console.log(name,password);
     $.post(Url + '/signup',{name:name,password:password}).then(function() {
       console.log('success'); 
-      this.setState({username: name})
+      this.setState({username: name, view: "Home"})
     }).catch(function() {console.log('error')})
   }
 
@@ -298,7 +298,7 @@ console.log('send request is being run!!')
         if (response[0][i]['requestor']!==response[1] && response[0][i]['response']===null ){
           top.push(response[0][i]);
         }
-        if (response[0][i]['requestor']===response[1] &&response[0][i]['response']!==null){
+        if (response[0][i]['requestor']===response[1] &&response[0][i]['response']!==null && response[0][i]['requestee']!=='test'){
           bottom.push(response[0][i]);
         }
       }
@@ -361,7 +361,7 @@ console.log('send request is being run!!')
     if (this.state.view==='Login') {
       return (<LogIn changeViews={this.changeViews.bind(this)} setCurrentUser={this.setCurrentUser.bind(this)}/>);
     } else if (this.state.view==="SignUp") {
-      return (<SignUp changeViews={this.changeViews.bind(this)} setCurrentUser={this.setCurrentUser.bind(this)}/>);
+      return (<SignUp changeViews={this.changeViews.bind(this)} setCurrentUser={this.setCurrentUser.bind(this)} />);
     } 
     //this view is added for moviesearch rendering
     else if (this.state.view === "MovieSearchView") {
@@ -437,8 +437,9 @@ console.log('send request is being run!!')
         </div>
       );
     } else if (this.state.view === "SingleMovie") {
+      let that = this;
       return (
-        <div>
+        <div onClick={()=>console.log(that.state)}>
             <Nav name={this.state.currentUser}
               onClick={this.changeViews.bind(this)}
               logout={this.logout.bind(this)}
