@@ -70,10 +70,10 @@ class LogIn extends React.Component {
   render() {
     return (
       <div className='landing row'>
-        <div className='icon-block col s6'>
-          <h2 className="header logo">TheMovieApp</h2>
+        <div className='icon-block col s7'>
+          <h2 className="header logo">Welcome to TheMovieApp</h2>
           <h5 className="header col s12 light description">
-            TheMovieApp is the premier Movie App of the 21st Century.
+            Lets find your next buddy by your movie taste!
           </h5>
         </div>
         <div className='login icon-block'>

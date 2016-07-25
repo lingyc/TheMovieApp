@@ -200,11 +200,16 @@ body {
 
 .landing .logo {
   color: white;
+  margin-top: 100px;
+  font-weight: 200;
+  font-size: 50px;
+  text-align: center;
 }
 
-.landing .description {
+.landing .header.description {
   color: white;
   font-weight: 100;
+  text-align: center;
 }
 
 
@@ -657,4 +662,13 @@ textarea {
 .notification .updateMsg {
   text-align: center;
   padding-bottom: 30px;
+}
+
+.header.large {
+  font-size: 15px;
+  margin: 25px 0 15px 0;
+}
+
+.center.btn {
+  margin: auto 30% auto 38%;
 }
