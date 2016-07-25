@@ -2,7 +2,7 @@ var FriendEntry = (props) => {
 
 
   return (
-  <div className="FriendEntry collection-item row">
+  <div className="FriendEntry collection-item row" >
   	<div className="col s3">
   		<img className='profilethumnail' src={'https://unsplash.it/170/170/?random'}/>
   	</div>
