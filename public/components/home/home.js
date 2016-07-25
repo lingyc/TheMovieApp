@@ -74,7 +74,7 @@ class Home extends React.Component {
 
       //this will search TMDB for movie and send it to server to retrive user ratings
       $.ajax({
-        url: "http://api.themoviedb.org/3/search/movie",
+        url: "https://api.themoviedb.org/3/search/movie",
         jsonp: "callback",
         dataType: "jsonp",
         data: {
@@ -83,7 +83,7 @@ class Home extends React.Component {
             format: "json",
         },
         success: function(response) {
-          var sorted = _.sortBy(response.results, 'imdbRating').reverse();
+          var sorted = _.sortBy(response.results, 'imdbRating');
           that.getUserRatingsForMovies(sorted);
         }
       });

@@ -1,0 +1,11 @@
+'use strict';
+
+var db = require('../dbConnection');
+var User = require('../models/user');
+
+//create movies collection
+var Users = new db.Collection();
+Users.model = User;
+
+module.exports = Users;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2FwcC9jb2xsZWN0aW9ucy91c2Vycy5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLElBQUksS0FBSyxRQUFRLGlCQUFSLENBQVQ7QUFDQSxJQUFJLE9BQU8sUUFBUSxnQkFBUixDQUFYOztBQUVBO0FBQ0EsSUFBSSxRQUFRLElBQUksR0FBRyxVQUFQLEVBQVo7QUFDQSxNQUFNLEtBQU4sR0FBYyxJQUFkOztBQUVBLE9BQU8sT0FBUCxHQUFpQixLQUFqQiIsImZpbGUiOiJ1c2Vycy5qcyIsInNvdXJjZXNDb250ZW50IjpbInZhciBkYiA9IHJlcXVpcmUoJy4uL2RiQ29ubmVjdGlvbicpXG52YXIgVXNlciA9IHJlcXVpcmUoJy4uL21vZGVscy91c2VyJyk7XG5cbi8vY3JlYXRlIG1vdmllcyBjb2xsZWN0aW9uXG52YXIgVXNlcnMgPSBuZXcgZGIuQ29sbGVjdGlvbigpO1xuVXNlcnMubW9kZWwgPSBVc2VyO1xuXG5tb2R1bGUuZXhwb3J0cyA9IFVzZXJzOyJdfQ==
