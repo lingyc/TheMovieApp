@@ -3,7 +3,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      view:'Home',
+      view:'Login',
       friendsRatings:[],
       movie: null,
       friendRequests:[],
@@ -357,6 +357,7 @@ if (friends1.indexOf(person)!== -1 && friends1.length!==0){
   }
 
   removeRequest(person, self) {
+    var that= this;
     $.ajax({
       url: 'http://127.0.0.1:3000/removeRequest',
       type: 'DELETE',
@@ -366,6 +367,7 @@ if (friends1.indexOf(person)!== -1 && friends1.length!==0){
       },
       success: function(response) {
         console.log('REQUEST REMOVED!');
+        that.listPendingFriendRequests();
       },
       error: function(error) {
         console.log(error);
