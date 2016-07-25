@@ -545,8 +545,12 @@ textarea {
   height: 170px; 
 }
 
-.individual {
+.individual, .friendEntryIndividual {
  cursor: pointer;
+}
+
+.friendEntryIndividual, .friendEntryCompatability {
+  text-align: right;
 }
 
 .myFriends .errorMsg, .myFriends .updateMsg {
@@ -567,6 +571,10 @@ textarea {
 .Friend {
   position: relative;
   margin-top: 50px;
+  padding-right: 20px;
+}
+
+.friendEntry {
   padding-right: 20px;
 }
 
@@ -610,6 +618,6 @@ textarea {
 }
 
 .buddy .btn {
-  float: right;
-  margin-top: 10px;
+  margin-top: 30px;
+  margin-left: 400px;
 }
