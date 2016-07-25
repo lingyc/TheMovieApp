@@ -4,7 +4,8 @@ class MyRatings extends React.Component {
 
     this.state = {
       movies: [],
-      allRatedMovies: true
+      allRatedMovies: true,
+      search: ''
     };
   }
 
@@ -12,6 +13,13 @@ class MyRatings extends React.Component {
   componentDidMount() {
     this.getAllRatedMovies();
   }
+
+  handleChange(event) {
+    this.setState({
+      search: event.target.value
+    });
+  }
+
 
   getAllRatedMovies() {
     $.get('http://127.0.0.1:3000/getUserRatings')
@@ -32,11 +40,11 @@ class MyRatings extends React.Component {
   //this will call search for a movie from external API, do a database query for rating
   //and set the reponse to the movies state
   handleSearch(event) {
-    if (event.charCode == 13) {
+    if (event.charCode == 13 || event === 'clicked') {
       var that = this;
 
       //this will search database
-    $.get('http://127.0.0.1:3000/searchRatedMovie', {title: event.target.value})
+    $.get('http://127.0.0.1:3000/searchRatedMovie', {title: this.state.search})
     .then(searchResults => {
       console.log('response from server', searchResults);
       this.setState({
@@ -60,13 +68,16 @@ class MyRatings extends React.Component {
     }
 
     return (
-      <div className='MyRatings'> 
-        <div onClick={this.getAllRatedMovies.bind(this)}>{lable}</div>
+      <div className='MyRatings collection'> 
+        <div className='header' onClick={this.getAllRatedMovies.bind(this)}>{lable}</div>
         <div className='searchMovie'>
           <input type ='text' id='movieInput' 
             className='movieInput'
+            value={this.state.search}
             placeholder='Insert Movie Title'
+            onChange={this.handleChange.bind(this)}
             onKeyPress={this.handleSearch.bind(this)}/>
+          <a className="waves-effect waves-light btn" onClick={() => this.handleSearch.bind(this)('clicked')}>search</a>
         </div>
         {results}
         <MovieList movies={this.state.movies}

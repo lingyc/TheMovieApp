@@ -309,7 +309,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
   ========================================
 */
 
-.Home {
+.Home, .MyRatings{
   width: 80%;
   margin: 30px auto 30px auto;
 /*  border-left: 1px solid #ccc;
@@ -318,21 +318,21 @@ textarea.materialize-textarea:focus:not([readonly]) {
 
 /*search bar*/
 
-.Home .searchMovie{
+.Home .searchMovie, .MyRatings .searchMovie{
   width: 300px;
   margin: 30px auto 30px auto;
 }
 
-.Home a{
+.Home a, .MyRatings a{
   margin: 0px 80px 0px 80px;
 }
 
-.Home.collection {
+.Home.collection, .singleMovie.collection, .MyRatings.collection {
   border-radius: 15px;
   padding: 20px 20px 20px 20px;
 }
 
-.Home .header {
+.Home .header, .MyRatings .header {
   text-align: center;
   cursor: pointer;
 }

@@ -69,20 +69,25 @@ class SingleMovieRating extends React.Component {
     let that = this;
     let movie = this.state.movie;
     return (
-      <div>
-        <div className="singleMovie">
-          <img className='moviethumnail' src={movie.poster} onClick={() => (this.props.change("SingleMovie", movie))}/>
-          <h1 className='movieTitle' onClick={() => (this.props.change("SingleMovie", movie))}>{movie.title}</h1>
-          <p className='movieYear'>{movie.release_date}</p>
-          <p className='movieDescription'>{movie.description}</p>
-          <ReviewComponent 
-            review={movie.review} 
-            title={movie.title}
-            id={movie.id}/>
-          <p className='imdbRating'>IMDB rating: {movie.imdbRating}</p>
-          <MovieWatchRequest movie={movie}/>
-          <StarRatingComponent movie={movie}/>
-          <div className='avgFriendRatingBlock'>average friend rating: {(movie.friendAverageRating) ? movie.friendAverageRating : 'no friend ratings' }</div>
+      <div className='Home collection'>
+        <div className="movieEntry collection-item row">
+          <img className='moviethumnail col s3' src={movie.poster} onClick={() => (this.props.change("SingleMovie", movie))}/>
+          <div className='right col s9'>
+            <h5 className='movieTitle' onClick={() => (this.props.change("SingleMovie", movie))}>{movie.title}</h5>
+            <p className='movieYear'>{movie.release_date}</p>
+            <p className='movieDescription'>{movie.description}</p>
+            <ReviewComponent 
+              review={movie.review} 
+              title={movie.title}
+              id={movie.id}/>
+            <MovieWatchRequest movie={movie}/>
+
+            <div className="ratings row">
+              <div className='imdbRating col s4'>IMDB rating: <b>{movie.imdbRating}</b></div>
+              <StarRatingComponent movie={movie}/>
+              <div className='avgFriendRatingBlock col s4'>average friend rating: {(movie.friendAverageRating) ? <b>{movie.friendAverageRating}</b> : 'n/a' }</div>
+            </div>
+          </div>
         </div>
         <div>
           {this.state.friendRatings.map(friendRating => 
