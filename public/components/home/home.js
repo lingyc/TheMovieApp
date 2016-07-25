@@ -84,6 +84,7 @@ class Home extends React.Component {
   }
 
   render() {
+    
     var lable = 'recent releases';
     var feedbackMsg = '';
     if (this.state.recentRelease === false) {

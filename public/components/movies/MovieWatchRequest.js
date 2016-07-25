@@ -142,7 +142,7 @@ class MovieWatchRequest extends React.Component {
           </div>
 
           {stash}
-          <input className="messageBox" onChange={this.handleMsg.bind(this)} placeholder="add a message"/>
+          <textarea className="messageBox" cols="40" rows="5" onChange={this.handleMsg.bind(this)} placeholder="add a message" maxlength="255"></textarea>
           <button className="watchRequest" onClick={this.handleSubmit.bind(this)}>send watch request</button>
           <button className="closeWatchRequest" onClick={this.handleClick.bind(this)}>close watch request</button>
         </div>
@@ -151,7 +151,7 @@ class MovieWatchRequest extends React.Component {
       return (
         <div>
           <div>{(this.state.requestSent) ? 'your request has been sent' : ''}</div>
-          <button onClick={this.handleClick.bind(this)}>{(this.state.requestSent) ? 'send another watch request' : 'send a watch request'}</button>
+          <button className="watchRequestButton" onClick={this.handleClick.bind(this)}>{(this.state.requestSent) ? 'send another watch request' : 'send a watch request'}</button>
         </div>
         )
     }
