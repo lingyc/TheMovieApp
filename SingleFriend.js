@@ -2,11 +2,11 @@ var SingleFriend = (props) => {
 
 
 console.log('props.moviesOfFriend',props.moviesOfFriend)
-if (props.moviesOfFriend.length === 0){
+if (props.moviesOfFriend.length===0){
 	return (
 		<div>
 		<button onClick={() => (props.onClick("Friends"))}>Back to all friends</button><br/>
-		Sorry, {props.friendName.slice(props.friendName.indexOf(">")+1,props.friendName.lastIndexOf("<"))} hasn't rated any movies.
+		Sorry, {props.friendName} hasn't rated any movies.
 		</div>
 		)
 

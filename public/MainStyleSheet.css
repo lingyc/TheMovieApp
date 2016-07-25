@@ -309,7 +309,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
   ========================================
 */
 
-.Home, .MyRatings, .myFriends {
+.Home, .MyRatings, .myFriends, .movieBuddy {
   width: 80%;
   margin: 30px auto 30px auto;
 /*  border-left: 1px solid #ccc;
@@ -329,13 +329,14 @@ textarea.materialize-textarea:focus:not([readonly]) {
 }
 
 .Home.collection, .singleMovie.collection, 
-.MyRatings.collection, .myFriends.collection {
+.MyRatings.collection, .myFriends.collection,
+.movieBuddy.collection {
   border-radius: 15px;
   padding: 20px 20px 20px 20px;
 }
 
 .Home .header, .MyRatings .header,
-.myFriends .header {
+.myFriends .header, .movieBuddy .header {
   text-align: center;
   cursor: pointer;
 }
@@ -537,6 +538,7 @@ textarea {
 */
 
 .profilethumnail {
+  margin-top: 20px;
   border: 1px solid #ccc;
   border-radius: 50%;
   width: 170px;
@@ -553,8 +555,60 @@ textarea {
 
 .myFriends .lable {
   margin-bottom: 30px;
+  color: #3b7fc7;
+  font-weight: 100;
 }
 
-.individual, .compatability {
-  float: right;
+.individual, .compatability, .firendCompatability{
+  position: absolute;
+  right: 0;
+}
+
+.Friend {
+  position: relative;
+  margin-top: 50px;
+  padding-right: 20px;
+}
+
+.MovieEntryFriend {
+  position: relative;
+  padding-right: 20px;
+}
+
+.compatability {
+  font-weight: 400;
+}
+
+.MovieEntryFriend .individual {
+  position: absolute;
+  top: 0;
+  margin: 0px 0px 0px 0px;
+}
+
+.top {
+  margin: 20px 0px 20px 0;
+}
+
+.firendCompatability {
+  margin-top: 30px;
+}
+
+.friendName {
+  margin-top: 20px;
+  font-weight: 400;
+  font-size: 30px;
+}
+
+/*
+  ========================================
+  movie buddy view
+  ========================================
+*/
+
+.buddyName, .buddyCompatibility, {
+  text-align: right;
+}
+
+.buddy a {
+  right: 0;
 }
