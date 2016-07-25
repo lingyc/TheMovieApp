@@ -84,10 +84,10 @@ class SignUp extends React.Component {
     let that = this;
     return (
     <div className='landing row'>
-      <div className='icon-block col s6'>
-        <h2 className="header logo">Movie Buddy</h2>
+      <div className='icon-block col s7'>
+        <h2 className="header logo">Welcome to TheMovieApp</h2>
         <h5 className="header col s12 light description">
-          Mea te nibh constituam, veritus convenire constituam ad quo, at cetero mandamus quo. Meliore salutandi percipitur et vel. In oratio soleat dissentiet eum. Vel an dolore numquam nusquam, mea ut essent integre denique, eos erat ocurreret gloriatur cu. Quod oratio forensibus eu ius, te periculis prodesset pri. His ne illum malis, duo te sententiae adipiscing.
+          Lets find your next buddy by your movie taste!
         </h5>
       </div>
       <div className='login icon-block'>
