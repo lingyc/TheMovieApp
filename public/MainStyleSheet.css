@@ -309,7 +309,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
   ========================================
 */
 
-.Home, .MyRatings{
+.Home, .MyRatings, .myFriends {
   width: 80%;
   margin: 30px auto 30px auto;
 /*  border-left: 1px solid #ccc;
@@ -318,7 +318,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
 
 /*search bar*/
 
-.Home .searchMovie, .MyRatings .searchMovie{
+.Home .searchMovie, .MyRatings .searchMovie {
   width: 300px;
   margin: 30px auto 30px auto;
 }
@@ -327,7 +327,8 @@ textarea.materialize-textarea:focus:not([readonly]) {
   margin: 0px 80px 0px 80px;
 }
 
-.Home.collection, .singleMovie.collection, .MyRatings.collection {
+.Home.collection, .singleMovie.collection, 
+.MyRatings.collection, .myFriends.collection {
   border-radius: 15px;
   padding: 20px 20px 20px 20px;
 }
@@ -520,3 +521,10 @@ textarea {
   text-align: center;
   vertical-align: middle;
 }
+
+/*
+  ========================================
+  myFriends
+  ========================================
+*/
+
