@@ -78,20 +78,6 @@ class SingleMovieRating extends React.Component {
             </div>
           </div>
         </div>
-        <div className="singleMovie">
-          <img className='moviethumnail' src={movie.poster} />
-          <h1 className='movieTitle' >{movie.title}</h1>
-          <p className='movieYear'>{movie.release_date}</p>
-          <p className='movieDescription'>{movie.description}</p>
-          <ReviewComponent 
-            review={movie.review} 
-            title={movie.title}
-            id={movie.id}/>
-          <p className='imdbRating'>IMDB rating: {movie.imdbRating}</p>
-          <MovieWatchRequest movie={movie}/>
-          <StarRatingComponent movie={movie}/>
-          <div className='avgFriendRatingBlock'>average friend rating: {(movie.friendAverageRating) ? movie.friendAverageRating : 'no friend ratings' }</div>
-        </div>
         <div>
           {this.state.friendRatings.map(friendRating => 
             <SingleMovieRatingEntry 
