@@ -73,7 +73,7 @@ class ReviewComponent extends React.Component {
       return (
         <div className='userReview'>
           <div className='review'>your review:<button className='editReviewButton' onClick={this.handleEdit.bind(this)}>edit review</button></div>
-          <div className='theReview'>{(this.state.userReview === '') ? 'you have not review the movie yet' : this.state.userReview}</div>
+          <div className='theReview'>{(this.state.userReview === '') ? 'You have not reviewed the movie yet' : this.state.userReview}</div>
           {(this.state.reviewSubmitted) ? <div className="updateMsg">review submitted</div> : ''}
         </div>);
     }
