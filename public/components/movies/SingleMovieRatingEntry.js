@@ -10,9 +10,9 @@ class SingleMovieRatingEntry extends React.Component {
     console.log(this.props);
   }
 
-  handleClick() {
+  handleClick(buddy) {
     console.log(this)
-    // this.props.fof();
+    // this.props.fof(buddy);
     // this.props.change('singleFriend', this.state.rating.friendUserName);
   }
 
@@ -23,7 +23,7 @@ class SingleMovieRatingEntry extends React.Component {
     let rating = this.state.rating;
     var that = this;
     return (
-      <div className="collection-item row">
+      <div className="collection-item row" onClick={()=> console.log(that.props)}>
         <div className="col s3">
           <img className='profilethumnail' src={'https://unsplash.it/170/170/?random'}/>
         </div>
