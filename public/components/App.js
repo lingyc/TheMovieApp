@@ -276,8 +276,9 @@ console.log('send request is being run!!')
       $.post(Url + '/sendRequest',{name:person},function(a,b) {
        
           that.setState({
-            requestsOfCurrentUser:a
+            requestsOfCurrentUser:a.concat([person])
           })
+          console.log('line 281',that.state.requestsOfCurrentUser);
 
         $("#reqSent").fadeIn(1000);
         $("#reqSent").fadeOut(1000);
