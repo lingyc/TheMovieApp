@@ -37,15 +37,15 @@ class App extends React.Component {
     })
   }
 
-  acceptFriend(a) {
+  acceptFriend(a, movie) {
     var that=this;
     var final=a;
     $('button').on('click',function() {
       console.log($(this).html());
     })
-    console.log(final +'should be accepted')
+    console.log(final +'should be accepted, for movie....', movie)
 
-    $.post('http://127.0.0.1:3000/accept',{personToAccept:final},function(a,b) {
+    $.post('http://127.0.0.1:3000/accept',{personToAccept:final, movie: movie},function(a,b) {
       console.log(a,b)
       that.listPendingFriendRequests();
     })
@@ -408,7 +408,7 @@ class App extends React.Component {
               decline={this.declineFriend.bind(this)} 
               listRequests={this.listPendingFriendRequests.bind(this)} 
               pplWhoWantToBeFriends={this.state.pendingFriendRequests.map(
-                function(a){return [a.requestor,a.requestTyp,a.movie===null?"": "("+a.movie+")","Message:"+ a.message==='null'?"none":a.message]})} 
+                function(a){return [a.requestor,a.requestTyp,a.movie===null?"": a.movie,"Message:"+ a.message==='null'?"none":a.message]})} 
               remove={this.removeRequest.bind(this)}
             />
         </div>
