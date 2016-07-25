@@ -83,7 +83,7 @@ class Home extends React.Component {
             format: "json",
         },
         success: function(response) {
-          var sorted = _.sortBy(response.results, 'release_date').reverse();
+          var sorted = _.sortBy(response.results, 'imdbRating').reverse();
           that.getUserRatingsForMovies(sorted);
         }
       });

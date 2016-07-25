@@ -3,7 +3,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      view:'Login',
+      view:'Home',
       friendsRatings:[],
       movie: null,
       friendRequests:[],
@@ -37,15 +37,15 @@ class App extends React.Component {
     })
   }
 
-  acceptFriend(a) {
+  acceptFriend(a, movie) {
     var that=this;
     var final=a;
     $('button').on('click',function() {
       console.log($(this).html());
     })
-    console.log(final +'should be accepted')
+    console.log(final +'should be accepted, for movie....', movie)
 
-    $.post('http://127.0.0.1:3000/accept',{personToAccept:final},function(a,b) {
+    $.post('http://127.0.0.1:3000/accept',{personToAccept:final, movie: movie},function(a,b) {
       console.log(a,b)
       that.listPendingFriendRequests();
     })
@@ -64,11 +64,13 @@ class App extends React.Component {
     console.log('refreshed inbox, should delete friend request on the spot instead of moving')
   }
 
-  declineFriend(a) {
+  declineFriend(a, movie) {
+    var that=this;
     var final=a;
 
-    $.post('http://127.0.0.1:3000/decline',{personToDecline:final},function(a,b) {
+    $.post('http://127.0.0.1:3000/decline',{personToDecline:final, movie: movie},function(a,b) {
       console.log(a,b)
+      console.log('this is the state after declining friend, ', that.state);
       that.listPendingFriendRequests();
     })
 
@@ -213,12 +215,10 @@ class App extends React.Component {
 
     // }
     if (targetState==='Home'){
- this.getCurrentFriends();
+      this.getCurrentFriends();
       if (this.state.requestsOfCurrentUser.length===0 && this.state.myFriends.length===0){
-       this.sendRequest();
+        this.sendRequest();
       }
-
-
     }
 
 
@@ -256,51 +256,44 @@ class App extends React.Component {
 
     var that=this;
     if (document.getElementById('findFriendByName')!==null){
-    var person=document.getElementById('findFriendByName').value
-  } else {
-    var person =a||'test';
-  }
-console.log('person:',person)
-var friends1=[];
+      var person=document.getElementById('findFriendByName').value
+    } else {
+      var person = a || 'test';
+    }
+    console.log('person:',person)
+    console.log('state', this.state);
+    var friends1=[];
 
-for (var i=0;i<this.state.myFriends;i++){
-  friends1.push(this.state.myFriends[i][0])
-}
+    for (var i=0;i<this.state.myFriends;i++){
+      friends1.push(this.state.myFriends[i][0])
+    }
 
-for (var i=0;i<this.state.requestsOfCurrentUser.length;i++){
-  friends1.push(this.state.requestsOfCurrentUser[i])
-}
+    for (var i=0;i<this.state.requestsOfCurrentUser.length;i++){
+      friends1.push(this.state.requestsOfCurrentUser[i])
+    }
 
-
-var pplYouCantSendTo=friends1;
-console.log('ppl you cant send to',friends1,person);
-console.log('tof',friends1.indexOf(person)!== -1, friends1.length!==0)
-if (friends1.indexOf(person)!== -1 && friends1.length!==0){
-  $("#AlreadyReq").fadeIn(1000);
+    var pplYouCantSendTo=friends1;
+    console.log('ppl you cant send to',friends1,person);
+    console.log('tof',friends1.indexOf(person)!== -1, friends1.length!==0)
+    if (friends1.indexOf(person)!== -1 && friends1.length!==0){
+      $("#AlreadyReq").fadeIn(1000);
       $("#AlreadyReq").fadeOut(1000);
-
-  console.log('this person is already in there!!')
-} else if (person.length===0) {
+      console.log('this person is already in there!!')
+    } else if (person.length===0) {
       $("#enterRealFriend").fadeIn(1000);
       $("#enterRealFriend").fadeOut(1000);
-
     } else {
-
-
       $.post('http://127.0.0.1:3000/sendRequest',{name:person},function(a,b) {
-       
-          that.setState({
-            requestsOfCurrentUser:a
-          })
+        that.setState({
+          requestsOfCurrentUser:a
+        })
 
- $("#reqSent").fadeIn(1000);
-      $("#reqSent").fadeOut(1000);
-
-
+        $("#reqSent").fadeIn(1000);
+        $("#reqSent").fadeOut(1000);
       });
       if ( document.getElementById('findFriendByName')!==null){
-      document.getElementById('findFriendByName').value = '';
-}
+        document.getElementById('findFriendByName').value = '';
+      }
     }
   }
 
@@ -321,8 +314,6 @@ if (friends1.indexOf(person)!== -1 && friends1.length!==0){
         }
       }
 
-      console.log('pending responses (both friend and watch), which gets passed down to inbox', top)
-      console.log('pending requests, which gets passed down to inbox', bottom)
       that.setState({
         pendingFriendRequests:top,
         requestResponses:bottom
@@ -355,17 +346,18 @@ if (friends1.indexOf(person)!== -1 && friends1.length!==0){
     console.log('this should list potential friends')
   }
 
-  removeRequest(person, self) {
+  removeRequest(person, self, movie) {
     var that= this;
     $.ajax({
       url: 'http://127.0.0.1:3000/removeRequest',
       type: 'DELETE',
       data: {
         requestor: self,
-        requestee: person
+        requestee: person,
+        movie: movie
       },
       success: function(response) {
-        console.log('REQUEST REMOVED!');
+        console.log('REQUEST REMOVED! Movie is: ', movie);
         that.listPendingFriendRequests();
       },
       error: function(error) {
@@ -378,7 +370,27 @@ if (friends1.indexOf(person)!== -1 && friends1.length!==0){
     if (this.state.view==='Login') {
       return (<LogIn changeViews={this.changeViews.bind(this)} setCurrentUser={this.setCurrentUser.bind(this)}/>);
     } else if (this.state.view==="SignUp") {
-      return (< SignUp changeViews={this.changeViews.bind(this)} setCurrentUser={this.setCurrentUser.bind(this)}/>);
+      return (<SignUp onClick={this.changeViews.bind(this)} setCurrentUser={this.setCurrentUser.bind(this)}/>);
+    } 
+    //this view is added for moviesearch rendering
+    else if (this.state.view === "MovieSearchView") {
+      return ( 
+        <div> 
+          <div>
+            <Nav name={this.state.currentUser}
+            find={this.findMovieBuddies.bind(this)}
+            onClick={this.changeViews.bind(this)}
+            logout={this.logout.bind(this)} 
+            />
+          </div>
+          <div>
+          <MovieRating 
+            handleSearchMovie={this.getMovie.bind(this)} 
+            movie={this.state.movie}
+            />
+          </div>
+        </div>
+      );
     } else if (this.state.view === "Inbox" ) {
       return (
         <div>
@@ -396,7 +408,7 @@ if (friends1.indexOf(person)!== -1 && friends1.length!==0){
               decline={this.declineFriend.bind(this)} 
               listRequests={this.listPendingFriendRequests.bind(this)} 
               pplWhoWantToBeFriends={this.state.pendingFriendRequests.map(
-                function(a){return [a.requestor,a.requestTyp,a.movie===null?"": "("+a.movie+")","Message:"+ a.message==='null'?"none":a.message]})} 
+                function(a){return [a.requestor,a.requestTyp,a.movie===null?"": a.movie,"Message:"+ a.message==='null'?"none":a.message]})} 
               remove={this.removeRequest.bind(this)}
             />
         </div>

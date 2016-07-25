@@ -68,8 +68,8 @@ class SignUp extends React.Component {
           successMsg: 'new login created'
         });
 
-        that.props.setCurrentUser(that.state.username);
         that.props.onClick("Home");
+        that.props.setCurrentUser(that.state.username);
       })
       .catch(function(err) {
         console.log(err);
