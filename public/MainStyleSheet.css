@@ -318,7 +318,8 @@ textarea.materialize-textarea:focus:not([readonly]) {
 
 /*search bar*/
 
-.Home .searchMovie, .MyRatings .searchMovie {
+.Home .searchMovie, .MyRatings .searchMovie,
+.myFriends .findFriend {
   width: 300px;
   margin: 30px auto 30px auto;
 }
@@ -333,7 +334,8 @@ textarea.materialize-textarea:focus:not([readonly]) {
   padding: 20px 20px 20px 20px;
 }
 
-.Home .header, .MyRatings .header {
+.Home .header, .MyRatings .header,
+.myFriends .header {
   text-align: center;
   cursor: pointer;
 }
@@ -527,4 +529,15 @@ textarea {
   myFriends
   ========================================
 */
+
+.profilethumnail {
+  border-radius: 50%;
+  width: 170px;
+  height: 170px; 
+}
+
+
+.individual {
+ cursor: pointer;
+}
 

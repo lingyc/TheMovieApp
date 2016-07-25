@@ -1,8 +1,11 @@
 var Friends = (props) => (
  
   <div className="myFriends collection">
-		 <h1>Friends</h1>
-		 Enter friend you'd like to add here here:<input id='findFriendByName'></input> <button onClick={props.sendRequest}>Click to send request</button>
+		 <div className='header'>Your Friends</div>
+		 <div className='findFriend'>
+		 	<input id='findFriendByName' placeholder="Enter friend you'd like to add here here"></input> 
+		 	<a className="waves-effect waves-light btn" onClick={props.sendRequest}>Click to send request</a>
+		 </div>
 		 <div style={{display:'none'}} id='enterRealFriend'>Please enter something!</div>
 		 <div style={{display:'none'}} id='reqSent'>Request sent!</div><br/>
 		 <div style={{display:'none'}} id='AlreadyReq'>Youve already sent a request to this user!</div><br/>
