@@ -15,7 +15,7 @@ class MovieWatchRequest extends React.Component {
 
   getFriendList() {
   	//send get request to retrive friends and set to this.state.friends
-    $.get('http://127.0.0.1:3000/getFriendList')
+    $.get(Url + '/getFriendList')
     .then(friends => {
       console.log('response from server', friends);
       var uniqFriend = _.uniq(friends);
@@ -57,7 +57,7 @@ class MovieWatchRequest extends React.Component {
         requestee: this.state.friendStash
       };
 
-      $.post('http://127.0.0.1:3000/sendWatchRequest', requestObj)
+      $.post(Url + '/sendWatchRequest', requestObj)
       .done(response => {
         this.setState({
           active: false,

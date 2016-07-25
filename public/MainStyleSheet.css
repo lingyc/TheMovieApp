@@ -309,7 +309,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
   ========================================
 */
 
-.Home, .MyRatings{
+.Home, .MyRatings, .myFriends {
   width: 80%;
   margin: 30px auto 30px auto;
 /*  border-left: 1px solid #ccc;
@@ -318,7 +318,8 @@ textarea.materialize-textarea:focus:not([readonly]) {
 
 /*search bar*/
 
-.Home .searchMovie, .MyRatings .searchMovie{
+.Home .searchMovie, .MyRatings .searchMovie,
+.myFriends .findFriend {
   width: 300px;
   margin: 30px auto 30px auto;
 }
@@ -327,15 +328,23 @@ textarea.materialize-textarea:focus:not([readonly]) {
   margin: 0px 80px 0px 80px;
 }
 
-.Home.collection, .singleMovie.collection, .MyRatings.collection {
+.Home.collection, .singleMovie.collection, 
+.MyRatings.collection, .myFriends.collection {
   border-radius: 15px;
   padding: 20px 20px 20px 20px;
 }
 
-.Home .header, .MyRatings .header {
+.Home .header, .MyRatings .header,
+.myFriends .header {
   text-align: center;
   cursor: pointer;
 }
+
+.myFriends .btn {
+  margin-left: 20px;
+}
+
+
 /*
   ========================================
   movie list view
@@ -519,4 +528,33 @@ textarea {
   box-sizing: border-box;
   text-align: center;
   vertical-align: middle;
+}
+
+/*
+  ========================================
+  myFriends
+  ========================================
+*/
+
+.profilethumnail {
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  width: 170px;
+  height: 170px; 
+}
+
+.individual {
+ cursor: pointer;
+}
+
+.myFriends .errorMsg, .myFriends .updateMsg {
+  text-align: center;
+}
+
+.myFriends .lable {
+  margin-bottom: 30px;
+}
+
+.individual, .compatability {
+  float: right;
 }

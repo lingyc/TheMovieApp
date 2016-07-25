@@ -22,7 +22,7 @@ class MyRatings extends React.Component {
 
 
   getAllRatedMovies() {
-    $.get('http://127.0.0.1:3000/getUserRatings')
+    $.get(Url + '/getUserRatings')
     .then(userRatedMovies => {
       console.log('response from server', userRatedMovies);
       this.setState({
@@ -44,7 +44,7 @@ class MyRatings extends React.Component {
       var that = this;
 
       //this will search database
-    $.get('http://127.0.0.1:3000/searchRatedMovie', {title: this.state.search})
+    $.get(Url + '/searchRatedMovie', {title: this.state.search})
     .then(searchResults => {
       console.log('response from server', searchResults);
       this.setState({

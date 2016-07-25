@@ -20,7 +20,7 @@ class StarRatingComponent extends React.Component {
       id: this.props.movie.id,
       rating: rating
     };
-    $.post('http://127.0.0.1:3000/ratemovie', movieObj)
+    $.post(Url + '/ratemovie', movieObj)
     .done(response => {
       console.log('movie rating updated');
       this.setState({

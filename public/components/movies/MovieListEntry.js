@@ -5,7 +5,7 @@ class MovieListEntry extends React.Component {
     this.state = {
       userRating: this.props.movie.score,
       userReview: this.props.movie.review,
-      friendAverageRating: this.props.movie.friendAverageRating
+      friendAverageRating: Math.round( this.props.movie.friendAverageRating * 10 ) / 10;
     };
   }
 

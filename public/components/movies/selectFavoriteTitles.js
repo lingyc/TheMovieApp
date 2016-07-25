@@ -24,7 +24,7 @@ class SelectFavoriteTitles extends React.Component {
       var that = this;
 
       //this will search database
-    $.get('http://127.0.0.1:3000/searchRatedMovie', {title: event.target.value})
+    $.get(Url + '/searchRatedMovie', {title: event.target.value})
     .then(searchResults => {
       console.log('response from server', searchResults);
       this.setState({
