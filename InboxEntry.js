@@ -7,7 +7,7 @@ var InboxEntry = (props) => {
     <button className='decline' onClick={function(){props.decline(props.inboxName)}}>
     Decline {props.inboxName}'s {props.requestType} request {props.requestMovie}</button></span>
     <br/>
-  {props.messageInfo}
+    Message:{props.messageInfo}
   </div>
 )};
 

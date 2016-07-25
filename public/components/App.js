@@ -82,9 +82,7 @@ class App extends React.Component {
     //     console.log(error);
     //   }
     // });
-    this.setState({
-      view: "Home"
-    })
+   
   }
 
   findMovieBuddies() {
