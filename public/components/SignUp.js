@@ -60,7 +60,7 @@ class SignUp extends React.Component {
 
       var that = this;
 
-      $.post('http://127.0.0.1:3000/signup', userObj)
+      $.post(Url + '/signup', userObj)
       .then(function(reponse) {
         //after signup should prompt user to select their favorite three movies
         that.setState({

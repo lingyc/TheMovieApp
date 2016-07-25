@@ -22,7 +22,7 @@ class App extends React.Component {
   getCurrentFriends() {
     var that=this;
     console.log('testinggg')
-    $.post('http://127.0.0.1:3000/getFriends',{test:'info'},function(a,b) {
+    $.post(Url + '/getFriends',{test:'info'},function(a,b) {
       console.log('what you get back from server for get friends',a,b);
              for (var i=0;i<a.length;i++){
                 if (a[i][1]===null){
@@ -45,21 +45,10 @@ class App extends React.Component {
     })
     console.log(final +'should be accepted')
 
-    $.post('http://127.0.0.1:3000/accept',{personToAccept:final},function(a,b) {
+    $.post(Url + '/accept',{personToAccept:final},function(a,b) {
       console.log(a,b)
       that.listPendingFriendRequests();
     })
-
-    // $.ajax({
-    //   url: 'http://127.0.0.1:3000/removeFriendRequest',
-    //   type: 'DELETE',
-    //   success: function(response) {
-    //     console.log('REQUEST REMOVED!');
-    //   },    
-    //   error: function(error) {
-    //     console.log(error);
-    //   }
-    // })
     
     console.log('refreshed inbox, should delete friend request on the spot instead of moving')
   }
@@ -67,27 +56,15 @@ class App extends React.Component {
   declineFriend(a) {
     var final=a;
 
-    $.post('http://127.0.0.1:3000/decline',{personToDecline:final},function(a,b) {
+    $.post(Url + '/decline',{personToDecline:final},function(a,b) {
       console.log(a,b)
       that.listPendingFriendRequests();
     })
-
-    // $.ajax({
-    //   url: 'http://127.0.0.1:3000/removeFriendRequest',
-    //   type: 'DELETE',
-    //   success: function(response) {
-    //     console.log('REQUEST REMOVED!');
-    //   }, 
-    //   error: function(error) {
-    //     console.log(error);
-    //   }
-    // });
-   
   }
 
   findMovieBuddies() {
     var that=this;
-    $.post('http://127.0.0.1:3000/findMovieBuddies',{dummy:'info'},function(a,b) {
+    $.post(Url + '/findMovieBuddies',{dummy:'info'},function(a,b) {
       var final=a.sort(function(a,b){return b[1]-a[1]})
       var myFriends=that.state.myFriends
        var realFinal=[]
@@ -129,7 +106,7 @@ class App extends React.Component {
 
   enterNewUser(name,password) {
     console.log(name,password);
-    $.post('http://127.0.0.1:3000/signup',{name:name,password:password}).then(function() {
+    $.post(Url + '/signup',{name:name,password:password}).then(function() {
       console.log('success'); 
       this.setState({username: name})
     }).catch(function() {console.log('error')})
@@ -139,7 +116,7 @@ class App extends React.Component {
     var that=this;
     console.log('mooooovie');
     var movieName = document.getElementById("movieToView").value
-    $.post('http://127.0.0.1:3000/getFriendRatings', { name: movieName }).then(function(response) {
+    $.post(Url + '/getFriendRatings', { name: movieName }).then(function(response) {
 
       that.setState({
       view:"Home",
@@ -152,7 +129,7 @@ class App extends React.Component {
 
   logout() {
     var that = this;
-    $.post('http://127.0.0.1:3000/logout').then(function(response) {
+    $.post(Url + '/logout').then(function(response) {
       console.log(response);
       that.setState({
         view:"Login",
@@ -165,7 +142,7 @@ class App extends React.Component {
     var movie= document.getElementById('movieToWatch').value;
     var toSend={requestee:friend, movie:movie};
     if (movie.length>0) {
-      $.post('http://127.0.0.1:3000/sendWatchRequest', toSend ,function(a,b) {
+      $.post(Url + '/sendWatchRequest', toSend ,function(a,b) {
         console.log(a,b);
       });
       document.getElementById('movieToWatch').value='';
@@ -287,7 +264,7 @@ if (friends1.indexOf(person)!== -1 && friends1.length!==0){
     } else {
 
 
-      $.post('http://127.0.0.1:3000/sendRequest',{name:person},function(a,b) {
+      $.post(Url + '/sendRequest',{name:person},function(a,b) {
        
           that.setState({
             requestsOfCurrentUser:a
@@ -307,7 +284,7 @@ if (friends1.indexOf(person)!== -1 && friends1.length!==0){
   listPendingFriendRequests() {
     var that=this;
     console.log('this should list friend reqs')
-    $.post('http://127.0.0.1:3000/listRequests',function(response,error) {
+    $.post(Url + '/listRequests',function(response,error) {
       console.log('Response I get!!!!!!!',response);
       var top=[]
       var bottom=[]
@@ -341,7 +318,7 @@ if (friends1.indexOf(person)!== -1 && friends1.length!==0){
         friendToFocusOn: friendName
       });
 
-      $.get('http://127.0.0.1:3000/getFriendUserRatings',{friendName: friendName},function(response) {
+      $.get(Url + '/getFriendUserRatings',{friendName: friendName},function(response) {
         console.log('getting friend movies:', response);
         that.setState({
           individualFriendsMovies: response
@@ -358,7 +335,7 @@ if (friends1.indexOf(person)!== -1 && friends1.length!==0){
   removeRequest(person, self) {
     var that= this;
     $.ajax({
-      url: 'http://127.0.0.1:3000/removeRequest',
+      url: Url + '/removeRequest',
       type: 'DELETE',
       data: {
         requestor: self,
@@ -495,3 +472,5 @@ if (friends1.indexOf(person)!== -1 && friends1.length!==0){
 }
 
 window.App = App;
+var Url = 'http://127.0.0.1:3000';
+window.Url = Url;

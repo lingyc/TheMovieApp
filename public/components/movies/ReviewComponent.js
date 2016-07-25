@@ -51,7 +51,7 @@ class ReviewComponent extends React.Component {
       id: this.props.id,
       review: review
     };
-    $.post('http://127.0.0.1:3000/ratemovie', movieObj)
+    $.post(Url + '/ratemovie', movieObj)
     .done(response => {
       console.log('movie rating updated');
       this.setState({

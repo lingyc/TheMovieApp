@@ -10,19 +10,8 @@ class SingleMovieRating extends React.Component {
   }
 
   componentDidMount() {
-    //movie will have been successfully passed
-    //into singlemovierating 
-    //note need to change app state movie
-    //when other things are clicked later on
-    // this.getFriends();
     this.getFriendsRating(this.state.movie);
-    // $.get('http://127.0.0.1:3000/getFriends', {name: this.state.mainUser})
-    //   .then(function(data) {
-    //     console.log(data);
-    //   })
-    //   .catch(function(err) {
-    //     console.log(err);
-    //   });
+
   }
 
   componentWillReceiveProps() {
@@ -38,7 +27,7 @@ class SingleMovieRating extends React.Component {
 
   getFriends() {
     var that = this;
-    $.post('http://127.0.0.1:3000/getFriends')
+    $.post(Url + '/getFriends')
       .then(function(resp) {
         console.log(that.state.friends)
       })
@@ -51,7 +40,7 @@ class SingleMovieRating extends React.Component {
   //get friendratings, passing in mainUser and movieobj
   getFriendsRating(inputMovie) {
     var that = this;
-    $.post('http://127.0.0.1:3000/getFriendRatings', 
+    $.post(Url + '/getFriendRatings', 
       {movie: inputMovie})
       .then(function(response) {
         console.log(response);
