@@ -43,7 +43,7 @@ class LogIn extends React.Component {
 
       var that = this;
 
-      $.post('http://127.0.0.1:3000/login', userObj)
+      $.post(Url + '/login', userObj)
       .then(function(response) {
         if (response[0] === 'it worked') {
           console.log('hi');
