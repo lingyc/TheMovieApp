@@ -7,8 +7,8 @@ var BuddyEntry = (props) => {
     </div>
     <div id="Friend" className="buddy col s9">
    		<h3 className="buddyName">{props.Buddy}</h3>
+   		<div className="buddyCompatibility">Compatability: {(props.BuddyScore}</div>
    		<a className="waves-effect waves-light btn" onClick={function(){props.buddyfunc(props.Buddy)}}>send friend request</a> 
-   		<div className="buddyCompatibility">Compatability:{props.BuddyScore}</div>
   	</div>
   </div>
 )
