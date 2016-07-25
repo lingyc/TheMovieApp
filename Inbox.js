@@ -33,11 +33,20 @@ class Inbox extends React.Component {
   }
 
   render() {
+
+
+
+
     let that = this;
+var empty=this.props.pplWhoWantToBeFriends.length===0?"No requests :(":"";
+var empty2=this.props.responsesAnswered.length===0? "No news :(":"";
+
     return (
       <div onClick={()=>console.log(that.props)}>
         <h2 className='nh'>Inbox</h2>
+
         People who've sent you requests<br/>
+         {empty} <br/>
         {this.props.pplWhoWantToBeFriends.map(friend =>
           <InboxEntry
             accept={that.props.accept}
@@ -48,7 +57,9 @@ class Inbox extends React.Component {
             messageInfo={friend[3]}
           />
         )}
-        Request Responses
+        Request Responses<br/>
+        {empty2}
+
         {this.props.responsesAnswered.map((unit) =>
           <Responses
             responsesInfo={unit.requestee} 
