@@ -3,7 +3,7 @@ let Nav = (props) => (
       <div className="navbar-fixed movieBuddyNav">
         <nav>
           <div className="nav-wrapper">
-            <a href="#" onClick={() => (props.onClick("Home"))} className="brand-logo center">Movie Buddy</a>
+            <a href="#" onClick={() => (props.onClick("Home"))} className="brand-logo center">TheMovieApp</a>
             <ul id="nav-mobile" className="left hide-on-med-and-down">
               <li><a className={(props.Home === true) ? "active" : ""} onClick={() => (props.onClick("Home"))}>Home</a></li>
               <li><a onClick={() => (props.onClick("MyRatings"))}>My Ratings</a></li>
