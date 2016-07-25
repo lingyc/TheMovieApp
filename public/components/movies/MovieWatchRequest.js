@@ -122,26 +122,33 @@ class MovieWatchRequest extends React.Component {
     if (this.state.active) {
       if (this.state.friendStash.length > 0) {
         var stash = 
-          (<div className="MovieWatchRequestFriendStash">
+          (<div className="MovieWatchRequestFriendStash col s6">
             <ul className="friendStash" name="friendStash" multiple>
               {this.state.friendStash.map(friend => <WatchRequestStashEntry friend={friend} handleRemoveFriend={this.handleRemoveFriend.bind(this)}/>)}
             </ul>
           </div>)
       } else if (this.state.friendStash.length === 0) {
-        var stash = <div className="updateMsg">please select your friend</div>;
+        var stash = 
+        <div className="MovieWatchRequestFriendStash col s6">
+          <ul className="friendStash" name="friendStash" multiple>
+            <div className="errorMsg">please select a friend</div>
+          </ul>
+        </div>;
       }
 
       return(
         <div className="activeWatchRequest">
-          <div className="MovieWatchRequestFriendList">
-            <input type="text" placeholder="filter friends" onChange={this.handleFilter.bind(this)}/>
-            <ul className="friendList" name="friendsList" multiple>
-              {(this.state.filteredFriends.length === 0) ? <div className="errorMsg">'no friend match is found'</div> : ''}
-              {this.state.filteredFriends.map(friend => <WatchRequestFriendEntry friend={friend} handleAddFriend={this.handleAddFriend.bind(this)}/>)}
-            </ul>
-          </div>
+          <input type="text" placeholder="filter friends" onChange={this.handleFilter.bind(this)}/>
+          <div className="row">
+            <div className="MovieWatchRequestFriendList col s6">
+              <ul className="friendList" name="friendsList" multiple>
+                {(this.state.filteredFriends.length === 0) ? <div className="errorMsg">'no friend match is found'</div> : ''}
+                {this.state.filteredFriends.map(friend => <WatchRequestFriendEntry friend={friend} handleAddFriend={this.handleAddFriend.bind(this)}/>)}
+              </ul>
+            </div>
 
-          {stash}
+            {stash}
+          </div>
           <textarea className="messageBox" cols="40" rows="5" onChange={this.handleMsg.bind(this)} placeholder="add a message" maxlength="255"></textarea>
           <button className="watchRequest" onClick={this.handleSubmit.bind(this)}>send watch request</button>
           <button className="closeWatchRequest" onClick={this.handleClick.bind(this)}>close watch request</button>
@@ -150,8 +157,8 @@ class MovieWatchRequest extends React.Component {
     } else {
       return (
         <div>
-          <div>{(this.state.requestSent) ? 'your request has been sent' : ''}</div>
           <button className="watchRequestButton" onClick={this.handleClick.bind(this)}>{(this.state.requestSent) ? 'send another watch request' : 'send a watch request'}</button>
+          <span className='sent updateMsg'>{(this.state.requestSent) ? 'your request has been sent' : ''}</span>
         </div>
         )
     }
@@ -162,11 +169,12 @@ class MovieWatchRequest extends React.Component {
 
 
 var WatchRequestFriendEntry = (props) => {
-  return (<li>{props.friend}<button onClick={() => props.handleAddFriend(props.friend)}>add</button></li>)
+
+  return (<li><span>{props.friend}</span><a className="btn-floating btn-small waves-effect waves-light red" onClick={() => props.handleAddFriend(props.friend)}><i class="material-icons">+</i></a></li>)
 };
 
 var WatchRequestStashEntry = (props) => {
-  return (<li>{props.friend}<button onClick={() => props.handleRemoveFriend(props.friend)}>remove</button></li>)
+  return (<li><span>{props.friend}</span><a className="btn-floating btn-small waves-effect waves-light red" onClick={() => props.handleRemoveFriend(props.friend)}><i class="material-icons">-</i></a></li>)
 };
 
 

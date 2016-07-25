@@ -6,7 +6,8 @@ class Home extends React.Component {
       movies: [],
       view: 'recentRelease',
       focalMovie: null,
-      recentRelease: true
+      recentRelease: true,
+      search: ''
     };
   }
 
@@ -20,6 +21,12 @@ class Home extends React.Component {
   //show render a list of recent releases on initialize
   componentDidMount() {
     this.getRecentReleasesInitialize();
+  }
+
+  handleChange(event) {
+    this.setState({
+      search: event.target.value
+    });
   }
 
   getRecentReleasesInitialize() {
@@ -62,7 +69,7 @@ class Home extends React.Component {
   //this will call search for a movie from external API, do a database query for rating
   //and set the reponse to the movies state
   handleSearch(event) {
-    if (event.charCode == 13) {
+    if (event.charCode == 13 || event === 'clicked') {
       var that = this;
 
       //this will search TMDB for movie and send it to server to retrive user ratings
@@ -71,7 +78,7 @@ class Home extends React.Component {
         jsonp: "callback",
         dataType: "jsonp",
         data: {
-            query: event.target.value,
+            query: this.state.search,
             api_key: "9d3b035ef1cd669aed398400b17fcea2",
             format: "json",
         },
@@ -98,13 +105,15 @@ class Home extends React.Component {
 
     return (
       <div className='Home collection'>
-        <div onClick={this.getRecentReleasesInitialize.bind(this)}>{lable}</div>
+        <div className='header' onClick={this.getRecentReleasesInitialize.bind(this)}>{lable}</div>
         <div className='searchMovie'>
           <input type ='text' id='movieInput' 
             className='movieInput'
             placeholder='find a movie'
+            value={this.state.search}
+            onChange={this.handleChange.bind(this)}
             onKeyPress={this.handleSearch.bind(this)}/>
-          <a className="waves-effect waves-light btn">search</a>
+          <a className="waves-effect waves-light btn" onClick={() => this.handleSearch.bind(this)('clicked')}>search</a>
         </div>
         {feedbackMsg}
         <MovieList movies={this.state.movies}

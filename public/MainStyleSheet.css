@@ -248,6 +248,11 @@ body {
   margin-left: 0px;
 }
 
+.errorMsg {
+  color: red;
+  text-align: center;
+}
+
 
 input:not([type]):focus:not([readonly]), 
 input[type=text]:focus:not([readonly]), 
@@ -326,6 +331,11 @@ textarea.materialize-textarea:focus:not([readonly]) {
   border-radius: 15px;
   padding: 20px 20px 20px 20px;
 }
+
+.Home .header {
+  text-align: center;
+  cursor: pointer;
+}
 /*
   ========================================
   movie list view
@@ -400,11 +410,58 @@ textarea {
   margin-top: 50px;
 }
 
+.activeWatchRequest a {
+  position: absolute;
+  right: 0;
+}
 
+.activeWatchRequest li {
+  position: relative;
+  padding-top: 10px;
+  margin-bottom: 20px;
+}
+
+.activeWatchRequest span {
+  margin-left: 140px;
+}
+
+.friendList, .friendStash {
+  border: 1px solid #CCCCCC;
+  margin-top: 0px;
+  height: 150px;
+  overflow: scroll;
+}
+
+.sent {
+  margin-left: 30px;
+}
+
+.updateMsg {
+  color: green;
+}
+
+.userRating .updateMsg {
+  margin-left: 10px;
+}
+
+.yourRating {
+  margin-left: 25px;
+}
+
+.notRatedMsg {
+
+}
 
 /*star rating*/
 
-/*.star-rating {
+#star-rating {
+  position: relative;
+  left: 0;
+  opacity: 1;
+  margin-left: 30px;
+}
+
+.star-rating {
   font-size: 0;
   white-space: nowrap;
   display: inline-block;
@@ -462,4 +519,4 @@ textarea {
   box-sizing: border-box;
   text-align: center;
   vertical-align: middle;
-}*/
+}

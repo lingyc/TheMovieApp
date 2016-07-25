@@ -45,9 +45,9 @@ class MovieListEntry extends React.Component {
           <MovieWatchRequest movie={movie}/>
 
           <div className="ratings row">
-      			<div className='imdbRating col s4'>IMDB rating: {movie.imdbRating}</div>
+      			<div className='imdbRating col s4'>IMDB rating: <b>{movie.imdbRating}</b></div>
             <StarRatingComponent movie={movie}/>
-            <div className='avgFriendRatingBlock col s4'>average friend rating: {(movie.friendAverageRating) ? movie.friendAverageRating : 'n/a' }</div>
+            <div className='avgFriendRatingBlock col s4'>average friend rating: {(movie.friendAverageRating) ? <b>{movie.friendAverageRating}</b> : 'n/a' }</div>
           </div>
           {friendSection}
         </div>
