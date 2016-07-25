@@ -83,14 +83,14 @@ class SignUp extends React.Component {
   render() {
     let that = this;
     return (
-    <div className='landing'>
-      <div className='icon-block'>
+    <div className='landing row'>
+      <div className='icon-block col s6'>
         <h2 className="header logo">Movie Buddy</h2>
         <h5 className="header col s12 light description">
           Mea te nibh constituam, veritus convenire constituam ad quo, at cetero mandamus quo. Meliore salutandi percipitur et vel. In oratio soleat dissentiet eum. Vel an dolore numquam nusquam, mea ut essent integre denique, eos erat ocurreret gloriatur cu. Quod oratio forensibus eu ius, te periculis prodesset pri. His ne illum malis, duo te sententiae adipiscing.
         </h5>
       </div>
-      <div className='login'>
+      <div className='login icon-block'>
         <a className="waves-effect waves-light btn" onClick={() => this.props.changeViews('Login')}>Go to Log In</a>
         <div className="or">---------- OR -----------</div>
         <div className='loginForm'>

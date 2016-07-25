@@ -32,20 +32,22 @@ class MovieListEntry extends React.Component {
     }
 
   	return (
-  		<div className='movieEntry'>
-  			<img className='moviethumnail' src={movie.poster} onClick={() => (this.props.change("SingleMovie", movie))}/>
-  			<h1 className='movieTitle' onClick={() => (this.props.change("SingleMovie", movie))}>{movie.title}</h1>
-  			<p className='movieYear'>{movie.release_date}</p>
-  			<p className='movieDescription'>{movie.description}</p>
-        <ReviewComponent 
-          review={movie.review} 
-          title={movie.title}
-          id={movie.id}/>
-  			<p className='imdbRating'>IMDB rating: {movie.imdbRating}</p>
-  			<MovieWatchRequest movie={movie}/>
-        <StarRatingComponent movie={movie}/>
-        <div className='avgFriendRatingBlock'>average friend rating: {(movie.friendAverageRating) ? movie.friendAverageRating : 'no friend ratings' }</div>
-        {friendSection}
+  		<div className='movieEntry collection-item'>
+  			<img className='moviethumnail col s7 push-s5' src={movie.poster} onClick={() => (this.props.change("SingleMovie", movie))}/>
+        <div className='col s5 pull-s7'>
+    			<h3 className='movieTitle' onClick={() => (this.props.change("SingleMovie", movie))}>{movie.title}</h3>
+    			<p className='movieYear'>{movie.release_date}</p>
+    			<p className='movieDescription'>{movie.description}</p>
+          <ReviewComponent 
+            review={movie.review} 
+            title={movie.title}
+            id={movie.id}/>
+    			<p className='imdbRating'>IMDB rating: {movie.imdbRating}</p>
+    			<MovieWatchRequest movie={movie}/>
+          <StarRatingComponent movie={movie}/>
+          <div className='avgFriendRatingBlock'>average friend rating: {(movie.friendAverageRating) ? movie.friendAverageRating : 'no friend ratings' }</div>
+          {friendSection}
+        </div>
       </div>);
 
 	}
