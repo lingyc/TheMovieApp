@@ -9,6 +9,10 @@ class StarRatingComponent extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.state.userRatings: null
+  }
+
   onStarClick(event) {
     this.setState({userRating: event.target.value});
     this.updateRating(event.target.value);
