@@ -29,7 +29,6 @@ class SingleMovieRatingEntry extends React.Component {
         </div>
         <div id="Friend" className="MovieEntryFriend col s9">
           <div className="top">
-            <div className="firendCompatability">taste compatability with me: 90%</div>
             <a className='friendEntryIndividual individual'><div className="friendName" onClick={that.props.fof}>{rating.friendUserName}</div></a>
           </div>
           <div className="friendReview">{(rating.review === null) ? rating.friendUserName + ' did not leave a review' : rating.friendUserName + "'s review: " + rating.review}</div>
