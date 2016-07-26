@@ -655,6 +655,13 @@ textarea {
   right: 0;
 }
 
+.response .btn.accept {
+  margin-top: 1px;
+  margin-right: 10px;
+  position: absolute;
+  right: 0;
+}
+
 .responseMsg {
   text-align: right;
 }
