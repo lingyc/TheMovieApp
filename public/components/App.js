@@ -135,7 +135,19 @@ class App extends React.Component {
       console.log(response);
       that.setState({
         view:"Login",
-        friendsRatings:[]
+        friendsRatings:[],
+        movie: null,
+        friendRequests:[],
+        pendingFriendRequests:[],
+        myFriends:[],
+        friendToFocusOn:'',
+        individualFriendsMovies:[],
+        potentialMovieBuddies:{},
+        username: null,
+        requestResponses:[],
+        currentUser:null,
+        requestsOfCurrentUser:[]
+
       });
     });
   }
