@@ -43,7 +43,7 @@ class SingleMovieRating extends React.Component {
     $.post(Url + '/getFriendRatings', 
       {movie: inputMovie})
       .then(function(response) {
-        console.log(response);
+        console.log('this is the response', response);
         that.setState({
           friendRatings: response
         })
