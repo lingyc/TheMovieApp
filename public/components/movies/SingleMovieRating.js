@@ -11,7 +11,6 @@ class SingleMovieRating extends React.Component {
 
   componentDidMount() {
     this.getFriendsRating(this.state.movie);
-
   }
 
   componentWillReceiveProps() {
@@ -43,7 +42,7 @@ class SingleMovieRating extends React.Component {
     $.post(Url + '/getFriendRatings', 
       {movie: inputMovie})
       .then(function(response) {
-        console.log(response);
+        console.log('this is the response', response);
         that.setState({
           friendRatings: response
         })
@@ -58,7 +57,7 @@ class SingleMovieRating extends React.Component {
     let that = this;
     let movie = this.state.movie;
     return (
-      <div className='Home collection'>
+      <div className='Home collection' onClick={()=> console.log(that.state)}>
         <div className="movieEntry collection-item row">
           <img className='moviethumnail col s3' src={movie.poster} onClick={() => (this.props.change("SingleMovie", movie))}/>
           <div className='right col s9'>
