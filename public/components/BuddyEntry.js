@@ -6,7 +6,7 @@ const BuddyEntry = ({Buddy, BuddyScore}) => {
     </div>
     <div id="Friend" className="buddy col s9">
    		<h3 className="buddyName">{Buddy}</h3>
-   		<div className="buddyCompatibility">{(BuddyScore === 'Nothing to compare') ? 'Compatability: ' + Buddy + ' has not rated any movies' : 'Compatability: ' + props.BuddyScore }</div>
+   		<div className="buddyCompatibility">{(BuddyScore === 'Nothing to compare') ? `Compatability: ${Buddy} has not rated any movies` : `Compatability`${BuddyScore}`</div>
    		<a className="waves-effect waves-light btn" onClick={function(){buddyfunc(Buddy)}}>send friend request</a> 
   	</div>
   </div>
