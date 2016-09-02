@@ -3,26 +3,26 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      view:'Login',
-      friendsRatings:[],
+      view: 'Login',
+      friendsRatings: [],
       movie: null,
-      friendRequests:[],
-      pendingFriendRequests:[],
-      myFriends:[],
-      friendToFocusOn:'',
-      individualFriendsMovies:[],
-      potentialMovieBuddies:{},
+      friendRequests: [],
+      pendingFriendRequests: [],
+      myFriends: [],
+      friendToFocusOn: '',
+      individualFriendsMovies: [],
+      potentialMovieBuddies: {},
       username: null,
-      requestResponses:[],
-      currentUser:null,
-      requestsOfCurrentUser:[]
+      requestResponses: [],
+      currentUser: null,
+      requestsOfCurrentUser: []
     };
   }
 
   getCurrentFriends() {
     var that=this;
-    console.log('testinggg')
-    $.post(Url + '/getFriends',{test:'info'},function(a,b) {
+    console.log('testinggg');
+    $.post(Url + '/getFriends',{test:'info'}, (a, b) => {
       console.log('what you get back from server for get friends',a,b);
              for (var i=0;i<a.length;i++){
                 if (a[i][1]===null){
