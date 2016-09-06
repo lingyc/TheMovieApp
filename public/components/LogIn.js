@@ -23,28 +23,28 @@ class LogIn extends React.Component {
   }
 
   handleLogIn() {
-    if (this.state.username.length === 0 && this.state.password.length === 0) {
+    if (!this.state.username.length && !this.state.password.length) {
       this.setState({
         errorMsg: 'login is empty'
       });
-    } else if (this.state.username.length === 0) {
+    } else if (!this.state.username.length) {
       this.setState({
         errorMsg: 'please enter a username'
       });
-    } else if (this.state.password.length === 0) {
+    } else if (!this.state.password.length) {
       this.setState({
         errorMsg: 'please enter a password'
       });
     } else {
-      var userObj = { 
+      let userObj = { 
         name: this.state.username,
         password: this.state.password
       };
 
-      var that = this;
+      let that = this;
 
       $.post(Url + '/login', userObj)
-      .then(function(response) {
+      .then(response => {
         if (response[0] === 'it worked') {
           console.log('hi');
           
