@@ -1,98 +1,49 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/local/bin/node',
-1 verbose cli   '/usr/local/bin/npm',
-1 verbose cli   'install',
-1 verbose cli   '-g',
-1 verbose cli   'git+https://github.com/hackreactor/liberator.git' ]
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'run',
+1 verbose cli   'front-end' ]
 2 info using npm@3.10.3
-3 info using node@v6.3.1
-4 silly loadCurrentTree Starting
-5 silly install loadCurrentTree
-6 silly install readGlobalPackageData
-7 silly fetchPackageMetaData git+https://github.com/hackreactor/liberator.git
-8 silly fetchOtherPackageData git+https://github.com/hackreactor/liberator.git
-9 silly cache add args [ 'git+https://github.com/hackreactor/liberator.git', null ]
-10 verbose cache add spec git+https://github.com/hackreactor/liberator.git
-11 silly cache add parsed spec Result {
-11 silly cache add   raw: 'git+https://github.com/hackreactor/liberator.git',
-11 silly cache add   scope: null,
-11 silly cache add   escapedName: null,
-11 silly cache add   name: null,
-11 silly cache add   rawSpec: 'git+https://github.com/hackreactor/liberator.git',
-11 silly cache add   spec: 'git+https://github.com/hackreactor/liberator.git',
-11 silly cache add   type: 'hosted',
-11 silly cache add   hosted:
-11 silly cache add    { type: 'github',
-11 silly cache add      ssh: 'git@github.com:hackreactor/liberator.git',
-11 silly cache add      sshUrl: 'git+ssh://git@github.com/hackreactor/liberator.git',
-11 silly cache add      httpsUrl: 'git+https://github.com/hackreactor/liberator.git',
-11 silly cache add      gitUrl: 'git://github.com/hackreactor/liberator.git',
-11 silly cache add      shortcut: 'github:hackreactor/liberator',
-11 silly cache add      directUrl: 'https://raw.githubusercontent.com/hackreactor/liberator/master/package.json' } }
-12 verbose addRemoteGit caching git+https://github.com/hackreactor/liberator.git
-13 verbose addRemoteGit git+https://github.com/hackreactor/liberator.git is a repository hosted by github
-14 silly tryClone cloning git+https://github.com/hackreactor/liberator.git via git+https://github.com/hackreactor/liberator.git
-15 verbose tryClone git-https-github-com-hackreactor-liberator-git-c1937392 not in flight; caching
-16 verbose correctMkdir /Users/loaner/.npm/_git-remotes correctMkdir not in flight; initializing
-17 verbose makeDirectory /Users/loaner/.npm/_git-remotes creation not in flight; initializing
-18 silly makeDirectory /Users/loaner/.npm/_git-remotes uid: 502 gid: 20
-19 info git [ 'clone',
-19 info git   '--template=/Users/loaner/.npm/_git-remotes/_templates',
-19 info git   '--mirror',
-19 info git   'https://github.com/hackreactor/liberator.git',
-19 info git   '/Users/loaner/.npm/_git-remotes/git-https-github-com-hackreactor-liberator-git-c1937392' ]
-20 error git clone --template=/Users/loaner/.npm/_git-remotes/_templates --mirror https://github.com/hackreactor/liberator.git /Users/loaner/.npm/_git-remotes/git-https-github-com-hackreactor-liberator-git-c1937392: Cloning into bare repository '/Users/loaner/.npm/_git-remotes/git-https-github-com-hackreactor-liberator-git-c1937392'...
-20 error git clone --template=/Users/loaner/.npm/_git-remotes/_templates --mirror https://github.com/hackreactor/liberator.git /Users/loaner/.npm/_git-remotes/git-https-github-com-hackreactor-liberator-git-c1937392: remote: Repository not found.
-20 error git clone --template=/Users/loaner/.npm/_git-remotes/_templates --mirror https://github.com/hackreactor/liberator.git /Users/loaner/.npm/_git-remotes/git-https-github-com-hackreactor-liberator-git-c1937392: fatal: repository 'https://github.com/hackreactor/liberator.git/' not found
-21 silly fetchPackageMetaData Error: Command failed: git clone --template=/Users/loaner/.npm/_git-remotes/_templates --mirror https://github.com/hackreactor/liberator.git /Users/loaner/.npm/_git-remotes/git-https-github-com-hackreactor-liberator-git-c1937392
-21 silly fetchPackageMetaData Cloning into bare repository '/Users/loaner/.npm/_git-remotes/git-https-github-com-hackreactor-liberator-git-c1937392'...
-21 silly fetchPackageMetaData remote: Repository not found.
-21 silly fetchPackageMetaData fatal: repository 'https://github.com/hackreactor/liberator.git/' not found
-21 silly fetchPackageMetaData
-21 silly fetchPackageMetaData     at ChildProcess.exithandler (child_process.js:202:12)
-21 silly fetchPackageMetaData     at emitTwo (events.js:106:13)
-21 silly fetchPackageMetaData     at ChildProcess.emit (events.js:191:7)
-21 silly fetchPackageMetaData     at maybeClose (internal/child_process.js:852:16)
-21 silly fetchPackageMetaData     at Process.ChildProcess._handle.onexit (internal/child_process.js:215:5)
-21 silly fetchPackageMetaData  error for git+https://github.com/hackreactor/liberator.git { Error: Command failed: git clone --template=/Users/loaner/.npm/_git-remotes/_templates --mirror https://github.com/hackreactor/liberator.git /Users/loaner/.npm/_git-remotes/git-https-github-com-hackreactor-liberator-git-c1937392
-21 silly fetchPackageMetaData Cloning into bare repository '/Users/loaner/.npm/_git-remotes/git-https-github-com-hackreactor-liberator-git-c1937392'...
-21 silly fetchPackageMetaData remote: Repository not found.
-21 silly fetchPackageMetaData fatal: repository 'https://github.com/hackreactor/liberator.git/' not found
-21 silly fetchPackageMetaData
-21 silly fetchPackageMetaData     at ChildProcess.exithandler (child_process.js:202:12)
-21 silly fetchPackageMetaData     at emitTwo (events.js:106:13)
-21 silly fetchPackageMetaData     at ChildProcess.emit (events.js:191:7)
-21 silly fetchPackageMetaData     at maybeClose (internal/child_process.js:852:16)
-21 silly fetchPackageMetaData     at Process.ChildProcess._handle.onexit (internal/child_process.js:215:5)
-21 silly fetchPackageMetaData   killed: false,
-21 silly fetchPackageMetaData   code: 128,
-21 silly fetchPackageMetaData   signal: null,
-21 silly fetchPackageMetaData   cmd: 'git clone --template=/Users/loaner/.npm/_git-remotes/_templates --mirror https://github.com/hackreactor/liberator.git /Users/loaner/.npm/_git-remotes/git-https-github-com-hackreactor-liberator-git-c1937392' }
-22 silly rollbackFailedOptional Starting
-23 silly rollbackFailedOptional Finishing
-24 silly runTopLevelLifecycles Starting
-25 silly runTopLevelLifecycles Finishing
-26 silly install printInstalled
-27 verbose stack Error: Command failed: git clone --template=/Users/loaner/.npm/_git-remotes/_templates --mirror https://github.com/hackreactor/liberator.git /Users/loaner/.npm/_git-remotes/git-https-github-com-hackreactor-liberator-git-c1937392
-27 verbose stack Cloning into bare repository '/Users/loaner/.npm/_git-remotes/git-https-github-com-hackreactor-liberator-git-c1937392'...
-27 verbose stack remote: Repository not found.
-27 verbose stack fatal: repository 'https://github.com/hackreactor/liberator.git/' not found
-27 verbose stack
-27 verbose stack     at ChildProcess.exithandler (child_process.js:202:12)
-27 verbose stack     at emitTwo (events.js:106:13)
-27 verbose stack     at ChildProcess.emit (events.js:191:7)
-27 verbose stack     at maybeClose (internal/child_process.js:852:16)
-27 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:215:5)
-28 verbose cwd /Users/loaner/TheMovieApp
-29 error Darwin 14.5.0
-30 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install" "-g" "git+https://github.com/hackreactor/liberator.git"
-31 error node v6.3.1
-32 error npm  v3.10.3
-33 error code 128
-34 error Command failed: git clone --template=/Users/loaner/.npm/_git-remotes/_templates --mirror https://github.com/hackreactor/liberator.git /Users/loaner/.npm/_git-remotes/git-https-github-com-hackreactor-liberator-git-c1937392
-34 error Cloning into bare repository '/Users/loaner/.npm/_git-remotes/git-https-github-com-hackreactor-liberator-git-c1937392'...
-34 error remote: Repository not found.
-34 error fatal: repository 'https://github.com/hackreactor/liberator.git/' not found
-35 error If you need help, you may report this error at:
-35 error     <https://github.com/npm/npm/issues>
-36 verbose exit [ 1, true ]
+3 info using node@v6.5.0
+4 verbose run-script [ 'prefront-end', 'front-end', 'postfront-end' ]
+5 info lifecycle goodbuddy@1.0.0~prefront-end: goodbuddy@1.0.0
+6 silly lifecycle goodbuddy@1.0.0~prefront-end: no script for prefront-end, continuing
+7 info lifecycle goodbuddy@1.0.0~front-end: goodbuddy@1.0.0
+8 verbose lifecycle goodbuddy@1.0.0~front-end: unsafe-perm in lifecycle true
+9 verbose lifecycle goodbuddy@1.0.0~front-end: PATH: C:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;C:\Users\Arya\TheMovieApp\node_modules\.bin;C:\Program Files\nodejs;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Skype\Phone\;C:\Program Files\Git\cmd;C:\Program Files (x86)\cURL\bin;C:\Program Files\nodejs\;C:\Program Files\MySQL\MySQL Server 5.7\bin;C:\Users\Arya\AppData\Roaming\npm
+10 verbose lifecycle goodbuddy@1.0.0~front-end: CWD: C:\Users\Arya\TheMovieApp
+11 silly lifecycle goodbuddy@1.0.0~front-end: Args: [ '/d /s /c',
+11 silly lifecycle   'babel . --out-dir compiled --presets=es2015,react --ignore=node_modules,compiled --source-maps inline' ]
+12 silly lifecycle goodbuddy@1.0.0~front-end: Returned: code: 1  signal: null
+13 info lifecycle goodbuddy@1.0.0~front-end: Failed to exec front-end script
+14 verbose stack Error: goodbuddy@1.0.0 front-end: `babel . --out-dir compiled --presets=es2015,react --ignore=node_modules,compiled --source-maps inline`
+14 verbose stack Exit status 1
+14 verbose stack     at EventEmitter.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\lifecycle.js:242:16)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at EventEmitter.emit (events.js:191:7)
+14 verbose stack     at ChildProcess.<anonymous> (C:\Program Files\nodejs\node_modules\npm\lib\utils\spawn.js:40:14)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at ChildProcess.emit (events.js:191:7)
+14 verbose stack     at maybeClose (internal/child_process.js:877:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
+15 verbose pkgid goodbuddy@1.0.0
+16 verbose cwd C:\Users\Arya\TheMovieApp
+17 error Windows_NT 10.0.10586
+18 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "run" "front-end"
+19 error node v6.5.0
+20 error npm  v3.10.3
+21 error code ELIFECYCLE
+22 error goodbuddy@1.0.0 front-end: `babel . --out-dir compiled --presets=es2015,react --ignore=node_modules,compiled --source-maps inline`
+22 error Exit status 1
+23 error Failed at the goodbuddy@1.0.0 front-end script 'babel . --out-dir compiled --presets=es2015,react --ignore=node_modules,compiled --source-maps inline'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the goodbuddy package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     babel . --out-dir compiled --presets=es2015,react --ignore=node_modules,compiled --source-maps inline
+23 error You can get information on how to open an issue for this project with:
+23 error     npm bugs goodbuddy
+23 error Or if that isn't available, you can get their info via:
+23 error     npm owner ls goodbuddy
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]
