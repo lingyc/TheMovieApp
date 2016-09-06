@@ -1,11 +1,11 @@
-var FriendMovieEntry = (props) => {
+var FriendMovieEntry = ({name, rating, review}) => {
 
 
   return (
   <div className="FriendMovieEntry">
-   <h2>Title:{props.name}</h2><br/>
-   <h3>Rating:{props.rating}</h3><br/>
-   <p><i>Comments:{props.review}</i></p><br/>
+   <h2>Title:{name}</h2><br/>
+   <h3>Rating:{rating}</h3><br/>
+   <p><i>Comments:{review}</i></p><br/>
   </div>
 )};
 

@@ -34,34 +34,34 @@ class SignUp extends React.Component {
   }
 
   enterNewUser() {
-    if (this.state.username.length === 0) {
+    if (!this.state.username.length) {
       this.setState({
         errorMsg: 'please enter a username'
       });
-    } else if (this.state.password.length === 0) {
+    } else if (!this.state.password.length) {
       this.setState({
         errorMsg: 'please enter a password'
       });
-    } else if (this.state.firstName.length === 0) {
+    } else if (!this.state.firstName.length) {
       this.setState({
         errorMsg: 'please enter your first name'
       });
-    } else if (this.state.lastName.length === 0) {
+    } else if (!this.state.lastName.length) {
       this.setState({
         errorMsg: 'please enter your last name'
       });
     } else {
-      var userObj = { 
+      let userObj = { 
         name: this.state.username,
         password: this.state.password,
         firstName: this.state.firstName,
         lastName: this.state.lastName
       };
 
-      var that = this;
+      let that = this;
 
       $.post(Url + '/signup', userObj)
-      .then(function(reponse) {
+      .then(reponse => {
         //after signup should prompt user to select their favorite three movies
         that.setState({
           errorMsg: '',
