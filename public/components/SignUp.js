@@ -40,6 +40,7 @@ class SignUp extends React.Component {
   }
 
   enterNewUser() {
+    console.log("enu being run");
     if (!this.state.username.length) {
       this.setState({
         errorMsg: 'please enter a username'
@@ -65,7 +66,7 @@ class SignUp extends React.Component {
       };
 
       $.post(Url + '/signup', userObj)
-      .then(reponse => {
+      .then(response => {
         //after signup should prompt user to select their favorite three movies
         this.setState({
           errorMsg: '',

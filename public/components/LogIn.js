@@ -48,14 +48,14 @@ class LogIn extends React.Component {
         if (response[0] === 'it worked') {
           console.log('hi');
           
-          that.setState({
+          this.setState({
             errorMsg: ''
           });
 
           this.props.changeViews('Home');
           this.props.setCurrentUser(response[1]);
         }
-         console.log('this.state.view after state is set again',that.state.view);
+         console.log('this.state.view after state is set again',this.state.view);
       })
       .catch(err=> {
         console.log(err);
