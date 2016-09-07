@@ -73,7 +73,7 @@ class LogIn extends React.Component {
         <div className='icon-block col s7'>
           <h2 className="header logo">Welcome to TheMovieApp</h2>
           <h5 className="header col s12 light description">
-            Lets find your next buddy by your movie taste!
+            Let's find your next buddy by your movie taste!
           </h5>
         </div>
         <div className='login icon-block'>

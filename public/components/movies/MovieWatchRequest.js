@@ -169,7 +169,7 @@ class MovieWatchRequest extends React.Component {
     } else {
       return (
         <div>
-          <button className="watchRequestButton" onClick={this.handleClick.bind(this)}>{(this.state.requestSent) ? 'send another watch request' : 'send a watch request'}</button>
+          <button className="center waves-effect waves-light btn" onClick={this.handleClick.bind(this)}>{(this.state.requestSent) ? 'Send Another Watch Request' : 'Send A Watch Request'}</button>
           <span className='sent updateMsg'>{(this.state.requestSent) ? 'your request has been sent' : ''}</span>
         </div>
         )

@@ -7,7 +7,8 @@ class Home extends React.Component {
       view: 'recentRelease',
       focalMovie: null,
       recentRelease: true,
-      search: ''
+      search: '',
+      loading: true
     };
   }
 
@@ -35,7 +36,8 @@ class Home extends React.Component {
       console.log('response from server', moviesWithRatings);
       this.setState({
         movies: moviesWithRatings,
-        recentRelease: true
+        recentRelease: true,
+        loading: false
       });
     })
     
@@ -71,7 +73,7 @@ class Home extends React.Component {
   handleSearch(event) {
     if (event.charCode == 13 || event === 'clicked') {
       var that = this;
-
+      this.setState({loading:true});
       //this will search TMDB for movie and send it to server to retrive user ratings
       $.ajax({
         url: "https://api.themoviedb.org/3/search/movie",
@@ -85,6 +87,7 @@ class Home extends React.Component {
         success: function(response) {
           var sorted = _.sortBy(response.results, 'imdbRating');
           that.getUserRatingsForMovies(sorted);
+          setTimeout(()=>{that.setState({loading:false})},1000)
         }
       });
     }
@@ -92,7 +95,7 @@ class Home extends React.Component {
 
   render() {
     
-    var lable = 'recent releases';
+    var lable = 'Recent Releases';
     var feedbackMsg = '';
     if (this.state.recentRelease === false) {
       lable = 'back to recent releases';
@@ -105,6 +108,7 @@ class Home extends React.Component {
 
     return (
       <div className='Home collection'>
+      {this.state.loading?<img id='loadingBar' src="http://bit.ly/2czw4qB"/>: null}
         <div className='header' onClick={this.getRecentReleasesInitialize.bind(this)}>{lable}</div>
         <div className='searchMovie'>
           <input type ='text' id='movieInput' 

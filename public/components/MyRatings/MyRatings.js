@@ -59,12 +59,12 @@ class MyRatings extends React.Component {
     var lable;
     var results;
     if (this.state.allRatedMovies === false) {
-      lable = 'back to all rated movies';
+      lable = 'Back To All Rated Movies';
       results = (this.state.movies.length === 0) ? (<div className="errorMsg">results cannot be found</div>) : (<div className="updateMsg">all match results:</div>)
     } else if (this.state.allRatedMovies && this.state.movies.length === 0) {
       lable = 'you have not rated any movies';
     } else {
-      lable = 'all rated movies';
+      lable = 'All Rated Movies';
     }
 
     return (

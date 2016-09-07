@@ -97,9 +97,9 @@ class StarRatingComponent extends React.Component {
     }
 		return (
 		<div className="userRating col s4">
-			{(this.state.userRating === null) ? <div className="notRatedMsg">you haven't rated this movie</div> : <div className="yourRating">your rating is <b>{this.state.userRating}</b></div>}
+			{(this.state.userRating === null) ? <div className="notRatedMsg">Please rate this movie</div> : <div className="yourRating">Your Rating Is <b>{this.state.userRating}/5</b></div>}
       {stars}
-			{(this.state.ratingUpdated) ? <div className="updateMsg">rating has updated</div> : ''}
+			{(this.state.ratingUpdated) ? <div className="updateMsg">Rating Updated!</div> : ''}
 		</div>);
   }
 }

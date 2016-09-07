@@ -42,9 +42,9 @@ class SelectFavoriteTitles extends React.Component {
       lable = 'back to all rated movies';
       results = (this.state.movies.length === 0) ? (<div className="errorMsg">results cannot be found</div>) : (<div className="updateMsg">all match results:</div>)
     } else if (this.state.allRatedMovies && this.state.movies.length === 0) {
-      lable = 'you have not rated any movies';
+      lable = 'You haven't rated any movies';
     } else {
-      lable = 'all rated movies';
+      lable = 'All Rated Movies';
     }
 
     return (
