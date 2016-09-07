@@ -679,3 +679,8 @@ textarea {
 .center.btn {
   margin: auto 30% auto 38%;
 }
+
+a.btn-floating.btn-small.waves-effect.waves-light.red {
+    left: 10px;
+    top: 1px;
+}
