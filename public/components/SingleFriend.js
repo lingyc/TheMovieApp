@@ -1,22 +1,22 @@
-var SingleFriend = (props) => {
+var SingleFriend = ({moviesOfFriend,onClick,friendName, change}) => {
 
 
-	console.log('props.moviesOfFriend',props.moviesOfFriend)
-	if (props.moviesOfFriend.length === 0){
+	console.log('props.moviesOfFriend', moviesOfFriend)
+	if (!moviesOfFriend.length){
 		return (
 			<div>
-			<button onClick={() => (props.onClick("Friends"))}>Back to all friends</button><br/>
-			Sorry, {props.friendName.slice(props.friendName.indexOf(">")+1,props.friendName.lastIndexOf("<"))} hasn't rated any movies.
+			<button onClick={() => (onClick("Friends"))}>Back to all friends</button><br/>
+			Sorry, {friendName.slice(friendName.indexOf(">") + 1, friendName.lastIndexOf("<"))} hasn't rated any movies.
 			</div>
 			)
 
 	} else {
 		return (
 	  <div className="Home collection">
-			<a className="center waves-effect waves-light btn" onClick={() => (props.onClick("Friends"))}>Back to all friends</a>
-			<div className="header large"> list of {props.friendName}'s movies</div>
+			<a className="center waves-effect waves-light btn" onClick={() => (onClick("Friends"))}>Back to all friends</a>
+			<div className="header large"> list of {friendName}'s movies</div>
 			<div className='moviesOfFriend'>
-				{props.moviesOfFriend.map(movie => <MovieListEntry friendName={props.friendName} movie={movie} change={props.change}/> )}
+				{moviesOfFriend.map(movie => <MovieListEntry friendName={friendName} movie={movie} change={change}/> )}
 			</div>
 		</div>
 		)

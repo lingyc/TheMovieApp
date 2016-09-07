@@ -1,7 +1,7 @@
-var FriendRatingListEntry = (props) => (
+var FriendRatingListEntry = ({name, rating}) => (
   <div className="FriendRatingListEntry">
-    <span id="friend">Name:{props.name}    </span>
-    <span id="rating">Rating:{props.rating}</span>
+    <span id="friend">Name:{name}</span>
+    <span id="rating">Rating:{rating}</span>
     <br/>
   </div>
 );

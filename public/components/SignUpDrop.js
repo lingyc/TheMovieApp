@@ -16,7 +16,7 @@ class SignUpDrop extends React.Component {
       processData: false,
       contentType: false,
       type: 'POST',
-      success: function(data) {
+      success: data =>{
         console.log(data);
       }
     });

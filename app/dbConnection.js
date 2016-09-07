@@ -1,20 +1,20 @@
 var knex = require('knex')({
   client: 'mysql',
-  // connection: {
-  //   host     : '127.0.0.1',
-  //   user     : 'root',
-  //   password : '12345',
-  //   database : 'MainDatabase',
-  //   charset  : 'utf8'
-
-  // }
-
   connection: {
-    host     : 'us-cdbr-iron-east-04.cleardb.net',
-    user     : 'b41928aa9d6e3c',
-    password : '5a72009f',
-    database : 'heroku_75e4ff295c2758d'
+    host     : '127.0.0.1',
+    user     : 'root',
+    password : '12345',
+    database : 'MainDatabase',
+    charset  : 'utf8'
+
   }
+
+  // connection: {
+  //   host     : 'us-cdbr-iron-east-04.cleardb.net',
+  //   user     : 'b41928aa9d6e3c',
+  //   password : '5a72009f',
+  //   database : 'heroku_75e4ff295c2758d'
+  // }
 });
 
 var db = require('bookshelf')(knex);
