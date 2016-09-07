@@ -154,7 +154,7 @@ class MovieWatchRequest extends React.Component {
           <div className="row">
             <div className="MovieWatchRequestFriendList col s6">
               <ul className="friendList" name="friendsList" multiple>
-                {(this.state.filteredFriends.length === 0) ? <div className="errorMsg">'no friend match is found'</div> : ''}
+                {(this.state.filteredFriends.length === 0) ? <div className="errorMsg">'No friends to choose from'</div> : ''}
                 {this.state.filteredFriends.map(friend => <WatchRequestFriendEntry friend={friend} handleAddFriend={this.handleAddFriend.bind(this)}/>)}
               </ul>
             </div>

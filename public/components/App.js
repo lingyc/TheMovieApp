@@ -306,28 +306,19 @@ console.log('person is defined?',person);
   };
 
   focusOnFriend(friend) {
-    console.log('fof being run');
-    const that=this;
-    $('.friendEntryIndividual').on('click', function(event) {
-      event.preventDefault();
-      const friendName = $(this).html();
-
-      that.setState({
+    
+      this.setState({
         view:'singleFriend',
         friendToFocusOn: friend
       });
 
-      $.get(Url + '/getFriendUserRatings',{friendName: friend}, function(response) {
-        console.log(friend)
-        console.log('getting friend movies:', response);
-        that.setState({
+      $.get(Url + '/getFriendUserRatings',{friendName: friend}, response=> {
+        this.setState({
           individualFriendsMovies: response
         });
 
       });
-      return false;
-    });
-  }
+    }
 
   listPotentials() {
     console.log('this should list potential friends')
