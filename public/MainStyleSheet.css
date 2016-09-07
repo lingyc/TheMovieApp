@@ -406,15 +406,18 @@ textarea.materialize-textarea:focus:not([readonly]) {
   font-size: 14px;
   color: #3b7fc7;
 }
+
 .editReviewButton {
   float: right;
+  color: white;
+  background-color: #2bbbad;
 }
 
 .ratings {
-  /*position: absolute;*/
+  position: relative;
   margin-top: 30px;
   width: 100%;
-  bottom: 0;
+  bottom: -30px;
 }
 
 textarea {
@@ -488,6 +491,7 @@ textarea {
   position: relative;
   background: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjREREREREIiBwb2ludHM9IjEwLDAgMTMuMDksNi41ODMgMjAsNy42MzkgMTUsMTIuNzY0IDE2LjE4LDIwIDEwLDE2LjU4MyAzLjgyLDIwIDUsMTIuNzY0IDAsNy42MzkgNi45MSw2LjU4MyAiLz48L3N2Zz4=');
   background-size: contain;
+  left:8px;
 }
 .star-rating i {
   opacity: 0;
@@ -677,5 +681,19 @@ textarea {
 }
 
 .center.btn {
-  margin: auto 30% auto 38%;
+  margin: auto;
+  left: 175px;
+  top: 50px;
+}
+
+a.btn-floating.btn-small.waves-effect.waves-light.red {
+  left: 10px;
+  top: 1px;
+}
+
+img#loadingBar {
+  position: relative;
+  height: 300px;
+  left: 250px;
+  z-index: -1;
 }

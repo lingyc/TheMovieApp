@@ -91,13 +91,17 @@ class MovieWatchRequest extends React.Component {
   }
 
   handleAddFriend(friend) {
+    console.log('should be all friends to choose from', this.state.filteredFriends)
     //add friend to stash
     console.log('calling handleAddFriend');
+    var newFilteredFriends=this.state.filteredFriends;
+    newFilteredFriends.splice(newFilteredFriends.indexOf(friend),1);
     if (this.state.friendStash.indexOf(friend) < 0) {
       var stashCopy = this.state.friendStash;
       stashCopy.unshift(friend);
       this.setState({
-        friendStash: stashCopy
+        friendStash: stashCopy,
+        filteredFriends:newFilteredFriends
       });
     }
   }
@@ -110,12 +114,20 @@ class MovieWatchRequest extends React.Component {
         friendStash: []
       });
     } else {
+      console.log('im trying to remove', friend);
       var stashCopy = this.state.friendStash;
       stashCopy.splice(idx, 1);
       this.setState({
         friendStash: stashCopy
       });
     }
+
+    var newFilteredFriends=this.state.filteredFriends.concat([friend]);
+    this.setState({
+      filteredFriends: newFilteredFriends
+    });
+
+
   }
 
   render() {
@@ -131,7 +143,7 @@ class MovieWatchRequest extends React.Component {
         var stash = 
         <div className="MovieWatchRequestFriendStash col s6">
           <ul className="friendStash" name="friendStash" multiple>
-            <div className="errorMsg">please select a friend</div>
+            <div className="errorMsg">Please Select A Friend</div>
           </ul>
         </div>;
       }
@@ -142,7 +154,7 @@ class MovieWatchRequest extends React.Component {
           <div className="row">
             <div className="MovieWatchRequestFriendList col s6">
               <ul className="friendList" name="friendsList" multiple>
-                {(this.state.filteredFriends.length === 0) ? <div className="errorMsg">'no friend match is found'</div> : ''}
+                {(this.state.filteredFriends.length === 0) ? <div className="errorMsg">'No friends to choose from'</div> : ''}
                 {this.state.filteredFriends.map(friend => <WatchRequestFriendEntry friend={friend} handleAddFriend={this.handleAddFriend.bind(this)}/>)}
               </ul>
             </div>
@@ -150,14 +162,14 @@ class MovieWatchRequest extends React.Component {
             {stash}
           </div>
           <textarea className="messageBox" cols="40" rows="5" onChange={this.handleMsg.bind(this)} placeholder="Add a message" maxlength="255"></textarea>
-          <button className="watchRequest" onClick={this.handleSubmit.bind(this)}>send watch request</button>
-          <button className="closeWatchRequest" onClick={this.handleClick.bind(this)}>close watch request</button>
+          <button className="watchRequest" onClick={this.handleSubmit.bind(this)}>Send Watch Request</button>
+          <button className="closeWatchRequest" onClick={this.handleClick.bind(this)}>Close Watch Request</button>
         </div>
       )
     } else {
       return (
         <div>
-          <button className="watchRequestButton" onClick={this.handleClick.bind(this)}>{(this.state.requestSent) ? 'send another watch request' : 'send a watch request'}</button>
+          <button className="center waves-effect waves-light btn" onClick={this.handleClick.bind(this)}>{(this.state.requestSent) ? 'Send Another Watch Request' : 'Send A Watch Request'}</button>
           <span className='sent updateMsg'>{(this.state.requestSent) ? 'your request has been sent' : ''}</span>
         </div>
         )
