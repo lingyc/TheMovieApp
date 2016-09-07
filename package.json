@@ -1,8 +1,8 @@
 {
-  "name": "goodbuddy",
+  "name": "TheMovieApp",
   "version": "1.0.0",
   "author": "Piquant-Toothbrush",
-  "license": "UNLICENSE",
+  "license": "MIT",
   "main": "server.js",
   "dependencies": {
     "babel-cli": "latest",

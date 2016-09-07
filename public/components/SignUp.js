@@ -14,22 +14,28 @@ class SignUp extends React.Component {
   }
 
   handleChange(event) {
-    if (event.target.name === 'SignUpName') {
+    const tar = event.target.value;
+    switch (event.target.name){
+      case 'SignUpName':
       this.setState({
-        username: event.target.value
+        username: tar
       });
-    } else if (event.target.name === 'SignUpPassword') {
+      break;
+       case 'SignUpPassword':
       this.setState({
-        password: event.target.value
+        password: tar
       });
-    } else if (event.target.name === 'SignUpFirstname') {
+      break;
+       case 'SignUpFirstname':
       this.setState({
-        firstName: event.target.value
+        firstName: tar
       });
-    } else if (event.target.name === 'SignUpLastname') {
+      break;
+       case 'SignUpLastname':
       this.setState({
-        lastName: event.target.value
+        lastName: tar
       });
+      break;
     }
   }
 
@@ -58,22 +64,21 @@ class SignUp extends React.Component {
         lastName: this.state.lastName
       };
 
-      let that = this;
-
       $.post(Url + '/signup', userObj)
       .then(reponse => {
         //after signup should prompt user to select their favorite three movies
-        that.setState({
+        this.setState({
           errorMsg: '',
           successMsg: 'new login created'
         });
+        console.log(this,' this')
 
-        that.props.changeViews("Home");
-        that.props.setCurrentUser(that.state.username);
+        this.props.changeViews("Home");
+        this.props.setCurrentUser(this.state.username);
       })
-      .catch(function(err) {
+      .catch(err=> {
         console.log(err);
-        that.setState({
+        this.setState({
           errorMsg: 'username already exist, please use a different username'
         });
       })
@@ -81,7 +86,7 @@ class SignUp extends React.Component {
   }
 
   render() {
-    let that = this;
+    
     return (
     <div className='landing row'>
       <div className='icon-block col s7'>
@@ -92,7 +97,7 @@ class SignUp extends React.Component {
       </div>
       <div className='login icon-block'>
         <a className="waves-effect waves-light btn" onClick={() => this.props.changeViews('Login')}>Go to Log In</a>
-        <div className="or">---------- OR -----------</div>
+        <div className="or">OR</div>
         <div className='loginForm'>
           <div className="input-field col s6">
             <input placeholder="username" id="user_name" name='SignUpName' type="text" className="validate" onChange={this.handleChange.bind(this)}/>

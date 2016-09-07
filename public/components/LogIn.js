@@ -78,7 +78,7 @@ class LogIn extends React.Component {
         </div>
         <div className='login icon-block'>
           <a className="waves-effect waves-light btn" onClick={() => this.props.changeViews('SignUp')}>Go to Sign Up</a>
-          <div className="or">---------- OR -----------</div>
+          <div className="or">OR</div>
           <div className='loginForm'>
             <div className="input-field col s6">
               <input placeholder="username" id="user_name" name='LogInName' type="text" className="validate" onChange={this.handleChange.bind(this)}/>
