@@ -104,4 +104,5 @@ class StarRatingComponent extends React.Component {
   }
 }
 
+
 window.StarRatingComponent = StarRatingComponent;
