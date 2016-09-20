@@ -45,7 +45,9 @@
   "scripts": {
     "front-end": "babel . --out-dir compiled --presets=es2015,react --ignore=node_modules,compiled --source-maps inline --watch",
     "back-end": "nodemon server.js",
+    "start": "nodemon server.js",
     "build": "babel public --out-dir compiled/public --presets=es2015,react --source-maps inline",
-    "watch": "babel public --out-dir compiled/public --presets=es2015,react --source-maps inline --watch"
+    "watch": "babel public --out-dir compiled/public --presets=es2015,react --source-maps inline --watch",
+    "dev:start": "npm run build & npm run start"
   }
 }
