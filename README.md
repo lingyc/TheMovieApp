@@ -8,7 +8,7 @@
       * To run:
         * start the db server `mysql.server start`
         * create password for as new user if needed `mysqladmin -u *username* password`
-        * to invoke mysql CLI tool `mysqladmin -u *username* password`
+        * to invoke mysql CLI tool `mysqladmin -u *username* -p`
 
 ## Running dev server
 	* to compile client ES6 code and start server `npm run dev:start`
