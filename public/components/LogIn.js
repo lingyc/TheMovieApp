@@ -82,12 +82,12 @@ class LogIn extends React.Component {
           <div className='loginForm'>
             <div className="input-field col s6">
               <input placeholder="username" id="user_name" name='LogInName' type="text" className="validate" onChange={this.handleChange.bind(this)}/>
-              <label for="user_name" className="active">Username</label>
+              <label htmlFor="user_name" className="active">Username</label>
             </div>
 
             <div className="input-field col s6">
               <input placeholder="password" id="password" name='LogInPassword' type="password" className="validate" onChange={this.handleChange.bind(this)}/>
-              <label for="password" className="active">Password</label>
+              <label htmlFor="password" className="active">Password</label>
             </div>
             <div className="errorMsg">{this.state.errorMsg}</div>
             <a className="waves-effect waves-light btn" onClick={this.handleLogIn.bind(this)}>log in</a>
