@@ -13,6 +13,10 @@ class StarRatingComponent extends React.Component {
     this.setState({userRatings: null});
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({userRating: nextProps.movie.score});
+  }
+
   onStarClick(event) {
     this.setState({userRating: event.target.value});
     this.updateRating(event.target.value);
@@ -20,7 +24,7 @@ class StarRatingComponent extends React.Component {
 
   updateRating(rating) {
     var movieObj = {
-      title: this.props.movie.title, 
+      title: this.props.movie.title,
       id: this.props.movie.id,
       rating: rating
     };
@@ -28,8 +32,8 @@ class StarRatingComponent extends React.Component {
     .done(response => {
       console.log('movie rating updated');
       this.setState({
-      	ratingUpdated: true
-      })
+        ratingUpdated: true
+      });
     });
   }
 
@@ -43,7 +47,7 @@ class StarRatingComponent extends React.Component {
           <input id="star-rating" type="radio" name="group1" value="4" onChange={this.onStarClick.bind(this)}/><i></i>
           <input id="star-rating" type="radio" name="group1" value="5" onChange={this.onStarClick.bind(this)}/><i></i>
         </form>
-        )
+        );
     } else if (this.state.userRating === 2) {
       var stars = (
         <form className="star-rating col-sm-10">
@@ -53,7 +57,7 @@ class StarRatingComponent extends React.Component {
           <input id="star-rating" type="radio" name="group1" value="4" onChange={this.onStarClick.bind(this)}/><i></i>
           <input id="star-rating" type="radio" name="group1" value="5" onChange={this.onStarClick.bind(this)}/><i></i>
         </form>
-        )
+        );
     } else if (this.state.userRating === 3) {
       var stars = (
         <form className="star-rating col-sm-10">
@@ -63,7 +67,7 @@ class StarRatingComponent extends React.Component {
           <input id="star-rating" type="radio" name="group1" value="4" onChange={this.onStarClick.bind(this)}/><i></i>
           <input id="star-rating" type="radio" name="group1" value="5" onChange={this.onStarClick.bind(this)}/><i></i>
         </form>
-        )
+        );
     } else if (this.state.userRating === 4) {
       var stars = (
         <form className="star-rating col-sm-10">
@@ -73,7 +77,7 @@ class StarRatingComponent extends React.Component {
           <input id="star-rating" checked="true" type="radio" name="group1" value="4" onChange={this.onStarClick.bind(this)}/><i></i>
           <input id="star-rating" type="radio" name="group1" value="5" onChange={this.onStarClick.bind(this)}/><i></i>
         </form>
-        )
+        );
     } else if (this.state.userRating === 5) {
       var stars = (
         <form className="star-rating col-sm-10">
@@ -83,7 +87,7 @@ class StarRatingComponent extends React.Component {
           <input id="star-rating" type="radio" name="group1" value="4" onChange={this.onStarClick.bind(this)}/><i></i>
           <input id="star-rating" checked="true" type="radio" name="group1" value="5" onChange={this.onStarClick.bind(this)}/><i></i>
         </form>
-        )
+        );
     } else {
       var stars = (
         <form className="star-rating col-sm-10">
@@ -93,7 +97,7 @@ class StarRatingComponent extends React.Component {
           <input id="star-rating" type="radio" name="group1" value="4" onChange={this.onStarClick.bind(this)}/><i></i>
           <input id="star-rating" type="radio" name="group1" value="5" onChange={this.onStarClick.bind(this)}/><i></i>
         </form>
-        )
+        );
     }
 		return (
 		<div className="userRating col s4">
