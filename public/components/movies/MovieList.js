@@ -3,7 +3,7 @@ var MovieList = ({movies, change}) => {
 		{ movies.map((movie, i) => <MovieListEntry 
       movie = {movie} 
       change = {change}
-      key = {i} /> )}
+      key = {movie.title} /> )}
 		
 	</div>)
 }
