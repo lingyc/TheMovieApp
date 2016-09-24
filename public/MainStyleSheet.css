@@ -544,9 +544,8 @@ a.btn-floating.btn-small.waves-effect.waves-light.red {
   top: 1px;
 }
 
-img#loadingBar {
+.progress.loadingBar {
   position: relative;
-  height: 300px;
-  left: 250px;
-  z-index: -1;
+  margin: 40px auto;
+  width: 15%;
 }

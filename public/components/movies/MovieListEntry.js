@@ -38,7 +38,7 @@ class MovieListEntry extends React.Component {
     			<h5 className='movieTitle' onClick={() => (this.props.change("SingleMovie", movie))}>{movie.title}</h5>
     			<p className='movieYear'>{movie.release_date}</p>
     			<p className='movieDescription'>{movie.description}</p>
-          <ReviewComponent 
+          <ReviewComponent
             review={movie.review} 
             title={movie.title}
             id={movie.id}/>

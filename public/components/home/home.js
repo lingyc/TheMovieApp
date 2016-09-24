@@ -33,7 +33,7 @@ class Home extends React.Component {
   getRecentReleasesInitialize() {
     $.get(Url + '/recentRelease')
     .then(moviesWithRatings => {
-      console.log('response from server', moviesWithRatings);
+      // console.log('response from server', moviesWithRatings);
       this.setState({
         movies: moviesWithRatings,
         recentRelease: true,
@@ -93,7 +93,7 @@ class Home extends React.Component {
   }
 
   render() {
-   
+
     var lable = 'Recent Releases';
     var feedbackMsg = '';
     if (this.state.recentRelease === false) {
@@ -104,10 +104,9 @@ class Home extends React.Component {
         feedbackMsg = (<div className="updatedMsg">all match results:</div>);
       }
     }
-
     return (
       <div className='Home collection'>
-      {this.state.loading ? <img id='loadingBar' src="http://bit.ly/2czw4qB"/> : null}
+      {this.state.loading ? <div className="progress loadingBar"> <div className="indeterminate"></div> </div> : null}
         <div className='header' onClick={this.getRecentReleasesInitialize.bind(this)}>{lable}</div>
         <div className='searchMovie'>
           <input type ='text' id='movieInput' 
