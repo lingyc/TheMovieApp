@@ -1,20 +1,12 @@
 var knex = require('knex')({
   client: 'mysql',
   connection: {
-    host     : '127.0.0.1',
-    user     : 'root',
-    password : '123',
-    database : 'MainDatabase',
+    host: process.env.DATABASE_HOST || '127.0.0.1',
+    user: process.env.DATABASE_USER || 'root',
+    password: process.env.DATABASE_PASSWORD || '123',
+    database: process.env.DATABASE_NAME || 'MainDatabase',
     charset  : 'utf8'
-
   }
-
-  // connection: {
-  //   host     : 'us-cdbr-iron-east-04.cleardb.net',
-  //   user     : 'b41928aa9d6e3c',
-  //   password : '5a72009f',
-  //   database : 'heroku_75e4ff295c2758d'
-  // }
 });
 
 var db = require('bookshelf')(knex);
