@@ -33,7 +33,7 @@ class Home extends React.Component {
   getRecentReleasesInitialize() {
     $.get(Url + '/recentRelease')
     .then(moviesWithRatings => {
-      // console.log('response from server', moviesWithRatings);
+      console.log('response from server', moviesWithRatings);
       this.setState({
         movies: moviesWithRatings,
         recentRelease: true,

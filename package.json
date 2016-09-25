@@ -5,7 +5,7 @@
   "license": "MIT",
   "main": "server.js",
   "dependencies": {
-    "babel-cli": "latest",
+    "babel-cli": "^6.14.0",
     "babel-preset-es2015": "latest",
     "babel-preset-react": "^6.11.1",
     "babel-register": "latest",
@@ -45,9 +45,8 @@
   "scripts": {
     "front-end": "babel . --out-dir compiled --presets=es2015,react --ignore=node_modules,compiled --source-maps inline --watch",
     "back-end": "nodemon server.js",
-    "start": "npm run build & nodemon server.js",
+    "start": "npm run build && nodemon server.js",
     "build": "babel public --out-dir compiled/public --presets=es2015,react --source-maps inline",
-    "watch": "babel public --out-dir compiled/public --presets=es2015,react --source-maps inline --watch",
-    "dev:start": "npm run build & npm run start"
+    "watch": "babel public --out-dir compiled/public --presets=es2015,react --source-maps inline --watch"
   }
 }

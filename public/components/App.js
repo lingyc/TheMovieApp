@@ -195,7 +195,7 @@ class App extends React.Component {
     }
 
     if (targetState==='Home'){
-      this.getCurrentFriends()
+      // this.getCurrentFriends()
       this.sendRequest();
     }
 
@@ -487,6 +487,6 @@ console.log('person is defined?',person);
 }
 
 window.App = App;
-//var Url = 'https://thawing-island-99747.herokuapp.com';
-var Url = 'http://127.0.0.1:3000';
+var Url = 'https://reelmates.herokuapp.com';
+// var Url = 'http://127.0.0.1:3000';
 window.Url = Url;
