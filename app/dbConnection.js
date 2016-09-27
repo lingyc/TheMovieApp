@@ -6,7 +6,8 @@ var knex = require('knex')({
     password: process.env.DATABASE_PASSWORD || '123',
     database: process.env.DATABASE_NAME || 'MainDatabase',
     charset  : 'utf8'
-  }
+  },
+  pool: { min: 0, max: 20 }
 });
 
 var db = require('bookshelf')(knex);
@@ -82,6 +83,7 @@ db.knex.schema.hasTable('allRequests').then(function(exists) {
       request.string('movie',255);
       request.string('message', 255);
       request.string('response', 255);
+      request.timestamps();
     }).then(function (table) {
       console.log('Created Table', table);
     });
