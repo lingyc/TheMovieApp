@@ -7,7 +7,7 @@ var knex = require('knex')({
     database: process.env.DATABASE_NAME || 'MainDatabase',
     charset  : 'utf8'
   },
-  pool: { min: 0, max: 20 }
+  pool: { min: 0, max: 6 }
 });
 
 var db = require('bookshelf')(knex);
