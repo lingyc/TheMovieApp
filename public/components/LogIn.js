@@ -71,7 +71,7 @@ class LogIn extends React.Component {
     return (
       <div className='landing row'>
         <div className='icon-block col s7'>
-          <h2 className="header logo">Welcome to TheMovieApp</h2>
+          <h2 className="header logo">Welcome to ReelPals</h2>
           <h5 className="header col s12 light description">
             Let's find your next buddy by your movie taste!
           </h5>
