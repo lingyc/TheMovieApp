@@ -1,7 +1,7 @@
 var SingleFriend = ({moviesOfFriend,onClick,friendName, change}) => {
 
 
-	console.log('props.moviesOfFriend', moviesOfFriend)
+	// console.log('props.moviesOfFriend', moviesOfFriend)
 	if (!moviesOfFriend.length){
 		return (
 			<div>

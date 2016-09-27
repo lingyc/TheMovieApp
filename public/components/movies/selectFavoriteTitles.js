@@ -26,7 +26,7 @@ class SelectFavoriteTitles extends React.Component {
       //this will search database
     $.get(Url + '/searchRatedMovie', {title: event.target.value})
     .then(searchResults => {
-      console.log('response from server', searchResults);
+      // console.log('response from server', searchResults);
       this.setState({
         movies: searchResults,
         allRatedMovies: false

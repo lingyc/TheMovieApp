@@ -40,7 +40,7 @@ class SignUp extends React.Component {
   }
 
   enterNewUser() {
-    console.log("enu being run");
+    // console.log("enu being run");
     if (!this.state.username.length) {
       this.setState({
         errorMsg: 'please enter a username'
@@ -72,13 +72,13 @@ class SignUp extends React.Component {
           errorMsg: '',
           successMsg: 'new login created'
         });
-        console.log(this,' this')
+        // console.log(this,' this')
 
         this.props.changeViews("Home");
         this.props.setCurrentUser(this.state.username);
       })
       .catch(err=> {
-        console.log(err);
+        // console.log(err);
         this.setState({
           errorMsg: 'username already exist, please use a different username'
         });
@@ -91,7 +91,7 @@ class SignUp extends React.Component {
     return (
     <div className='landing row'>
       <div className='icon-block col s7'>
-        <h2 className="header logo">Welcome to TheMovieApp</h2>
+        <h2 className="header logo">Welcome to ReelPals</h2>
         <h5 className="header col s12 light description">
           Let's find your next buddy by your movie taste!
         </h5>

@@ -21,9 +21,9 @@ class App extends React.Component {
 
   getCurrentFriends() {
 
-    console.log('testinggg');
+    // console.log('testinggg');
     $.post(Url + '/getFriends',{test:'info'}, (a, b) => {
-      console.log('what you get back from server for get friends',a,b);
+      // console.log('what you get back from server for get friends',a,b);
              for (let i=0;i<a.length;i++){
                 if (a[i][1]===null){
                   a[i][1] = "No comparison to be made";
@@ -34,7 +34,7 @@ class App extends React.Component {
       this.setState({
         myFriends:final
       })
-      console.log('thes are my friends!!!!!!!!!!!!!!!!!',this.state.myFriends)
+      // console.log('thes are my friends!!!!!!!!!!!!!!!!!',this.state.myFriends)
     })
   }
 
@@ -48,12 +48,12 @@ class App extends React.Component {
       this.listPendingFriendRequests();
     })
     
-    console.log('refreshed inbox, should delete friend request on the spot instead of moving')
+    // console.log('refreshed inbox, should delete friend request on the spot instead of moving')
   }
 
   declineFriend(personToDecline, movie) {
     $.post(Url + '/decline',{personToDecline:personToDecline, movie: movie},(resp, err)=> {
-      console.log('this is the state after declining friend, ', this.state);
+      // console.log('this is the state after declining friend, ', this.state);
       this.listPendingFriendRequests();
     });
   }
@@ -81,7 +81,7 @@ class App extends React.Component {
         potentialMovieBuddies:uniqueFriends
       })
 
-      console.log(this.state.myFriends,this.state.potentialMovieBuddies);
+      // console.log(this.state.myFriends,this.state.potentialMovieBuddies);
 
     })
   }
@@ -94,16 +94,16 @@ class App extends React.Component {
   }
 
   setCurrentUser(username) {
-    console.log('calling setCurrentUser');
+    // console.log('calling setCurrentUser');
     this.setState({
       currentUser: username
     })
   }
 
   enterNewUser(name,password) {
-    console.log(name,password);
+    // console.log(name,password);
     $.post(Url + '/signup',{name:name,password:password}).then(()=> {
-      console.log('success'); 
+      // console.log('success'); 
       this.setState({username: name, view: "Home"})
     }).catch(()=> {console.log('error')})
   }
@@ -115,7 +115,7 @@ class App extends React.Component {
       view:"Home",
       friendsRatings:response
     })
-    console.log('our response',this.state.friendsRatings)
+    // console.log('our response',this.state.friendsRatings)
     }).catch(err=> {console.log(err)});
   }
 
@@ -124,7 +124,7 @@ class App extends React.Component {
 
   logout() {
     $.post(Url + '/logout').then(response=> {
-      console.log(response);
+      // console.log(response);
       this.setState({
         view:"Login",
         friendsRatings:[],
@@ -148,11 +148,11 @@ class App extends React.Component {
     const toSend={requestee:friend, movie:movie};
     if (movie.length) {
       $.post(Url + '/sendWatchRequest', toSend, (resp, err)=> {
-        console.log(resp, err);
+        // console.log(resp, err);
       });
       document.getElementById('movieToWatch').value='';
     } else {
-      console.log('you need to enter a movie to send a watch request!!!!')
+      // console.log('you need to enter a movie to send a watch request!!!!')
     }
   }
 
@@ -168,7 +168,7 @@ class App extends React.Component {
     };
     
     this.props.searchMovie(options, movie => {
-      console.log(movie);
+      // console.log(movie);
       this.setState({
         view:"MovieSearchView",
         movie: movie
@@ -180,16 +180,16 @@ class App extends React.Component {
   showMovie(movie) {
     this.setState({
       movie: movie
-    })
+    });
   }
   /////////////////////
   /////Nav change
   /////////////////////
   changeViews(targetState) {
-    console.log(this.state);
+    // console.log(this.state);
 
     if (targetState==='Friends'){
-      console.log('you switched to friends!!')
+      // console.log('you switched to friends!!')
       this.getCurrentFriends()
       this.sendRequest();
     }
@@ -231,8 +231,6 @@ class App extends React.Component {
 
 
   sendRequest(a) {
-console.log('send request is being run!!')
-
     if (document.getElementById('findFriendByName')!==null){
       var person=document.getElementById('findFriendByName').value
     } else {
@@ -242,7 +240,7 @@ console.log('send request is being run!!')
     const friends1=[];
     const friends2=[]
     for (var i=0;i<currFriends.length;i++){
-      console.log('line 251',currFriends[i])
+      // console.log('line 251',currFriends[i])
       friends1.push(currFriends[i][0]);
       friends2.push(currFriends[i][0])
     }
@@ -251,19 +249,19 @@ console.log('send request is being run!!')
       friends1.push(this.state.requestsOfCurrentUser[i])
     }
 
-    console.log('this should also be my friends',person, currFriends,friends1,friends2)
+    // console.log('this should also be my friends',person, currFriends,friends1,friends2)
 
     //console.log('tof',friends1.indexOf(person)!== -1, friends1.length!==0)
     if (friends1.indexOf(person)!== -1 && friends1.length!==0){
       $("#AlreadyReq").fadeIn(1000);
       $("#AlreadyReq").fadeOut(1000);
-      console.log('this person is already in there!!')
+      // console.log('this person is already in there!!')
     } else if (!person.length) {
       $("#enterRealFriend").fadeIn(1000);
       $("#enterRealFriend").fadeOut(1000);
     } else {
 
-console.log('person is defined?',person);
+// console.log('person is defined?',person);
       $.post(Url + '/sendRequest',{name:person}, (resp, err)=> {
        
           this.setState({
@@ -281,11 +279,11 @@ console.log('person is defined?',person);
   }
 
   listPendingFriendRequests() {
-    console.log('this should list friend reqs')
+    // console.log('this should list friend reqs')
     $.post(Url + '/listRequests', (response, error)=> {
       const pFR=[];
       const rR=[];
-      console.log('response to lpfr', response);
+      // console.log('response to lpfr', response);
 
       for (var i=0;i<response[0].length;i++){
         const requestor=response[0][i]['requestor'];
@@ -321,7 +319,7 @@ console.log('person is defined?',person);
     }
 
   listPotentials() {
-    console.log('this should list potential friends')
+    // console.log('this should list potential friends')
   }
 
   removeRequest(person, self, movie) {
@@ -335,11 +333,11 @@ console.log('person is defined?',person);
         movie: movie
       },
       success: function(response) {
-        console.log('REQUEST REMOVED! Movie is: ', movie);
+        // console.log('REQUEST REMOVED! Movie is: ', movie);
         that.listPendingFriendRequests();
       },
       error: function(error) {
-        console.log(error);
+        // console.log(error);
       }
     });
   }

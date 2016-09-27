@@ -17,7 +17,7 @@ class MovieWatchRequest extends React.Component {
   	//send get request to retrive friends and set to this.state.friends
     $.get(Url + '/getFriendList')
     .then(friends => {
-      console.log('response from server', friends);
+      // console.log('response from server', friends);
       var uniqFriend = _.uniq(friends);
       this.setState({
         friends: uniqFriend,
@@ -91,9 +91,9 @@ class MovieWatchRequest extends React.Component {
   }
 
   handleAddFriend(friend) {
-    console.log('should be all friends to choose from', this.state.filteredFriends)
+    // console.log('should be all friends to choose from', this.state.filteredFriends)
     //add friend to stash
-    console.log('calling handleAddFriend');
+    // console.log('calling handleAddFriend');
     var newFilteredFriends=this.state.filteredFriends;
     newFilteredFriends.splice(newFilteredFriends.indexOf(friend),1);
     if (this.state.friendStash.indexOf(friend) < 0) {

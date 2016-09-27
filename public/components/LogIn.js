@@ -11,7 +11,7 @@ class LogIn extends React.Component {
   }
 
   handleChange(event) {
-    const tar=event.target.value;
+    const tar = event.target.value;
     if (event.target.name === 'LogInName') {
       this.setState({
         username: tar
@@ -37,7 +37,7 @@ class LogIn extends React.Component {
         errorMsg: 'please enter a password'
       });
     } else {
-      let userObj = { 
+      let userObj = {
         name: this.state.username,
         password: this.state.password
       };
@@ -46,7 +46,7 @@ class LogIn extends React.Component {
       $.post(Url + '/login', userObj)
       .then(response => {
         if (response[0] === 'it worked') {
-          console.log('hi');
+          // console.log('hi');
           
           this.setState({
             errorMsg: ''
@@ -55,10 +55,10 @@ class LogIn extends React.Component {
           this.props.changeViews('Home');
           this.props.setCurrentUser(response[1]);
         }
-         console.log('this.state.view after state is set again',this.state.view);
+         // console.log('this.state.view after state is set again',this.state.view);
       })
       .catch(err=> {
-        console.log(err);
+        // console.log(err);
         this.setState({
           errorMsg: 'invalid login information'
         });

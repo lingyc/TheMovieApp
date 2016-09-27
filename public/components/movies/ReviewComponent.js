@@ -53,7 +53,7 @@ class ReviewComponent extends React.Component {
     };
     $.post(Url + '/ratemovie', movieObj)
     .done(response => {
-      console.log('movie rating updated');
+      // console.log('movie rating updated');
       this.setState({
         reviewSubmitted: true
       })

@@ -28,7 +28,7 @@ class SingleMovieRating extends React.Component {
     var that = this;
     $.post(Url + '/getFriends')
     .then(function(resp) {
-      console.log(that.state.friends)
+      // console.log(that.state.friends)
     })
     .catch(function(err) {
       console.log(err);
@@ -38,11 +38,11 @@ class SingleMovieRating extends React.Component {
   //get friend ratings by calling requesthandler
   //get friendratings, passing in mainUser and movieobj
   getFriendsRating(inputMovie) {
-    console.log('posting')
+    // console.log('posting')
     var that = this;
     $.post(Url + '/getFriendRatings', {movie: inputMovie})
     .then(function(response) {
-      console.log('response from server getFriendsRating: ', response);
+      // console.log('response from server getFriendsRating: ', response);
       that.setState({
         friendRatings: response
       })

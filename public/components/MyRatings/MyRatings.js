@@ -24,7 +24,7 @@ class MyRatings extends React.Component {
   getAllRatedMovies() {
     $.get(Url + '/getUserRatings')
     .then(userRatedMovies => {
-      console.log('response from server', userRatedMovies);
+      // console.log('response from server', userRatedMovies);
       this.setState({
         movies: userRatedMovies,
         allRatedMovies: true
@@ -46,7 +46,7 @@ class MyRatings extends React.Component {
       //this will search database
     $.get(Url + '/searchRatedMovie', {title: this.state.search})
     .then(searchResults => {
-      console.log('response from server', searchResults);
+      // console.log('response from server', searchResults);
       this.setState({
         movies: searchResults,
         allRatedMovies: false

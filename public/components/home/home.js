@@ -33,7 +33,7 @@ class Home extends React.Component {
   getRecentReleasesInitialize() {
     $.get(Url + '/recentRelease')
     .then(moviesWithRatings => {
-      console.log('response from server', moviesWithRatings);
+      // console.log('response from server', moviesWithRatings);
       this.setState({
         movies: moviesWithRatings,
         recentRelease: true,
@@ -51,10 +51,10 @@ class Home extends React.Component {
         recentRelease: false
       });
     } else {
-      console.log('posting to:', Url + '/getMultipleMovieRatings');
+      // console.log('posting to:', Url + '/getMultipleMovieRatings');
       $.post(Url + '/getMultipleMovieRatings', { movies: moviesFromOMDB })
       .done(moviesWithRatings => {
-        console.log('response from server', moviesWithRatings);
+        // console.log('response from server', moviesWithRatings);
         this.setState({
           movies: moviesWithRatings,
           recentRelease: false
