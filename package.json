@@ -48,5 +48,8 @@
     "start": "npm run build && nodemon server.js",
     "build": "babel public --out-dir compiled/public --presets=es2015,react --source-maps inline",
     "watch": "babel public --out-dir compiled/public --presets=es2015,react --source-maps inline --watch"
+  },
+  "engines": {
+    "node": "6.0.0"
   }
 }

@@ -487,6 +487,6 @@ console.log('person is defined?',person);
 }
 
 window.App = App;
-var Url = 'https://reelmates.herokuapp.com';
+var Url = 'https://reelpals.herokuapp.com';
 // var Url = 'http://127.0.0.1:3000';
 window.Url = Url;
